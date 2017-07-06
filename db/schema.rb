@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706174508) do
+ActiveRecord::Schema.define(version: 20170706183058) do
 
   create_table "events", force: :cascade do |t|
     t.string "event_name"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20170706174508) do
     t.integer "event_id"
     t.integer "segment_id"
     t.integer "score_type_id"
-    t.integer "score"
+    t.float "score"
     t.string "skater1"
     t.string "skater2"
     t.string "skater3"
@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 20170706174508) do
     t.string "team_name"
     t.string "competition"
     t.integer "year"
-    t.string "isubio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_scores_on_event_id"

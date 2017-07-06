@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @score.event %>
+</p>
+
+<p>
+  <strong>Segment:</strong>
+  <%= @score.segment %>
+</p>
+
+<p>
+  <strong>Score type:</strong>
+  <%= @score.score_type %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @score.score %>
+</p>
+
+<p>
+  <strong>Skater1:</strong>
+  <%= @score.skater1 %>
+</p>
+
+<p>
+  <strong>Skater2:</strong>
+  <%= @score.skater2 %>
+</p>
+
+<p>
+  <strong>Skater3:</strong>
+  <%= @score.skater3 %>
+</p>
+
+<p>
+  <strong>Skater4:</strong>
+  <%= @score.skater4 %>
+</p>
+
+<p>
+  <strong>Team name:</strong>
+  <%= @score.team_name %>
+</p>
+
+<p>
+  <strong>Competition:</strong>
+  <%= @score.competition %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @score.year %>
+</p>
+
+<%= link_to 'Edit', edit_score_path(@score) %> |
+<%= link_to 'Back', scores_path %>

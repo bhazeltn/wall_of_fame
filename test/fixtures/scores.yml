@@ -4,7 +4,7 @@ one:
   event: one
   segment: one
   score_type: one
-  score: 1
+  score: 1.5
   skater1: MyString
   skater2: MyString
   skater3: MyString
@@ -12,13 +12,12 @@ one:
   team_name: MyString
   competition: MyString
   year: 1
-  isubio: MyString
 
 two:
   event: two
   segment: two
   score_type: two
-  score: 1
+  score: 1.5
   skater1: MyString
   skater2: MyString
   skater3: MyString
@@ -26,4 +25,3 @@ two:
   team_name: MyString
   competition: MyString
   year: 1
-  isubio: MyString
