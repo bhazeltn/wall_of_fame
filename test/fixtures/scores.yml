@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event: one
+  segment: one
+  score_type: one
+  score: 1
+  skater1: MyString
+  skater2: MyString
+  skater3: MyString
+  skater4: MyString
+  team_name: MyString
+  competition: MyString
+  year: 1
+  isubio: MyString
+
+two:
+  event: two
+  segment: two
+  score_type: two
+  score: 1
+  skater1: MyString
+  skater2: MyString
+  skater3: MyString
+  skater4: MyString
+  team_name: MyString
+  competition: MyString
+  year: 1
+  isubio: MyString

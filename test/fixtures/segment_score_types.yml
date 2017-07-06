@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  segment: one
+  score_type: one
+
+two:
+  segment: two
+  score_type: two
