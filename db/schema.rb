@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707174843) do
+ActiveRecord::Schema.define(version: 20170707193716) do
 
   create_table "events", force: :cascade do |t|
     t.string "event_name"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20170707174843) do
     t.string "group_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "levels", force: :cascade do |t|
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "level"
+    t.index ["group_id"], name: "index_levels_on_group_id"
   end
 
   create_table "score_types", force: :cascade do |t|

@@ -8,6 +8,7 @@ class ScoresController < ApplicationController
     @segments = Segment.all
     @events = Event.all
     @groups = Group.all
+    @levels = Level.all
   end
 
   # GET /scores/1

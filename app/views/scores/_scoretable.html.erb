@@ -1,0 +1,60 @@
+<div class="tab-content">
+    <% @groups.each do |g| %>
+      <div role="tabpanel" id='<%= g.group_name %>'  <% if g.id == 1 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+        <span>
+          <ul class="nav nav-pills">
+            <% @events.where(group_id: g.id).each do |e| %>
+              <li class="nav-item">
+                <a href='#<%= e.html_name %>'  aria-controls='<%= e.html_name %>' role="tab" data-toggle="tab"class="nav-link">
+                  <%= e.event_name %>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+          <div class="tab-content">
+            <% @events.where(group_id: g.id).each do |e| %>
+              <div role="tabpanel" id='<%= e.html_name %>'  class="tab-pane">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Segment</th>
+                      <th>Score Type</th>
+                      <% if e.group_id == 7 %>
+                        <th>Team<br />Skaters</th>
+                      <% else %>
+                        <th>Skater(s)</th>
+                      <% end %>
+                      <th>Score</th>
+                      <th>Competition</th>
+                      <th>Year</th>
+                      <th colspan="1"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @scores.where(event_id: e.id).each do |s| %>
+                      <tr>
+                        <td><%= s.segment.segment_type %></td>
+                        <td><%= s.score_type.score_type %></td>
+                        <td>
+                          <% if s.team_name and s.team_name != "" %>
+                            <%= s.team_name %><br />
+                          <% end %>
+                          <% s.name.each do |n| %>
+                            <%= n %>
+                          <% end %>
+                        </td>
+                        <td><%= s.score %></td>
+                        <td><%= s.competition %></td>
+                        <td><%= s.year %></td>
+                        <td><%= link_to 'Edit', edit_score_path(s) %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            <% end %>
+          </div>
+        </span>
+      </div>
+    <% end %>
+  </div>
