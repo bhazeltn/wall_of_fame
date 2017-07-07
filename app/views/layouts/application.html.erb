@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WallOfFame</title>
+    <title>Calalta Wall Of Fame</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/navigation' %>
+    <div class="container">
+      <div class="jumbotron">
+        <div style="text-align: center">
+            <img src="http://calalta.net/wp-content/uploads/2015/03/Calalta-Logo.png"/>
+            <h1><b>Wall Of Fame</b></h1>
+
+        <%= yield %>    
+    </div>
   </body>
 </html>
