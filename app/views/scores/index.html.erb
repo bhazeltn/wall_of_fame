@@ -9,10 +9,7 @@
       <th>Segment</th>
       <th>Score type</th>
       <th>Score</th>
-      <th>Skater1</th>
-      <th>Skater2</th>
-      <th>Skater3</th>
-      <th>Skater4</th>
+      <th>Skaters</th>
       <th>Team name</th>
       <th>Competition</th>
       <th>Year</th>
@@ -23,14 +20,15 @@
   <tbody>
     <% @scores.each do |score| %>
       <tr>
-        <td><%= score.event %></td>
-        <td><%= score.segment %></td>
-        <td><%= score.score_type %></td>
+        <td><%= score.event.event_name %></td>
+        <td><%= score.segment.segment_type %></td>
+        <td><%= score.score_type.score_type %></td>
         <td><%= score.score %></td>
-        <td><%= score.skater1 %></td>
-        <td><%= score.skater2 %></td>
-        <td><%= score.skater3 %></td>
-        <td><%= score.skater4 %></td>
+        <td>
+          <% score.name.each do |n| %>
+            <%= n %><br />
+          <% end %>
+        </td>
         <td><%= score.team_name %></td>
         <td><%= score.competition %></td>
         <td><%= score.year %></td>
