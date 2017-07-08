@@ -23,12 +23,12 @@
     </ul>
     <div class="tab-content">
       <% @groups.each do |g| %>
-        <div role="tabpanel" id='<%= g.group_name %>'  class="tab-pane">
+        <div role="tabpanel" id='<%= g.group_name %>'  <% if g.id == 1 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
           <span>
             <ul class="nav nav-pills">
               <% @levels.where(group_id: g.id).each do |l| %>
                 <li class="nav-item">
-                  <a href='#<%= l.level %>'  aria-controls='<%= l.level %>' role="tab" data-toggle="tab"class="nav-link">
+                  <a href='#<%= l.level %>'  aria-controls='<%= l.level %>' role="tab" data-toggle="tab" <% if l.id == 1 %> class="nav-link active" <% else %> class="nav-link" <% end %>>
                     <%= l.level %>
                   </a>
                 </li>
@@ -36,7 +36,7 @@
             </ul>
             <div class="tab-content">
               <% @levels.where(group_id: g.id).each do |l| %>
-                <div role="tabpanel" id='<%= l.level %>' class="tab-pane">
+                <div role="tabpanel" id='<%= l.level %>' <% if l.id == 1 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
                   <span>
                     <%= l.level %><br> tab <%= l.id %>
                   </span>
