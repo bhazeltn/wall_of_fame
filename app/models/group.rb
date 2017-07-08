@@ -1,4 +1,4 @@
 class Group < ApplicationRecord
-  has_many :event
   has_many :level
+  has_many :event, through: :level
 end

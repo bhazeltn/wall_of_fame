@@ -10,30 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708020957) do
+ActiveRecord::Schema.define(version: 20170707193557) do
 
   create_table "events", force: :cascade do |t|
     t.string "event_name"
-    t.integer "group_id"
+    t.string "html_name"
+    t.integer "level_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "html_name"
-    t.index ["group_id"], name: "index_events_on_group_id"
+    t.index ["level_id"], name: "index_events_on_level_id"
   end
 
   create_table "groups", force: :cascade do |t|
     t.string "group_name"
+    t.string "html_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "html_name"
   end
 
   create_table "levels", force: :cascade do |t|
+    t.string "level"
+    t.string "html_name"
     t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "level"
-    t.string "html_name"
     t.index ["group_id"], name: "index_levels_on_group_id"
   end
 
