@@ -35,6 +35,8 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+gem 'local_time'
+
 
 
 group :development, :test do

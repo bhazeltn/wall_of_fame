@@ -11,20 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :event_id %>
-    <%= form.text_field :event_id, id: :score_event_id %>
-  </div>
+  <!--<div class="field">-->
+  <!--  <%= form.label :event_id %>-->
+  <!--  <%= form.text_field :event_id, id: :score_event_id %>-->
+  <!--</div>-->
 
-  <div class="field">
-    <%= form.label :segment_id %>
-    <%= form.text_field :segment_id, id: :score_segment_id %>
-  </div>
+  <!--<div class="field">-->
+  <!--  <%= form.label :segment_id %>-->
+  <!--  <%= form.text_field :segment_id, id: :score_segment_id %>-->
+  <!--</div>-->
 
-  <div class="field">
-    <%= form.label :score_type_id %>
-    <%= form.text_field :score_type_id, id: :score_score_type_id %>
-  </div>
+  <!--<div class="field">-->
+  <!--  <%= form.label :score_type_id %>-->
+  <!--  <%= form.text_field :score_type_id, id: :score_score_type_id %>-->
+  <!--</div>-->
 
   <div class="field">
     <%= form.label :score %>
@@ -32,29 +32,31 @@
   </div>
 
   <div class="field">
-    <%= form.label :skater1 %>
+    <%= form.label "Skater Name" %>
     <%= form.text_field :skater1, id: :score_skater1 %>
   </div>
-
-  <div class="field">
-    <%= form.label :skater2 %>
-    <%= form.text_field :skater2, id: :score_skater2 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :skater3 %>
-    <%= form.text_field :skater3, id: :score_skater3 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :skater4 %>
-    <%= form.text_field :skater4, id: :score_skater4 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :team_name %>
-    <%= form.text_field :team_name, id: :score_team_name %>
-  </div>
+  <% if score.event.event_name == "Pairs" or score.event.event_name == "Dance" or score.event.event_name == "Team" %>
+    <div class="field">
+      <%= form.label "Skater Name" %>
+      <%= form.text_field :skater2, id: :score_skater2 %>
+    </div>
+  <% end %>
+  <% if score.event.event_name == "Team" %>
+    <div class="field">
+      <%= form.label "Skater Name" %>
+      <%= form.text_field :skater3, id: :score_skater3 %>
+    </div>
+  
+    <div class="field">
+      <%= form.label "Skater Name" %>
+      <%= form.text_field :skater4, id: :score_skater4 %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :team_name %>
+      <%= form.text_field :team_name, id: :score_team_name %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :competition %>

@@ -19,7 +19,7 @@ event_csv = CSV.parse(event_text, :headers => true, :encoding => 'ISO-8859-1')
 
 
 score_type_text = File.read(Rails.root.join('lib', 'seeds', 'score_type.csv'))
-score_csv = CSV.parse(score_type_text, :headers => true, :encoding => 'ISO-8859-1')
+score_type_csv = CSV.parse(score_type_text, :headers => true, :encoding => 'ISO-8859-1')
 
 
 segments_text = File.read(Rails.root.join('lib', 'seeds', 'segment_type.csv'))
@@ -42,16 +42,16 @@ score_csv = CSV.parse(score_text, :headers => true, :encoding => 'ISO-8859-1')
 group_csv.each do |row|
   t = Group.new
   t.group_name = row['group']
-  t.html_name = row['html_name']
+  t.html_name = row['htmlname']
   t.save!
   puts "#{t.group_name}, #{t.html_name} saved"
 end
 
 levels_csv.each do |row|
   l = Level.new
-  l.level = row['level']
-  l.html_name = row['html_name']
-  l.group_id = row['group']
+  l.level = row['lvl']
+  l.html_name = row['htmlname']
+  l.group_id = row['grp']
   l.save!
   l.errors
   puts "#{l.level} saved"
@@ -59,14 +59,14 @@ end
 
 event_csv.each do |row|
   t = Event.new
-  t.event_name = row['event_name']
-  t.html_name = row['html_name']
-  t.level_id = row['level_id']
+  t.event_name = row['evtn']
+  t.html_name = row['htmlname']
+  t.level_id = row['lvl']
   t.save!
   puts "#{t.event_name} saved"
 end
 
-score_csv.each do |row|
+score_type_csv.each do |row|
   t = ScoreType.new
   t.score_type = row['scoretype']
   t.save!
@@ -88,8 +88,8 @@ end
 
 segmentscore_csv.each do |row|
   t = SegmentScoreType.new
-  t.segment_id = row['segment_type']
-  t.score_type_id = row['score_type']
+  t.segment_id = row['segmenttype']
+  t.score_type_id = row['scoretype']
   t.save!
 end
 

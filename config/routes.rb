@@ -1,18 +1,4 @@
 Rails.application.routes.draw do
-  get 'level/new'
-
-  get 'level/create'
-
-  get 'level/update'
-
-  get 'level/edit'
-
-  get 'level/destroy'
-
-  get 'level/index'
-
-  get 'level/show'
-
   get 'welcome/index'
   
   root 'welcome#index'

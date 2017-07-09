@@ -1,20 +1,20 @@
-level_id,event_name,html_name
+lvl,evtn,htmlname
 1,Ladies,Ladies
 1,Men,Men
-1,Pairs,Pairs
 1,Dance,Dance
+1,Pairs,Pairs
 2,Ladies,Ladies
 2,Men,Men
-2,Pairs,Pairs
 2,Dance,Dance
+2,Pairs,Pairs
 3,Ladies,Ladies
 3,Men,Men
-3,Pairs,Pairs
 3,Dance,Dance
+3,Pairs,Pairs
 4,Ladies,Ladies
 4,Men,Men
-4,Pairs,Pairs
 4,Dance,Dance
+4,Pairs,Pairs
 5,Ladies U14,LadiesU14
 5,Ladies U12,LadiesU12
 5,Men U14,MenU14

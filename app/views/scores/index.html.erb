@@ -9,7 +9,7 @@
     <ul class="nav nav-pills">
       <% @groups.each do |g| %>
         <li class="nav-item">
-          <a href='#<%= g.group_name %>'  aria-controls='<%= g.group_name %>' role="tab" data-toggle="tab" <% if g.id == 1 %> class="nav-link active" <% else %> class="nav-link" <% end %>>
+          <a href='#<%= g.html_name %>'  aria-controls='<%= g.html_name %>' role="tab" data-toggle="tab" <% if g.id == 1 %> class="nav-link active" <% else %> class="nav-link" <% end %>>
             <% if g.id == 1 %>
               Pre-Novice to Senior
             <% elsif g.id == 2 %>
@@ -23,12 +23,12 @@
     </ul>
     <div class="tab-content">
       <% @groups.each do |g| %>
-        <div role="tabpanel" id='<%= g.group_name %>'  <% if g.id == 1 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+        <div role="tabpanel" id='<%= g.html_name %>'  <% if g.id == 1 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
           <span>
             <ul class="nav nav-pills">
               <% @levels.where(group_id: g.id).each do |l| %>
                 <li class="nav-item">
-                  <a href='#<%= l.level %>'  aria-controls='<%= l.level %>' role="tab" data-toggle="tab" <% if l.id == 1 %> class="nav-link active" <% else %> class="nav-link" <% end %>>
+                  <a href='#<%= g.html_name %><%= l.html_name %>'  aria-controls='<%= g.html_name %><%= l.html_name %>' role="tab" data-toggle="tab" <% if l.id == 1 %> class="nav-link active" <% else %> class="nav-link" <% end %>>
                     <%= l.level %>
                   </a>
                 </li>
@@ -36,9 +36,24 @@
             </ul>
             <div class="tab-content">
               <% @levels.where(group_id: g.id).each do |l| %>
-                <div role="tabpanel" id='<%= l.level %>' <% if l.id == 1 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+                <div role="tabpanel" id='<%= g.html_name %><%= l.html_name %>' <% if l.id == 1 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
                   <span>
-                    <%= l.level %><br> tab <%= l.id %>
+                    <ul class="nav nav-pills">
+                      <% @events.where(level_id: l.id).each do |e| %>
+                        <a href='#<%= l.html_name %><%= e.html_name %>'  aria-controls='<%= l.html_name %><%= e.html_name %>' role="tab" data-toggle="tab" <% if e.id == 1 %> class="nav-link active" <% else %> class="nav-link" <% end %>>
+                          <%= e.event_name %>
+                        </a>
+                      <% end %>
+                    </ul>
+                    <div class="tab-content">
+                      <% @events.where(level_id: l.id).each do |e| %>
+                        <div role="tabpanel" id='<%= l.html_name %><%= e.html_name %>' <% if e.id == 1 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+                          <span>
+                            <%= render :partial => 'scoretable', :locals => {evnt: e, scores: @scores} %>
+                          </span>
+                        </div>
+                      <% end %>
+                    </div>
                   </span>
                 </div>
               <% end %>
@@ -47,18 +62,4 @@
         </div>
       <% end %>
   </div>
-</div>
-
-
-<div> <br /><br /><br /><br /><br /><br /><br /><br /></div>
-
-<div>
-  <% @groups.each do |g| %>
-    <%= g.group_name %><br />
-    <ul>
-      <% @levels.where(group_id: g.id).each do |l| %>
-        <li><%= l.level %></li>
-      <% end %>
-    </ul>
-  <% end %>
 </div>
