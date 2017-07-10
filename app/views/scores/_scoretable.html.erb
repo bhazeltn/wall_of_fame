@@ -21,7 +21,13 @@
   </thead>
   <tbody>
     <% scores.where(event_id: evnt.id).each do |s| %>
-      <tr>
+      <% if s.score_type_id == 1 %>
+        <tr class="table-success">
+      <% elsif s.score_type_id == 2 %>
+        <tr class="table-info">
+      <% else %>
+        <tr class="table-warning">
+      <% end %>
         <% if evnt.segment.count > 1 %>
           <td><%= s.segment.segment_type %></td>
         <% end %>

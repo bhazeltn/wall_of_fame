@@ -1,59 +1,47 @@
+</div>
+</div>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Event:</strong>
-  <%= @score.event %>
-</p>
-
-<p>
-  <strong>Segment:</strong>
-  <%= @score.segment %>
-</p>
-
-<p>
-  <strong>Score type:</strong>
-  <%= @score.score_type %>
-</p>
-
-<p>
-  <strong>Score:</strong>
-  <%= @score.score %>
-</p>
-
-<p>
-  <strong>Skater1:</strong>
-  <%= @score.skater1 %>
-</p>
-
-<p>
-  <strong>Skater2:</strong>
-  <%= @score.skater2 %>
-</p>
-
-<p>
-  <strong>Skater3:</strong>
-  <%= @score.skater3 %>
-</p>
-
-<p>
-  <strong>Skater4:</strong>
-  <%= @score.skater4 %>
-</p>
-
-<p>
-  <strong>Team name:</strong>
-  <%= @score.team_name %>
-</p>
-
-<p>
-  <strong>Competition:</strong>
-  <%= @score.competition %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @score.year %>
-</p>
+<div class="container">
+  <div class = "card col-md-4 justify-content-center">
+    <div class="card-header">
+      <h4>
+        <%= @score.event.level.level %> <%= @score.event.event_name %>
+      </h4>
+    </div>
+    <div class = "card block">
+      <div class="row card-title">
+        <h5 class = "col">
+          <% if @score.segment.segment_type == "Total" %>
+            <%= @score.segment.segment_type %>
+          <% else %>
+            <%= @score.segment.segment_type %><br /><%= @score.score_type.score_type %>
+          <% end %>
+        </h5>
+        <h5 class = "col" style="text-align: right">
+          <%= @score.score %>
+        </h5>
+      </div>
+      <div class = "card-text">
+        <div class="row">
+          <span class = "col">
+            <% if @score.event.event_name == "Team" %>
+              <%= @score.team_name %><br >
+            <% end %>
+            <% @score.name.each do |n| %>
+              <%= n %><br />
+            <% end %>
+            
+          </span>
+          <span class = "col" style="text-align: right">
+            <%= @score.competition %> <%= @score.year %>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_score_path(@score) %> |
 <%= link_to 'Back', scores_path %>
