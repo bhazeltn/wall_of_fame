@@ -6,26 +6,7 @@
 
 <div>
   <div>
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a href='#intro' aria-controls="intro" role="tab" data-toggle="tab" class="nav-link active">
-          Introduction<br />& Criteria
-        </a>
-      </li>
-      <% @groups.each do |g| %>
-        <li class="nav-item">
-          <a href='#<%= g.html_name %>'  aria-controls='<%= g.html_name %>' role="tab" data-toggle="tab" class="nav-link">
-            <% if g.id == 1 %>
-              Pre-Novice<br /> to Senior
-            <% elsif g.id == 2 %>
-              Pre-Juvenile<br /> and Juvenile
-            <% else %>
-              <br /><%= g.group_name %>
-            <% end %>
-          </a>
-        </li>
-      <% end %>
-    </ul>
+    <%= render :partial => 'tabs' %>
     <div class="tab-content">
       <div role="tabpanel" id='intro' class="tab-pane active">
         <span>
