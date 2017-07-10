@@ -7,23 +7,33 @@
 <div>
   <div>
     <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a href='#intro' aria-controls="intro" role="tab" data-toggle="tab" class="nav-link active">
+          Introduction<br />& Criteria
+        </a>
+      </li>
       <% @groups.each do |g| %>
         <li class="nav-item">
-          <a href='#<%= g.html_name %>'  aria-controls='<%= g.html_name %>' role="tab" data-toggle="tab" <% if g.id == 1 %> class="nav-link active" <% else %> class="nav-link" <% end %>>
+          <a href='#<%= g.html_name %>'  aria-controls='<%= g.html_name %>' role="tab" data-toggle="tab" class="nav-link">
             <% if g.id == 1 %>
-              Pre-Novice to Senior
+              Pre-Novice<br /> to Senior
             <% elsif g.id == 2 %>
-              Pre-Juvenile and Juvenile
+              Pre-Juvenile<br /> and Juvenile
             <% else %>
-              <%= g.group_name %>
+              <br /><%= g.group_name %>
             <% end %>
           </a>
         </li>
       <% end %>
     </ul>
     <div class="tab-content">
+      <div role="tabpanel" id='intro' class="tab-pane active">
+        <span>
+          <%= render 'intro' %>
+        </span>
+      </div>
       <% @groups.each do |g| %>
-        <div role="tabpanel" id='<%= g.html_name %>'  <% if g.id == 1 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+        <div role="tabpanel" id='<%= g.html_name %>' class="tab-pane">
           <span>
             <ul class="nav nav-pills">
               <% @levels.where(group_id: g.id).each_with_index do |l, idx1| %>
