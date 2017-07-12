@@ -37,6 +37,7 @@ gem 'jquery-rails'
 
 gem 'local_time'
 
+gem "font-awesome-rails"
 
 
 group :development, :test do

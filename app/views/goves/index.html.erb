@@ -1,0 +1,66 @@
+<h2>+2 Grade of Execution</h2>
+<h5><i>Records Starting July 1, 2017</i></h5>
+</div>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<div class = "container">
+  <div>
+    <%= link_to 'Create a New Record', new_gofe_path %>
+  </div>
+  <div>
+    <% @years.each do |y| %>
+      <% @comps.each do |c| %>
+        <% if @gofes.where(year: y, competition: c).present? %>
+          <h5><%= c %> <%= y %></h5>
+          <table class="table table-layout:fixed">
+            <thead>
+              <tr>
+                <th col style="width:20%">Event</th>
+                <th col style="width:20%">Segment</th>
+                <th col style="width:20%">Skater</th>
+                <th col style="width:10%">Element</th>
+                <th col style="width:17%">Grade of Execution</th>
+                <th col style="width:3%" colspan="3"></th>
+              </tr>
+            </thead>
+            <% @gofes.where(year: y, competition: c).each do |g| %>
+              <tbody>
+                <tr>
+                  <td><%= g.level.level %> <%= g.event.event_name %></td>
+                  <td><%= g.segment.segment_type %></td>
+                  <td><%= g.skater1 %>
+                      <% if g.skater2 and g.skater2 != "" %>
+                        <br /><%= g.skater2 %>
+                      <% end %>
+                  </td>
+                  <td><%= g.element %></td>
+                  <td>+<%= g.grade %></td>
+                  <td>
+                    <%= link_to edit_gofe_path(g) do %>
+                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to g, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>  
+          </table>
+        <% end %>
+      <% end %> 
+    <% end %>
+  </div>
+</div>
+       
+             
+<hr>
+
+<div class="container">
+  
+</div>
+

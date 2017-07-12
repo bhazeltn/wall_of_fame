@@ -43,10 +43,14 @@
           <% end %>
         </td>
         <td><%= s.score %></td>
-        <td><%= s.competition %></td>
+        <td><%= s.competition.name %></td>
         <td><%= s.year %></td>
         <td><%= local_time_ago(s.updated_at) %></td>
-        <td><%= link_to 'Edit', edit_score_path(s) %></td>
+        <td>
+          <%= link_to edit_score_path(s) do %>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

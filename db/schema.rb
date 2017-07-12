@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707193557) do
+ActiveRecord::Schema.define(version: 20170712195307) do
+
+  create_table "competitions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "event_name"
@@ -19,6 +25,23 @@ ActiveRecord::Schema.define(version: 20170707193557) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["level_id"], name: "index_events_on_level_id"
+  end
+
+  create_table "goves", force: :cascade do |t|
+    t.integer "level_id"
+    t.integer "event_id"
+    t.integer "segment_id"
+    t.integer "year"
+    t.string "competition"
+    t.string "skater1"
+    t.string "skater2"
+    t.string "element"
+    t.integer "grade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_goves_on_event_id"
+    t.index ["level_id"], name: "index_goves_on_level_id"
+    t.index ["segment_id"], name: "index_goves_on_segment_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -47,16 +70,17 @@ ActiveRecord::Schema.define(version: 20170707193557) do
     t.integer "event_id"
     t.integer "segment_id"
     t.integer "score_type_id"
+    t.integer "competition_id"
     t.float "score"
     t.string "skater1"
     t.string "skater2"
     t.string "skater3"
     t.string "skater4"
     t.string "team_name"
-    t.string "competition"
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["competition_id"], name: "index_scores_on_competition_id"
     t.index ["event_id"], name: "index_scores_on_event_id"
     t.index ["score_type_id"], name: "index_scores_on_score_type_id"
     t.index ["segment_id"], name: "index_scores_on_segment_id"

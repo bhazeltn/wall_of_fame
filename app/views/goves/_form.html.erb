@@ -1,0 +1,62 @@
+<%= form_with(model: gofe, local: true) do |form| %>
+  <% if gofe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(gofe.errors.count, "error") %> prohibited this gofe from being saved:</h2>
+
+      <ul>
+      <% gofe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :level_id %>
+    <%= form.text_field :level_id, id: :gofe_level_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :event_id %>
+    <%= form.text_field :event_id, id: :gofe_event_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :segment_id %>
+    <%= form.text_field :segment_id, id: :gofe_segment_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.number_field :year, id: :gofe_year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :competition %>
+    <%= form.text_field :competition, id: :gofe_competition %>
+  </div>
+
+  <div class="field">
+    <%= form.label :skater1 %>
+    <%= form.text_field :skater1, id: :gofe_skater1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :skater2 %>
+    <%= form.text_field :skater2, id: :gofe_skater2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :element %>
+    <%= form.text_field :element, id: :gofe_element %>
+  </div>
+
+  <div class="field">
+    <%= form.label :grade %>
+    <%= form.number_field :grade, id: :gofe_grade %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

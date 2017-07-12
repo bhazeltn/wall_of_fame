@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  level: one
+  event: one
+  segment: one
+  year: 1
+  competition: MyString
+  skater1: MyString
+  skater2: MyString
+  element: MyString
+  grade: 1
+
+two:
+  level: two
+  event: two
+  segment: two
+  year: 1
+  competition: MyString
+  skater1: MyString
+  skater2: MyString
+  element: MyString
+  grade: 1

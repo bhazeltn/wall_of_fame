@@ -33,7 +33,8 @@ segmentevent_csv = CSV.parse(segmentevent_text, :headers => true, :encoding => '
 segmentscore_text = File.read(Rails.root.join('lib', 'seeds', 'segment_score_type.csv'))
 segmentscore_csv = CSV.parse(segmentscore_text, :headers => true, :encoding => 'ISO-8859-1')
 
-
+comp_text = File.read(Rails.root.join('lib', 'seeds', 'competitions.csv'))
+comp_csv = CSV.parse(comp_text, :headers => true, :encoding => 'ISO-8859-1')
 
 score_text = File.read(Rails.root.join('lib', 'seeds', 'scores.csv'))
 score_csv = CSV.parse(score_text, :headers => true, :encoding => 'ISO-8859-1')
@@ -93,6 +94,12 @@ segmentscore_csv.each do |row|
   t.save!
 end
 
+comp_csv.each do |row|
+  t = Competition.new
+  t.name = row['nm']
+  t.save!
+end
+
 score_csv.each do |row|
   puts row.to_hash
   
@@ -100,13 +107,13 @@ score_csv.each do |row|
   t.event_id = row['evt']
   t.segment_id = row['seg']
   t.score_type_id = row['scr_typ']
+  t.competition_id = row['comp']
   t.score = row['scr']
   t.skater1 = row['s1']
   t.skater2 = row['s2']
   t.skater3 = row['s3']
   t.skater4 = row['s4']
   t.team_name = row['tn']
-  t.competition = row['comp']
   t.year = row['yr']
   
   t.save!
@@ -119,4 +126,5 @@ puts "ScoreType = #{ScoreType.count} rows"
 puts "Segment = #{Segment.count} rows"
 puts "SegmentEvent = #{SegmentEvent.count} rows"
 puts "SegmentScore = #{SegmentScoreType.count} rows"
+puts "Competition = #{Competition.count} rows"
 puts "Scores = #{Score.count} rows"
