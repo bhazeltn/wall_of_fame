@@ -11,23 +11,8 @@
     </div>
   <% end %>
 
-  <!--<div class="field">-->
-  <!--  <%= form.label :event_id %>-->
-  <!--  <%= form.text_field :event_id, id: :score_event_id %>-->
-  <!--</div>-->
-
-  <!--<div class="field">-->
-  <!--  <%= form.label :segment_id %>-->
-  <!--  <%= form.text_field :segment_id, id: :score_segment_id %>-->
-  <!--</div>-->
-
-  <!--<div class="field">-->
-  <!--  <%= form.label :score_type_id %>-->
-  <!--  <%= form.text_field :score_type_id, id: :score_score_type_id %>-->
-  <!--</div>-->
 
   <div class="field">
-    <%=# form.label :score %>
     <%= form.text_field :score, id: :score_score %>
   </div>
 
@@ -59,10 +44,11 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :competition %>
-    <%= form.text_field :competition, id: :score_competition %>
+    <%= form.label "Competition" %>
+    <%= form.collection_select :competition_id, Competition.all, :id, :name %>
   </div>
 
+  
   <div class="field">
     <%= form.label :year %>
     <%= form.number_field :year, id: :score_year %>

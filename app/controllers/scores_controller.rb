@@ -9,6 +9,7 @@ class ScoresController < ApplicationController
     @events = Event.all
     @groups = Group.all
     @levels = Level.all
+    @competitions = Competition.all
   end
 
   # GET /scores/1
@@ -73,6 +74,6 @@ class ScoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def score_params
-      params.require(:score).permit(:event_id, :segment_id, :score_type_id, :score, :skater1, :skater2, :skater3, :skater4, :team_name, :competition, :year)
+      params.require(:score).permit(:event_id, :segment_id, :score_type_id, :score, :skater1, :skater2, :skater3, :skater4, :team_name, :competition_id, :year)
     end
 end
