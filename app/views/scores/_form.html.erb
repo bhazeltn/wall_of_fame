@@ -46,6 +46,8 @@
   <div class="field">
     <%= form.label "Competition" %>
     <%= form.collection_select :competition_id, Competition.all, :id, :name %>
+    <br />
+    Not Listed? <%= link_to 'Add a new competition', new_competition_path %>
   </div>
 
   
