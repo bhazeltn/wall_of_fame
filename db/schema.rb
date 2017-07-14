@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712195307) do
+ActiveRecord::Schema.define(version: 20170713185655) do
 
   create_table "competitions", force: :cascade do |t|
     t.string "name"
@@ -106,6 +106,13 @@ ActiveRecord::Schema.define(version: 20170712195307) do
 
   create_table "segments", force: :cascade do |t|
     t.string "segment_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "skaters", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

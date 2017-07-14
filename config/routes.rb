@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :skaters
   resources :competitions
   resources :goves
   get 'welcome/index'

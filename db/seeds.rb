@@ -39,6 +39,8 @@ comp_csv = CSV.parse(comp_text, :headers => true, :encoding => 'ISO-8859-1')
 score_text = File.read(Rails.root.join('lib', 'seeds', 'scores.csv'))
 score_csv = CSV.parse(score_text, :headers => true, :encoding => 'ISO-8859-1')
 
+skater_text = File.read(Rails.root.join('lib', 'seeds', 'skaters.csv'))
+skater_csv = CSV.parse(skater_text, :headers => true, :encoding => 'ISO-8859-1')
 
 group_csv.each do |row|
   t = Group.new
@@ -99,6 +101,14 @@ comp_csv.each do |row|
   t.name = row['nm']
   t.save!
 end
+
+skater_csv.each do |row|
+  t = Skater.new
+  t.first_name = row['f_name']
+  t.last_name = row['l_name']
+  t.save!
+end
+
 
 score_csv.each do |row|
   puts row.to_hash

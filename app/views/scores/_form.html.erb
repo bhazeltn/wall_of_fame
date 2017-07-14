@@ -11,30 +11,37 @@
     </div>
   <% end %>
 
-
   <div class="field">
+    <%= form.label "Score" %>
     <%= form.text_field :score, id: :score_score %>
   </div>
 
+
   <div class="field">
     <%= form.label "Skater Name" %>
-    <%= form.text_field :skater1, id: :score_skater1 %>
+    <%= form.collection_select :skater1, Skater.all, :name, :name %>
+    Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
   </div>
+  
   <% if score.event.event_name == "Pairs" or score.event.event_name == "Dance" or score.event.event_name == "Team" %>
     <div class="field">
       <%= form.label "Skater Name" %>
-      <%= form.text_field :skater2, id: :score_skater2 %>
+      <%= form.collection_select :skater2, Skater.all, :name, :name %>
+      Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
     </div>
   <% end %>
+  
   <% if score.event.event_name == "Team" %>
     <div class="field">
       <%= form.label "Skater Name" %>
-      <%= form.text_field :skater3, id: :score_skater3 %>
+      <%= form.collection_select :skater3, Skater.all, :name, :name %>
+      Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
     </div>
-  
+    
     <div class="field">
       <%= form.label "Skater Name" %>
-      <%= form.text_field :skater4, id: :score_skater4 %>
+      <%= form.collection_select :skater4, Skater.all, :name, :name %>
+      Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
     </div>
   
     <div class="field">
@@ -44,19 +51,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label "Competition" %>
-    <%= form.collection_select :competition_id, Competition.all, :id, :name %>
-    <br />
+    <%= form.label "Competition", class: "control-label" %>
+    <%= form.collection_select :competition_id, Competition.all, :id, :name, class: "input" %>
     Not Listed? <%= link_to 'Add a new competition', new_competition_path %>
   </div>
 
-  
   <div class="field">
     <%= form.label :year %>
     <%= form.number_field :year, id: :score_year %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

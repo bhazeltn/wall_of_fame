@@ -10,6 +10,7 @@ class ScoresController < ApplicationController
     @groups = Group.all
     @levels = Level.all
     @competitions = Competition.all
+    @skaters = Skater.order(last_name: :asc, first_name: :asc)
   end
 
   # GET /scores/1
