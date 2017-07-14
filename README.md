@@ -1,24 +1,18 @@
-# README
+# Wall Of Fame
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Web application for (Canadian) Figure Skating Clubs to reconize accomplishments in various areas.
 
-Things you may want to cover:
+Accomplishments:
 
-* Ruby version
+* Top Score (STAR 5 - Senior)
+* +2 Grade of Execution
+* Gold and Diamond Tests
+* STAR 1-4 Gold (Competition Assessment)
+* STAR Assessment Pass With Honors
+* Provincial Team Members
+* Club Award Winners
+* External Award Winners
 
-* System dependencies
+App is being developed for Calalta Skating Club but can be rebranded for other skating clubs.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##Top Score
