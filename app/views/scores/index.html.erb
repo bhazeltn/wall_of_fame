@@ -6,7 +6,20 @@
 
 <div>
   <div>
-    <%= render :partial => 'tabs' %>
+    <ul class="nav nav-pills">
+  <li class="nav-item">
+    <a href='#intro' aria-controls="intro" role="tab" data-toggle="tab" class="nav-link active">
+      Introduction<br />& Criteria
+    </a>
+  </li>
+  <% @groups.each_with_index do |g| %>
+    <li class="nav-item">
+      <a href='#<%= g.html_name %>'  aria-controls='<%= g.html_name %>' role="tab" data-toggle="tab" class="nav-link">
+      <br /><%= g.group_name %>
+      </a>
+    </li>
+  <% end %>
+</ul>
     <div class="tab-content">
       <div role="tabpanel" id='intro' class="tab-pane active">
         <span>
