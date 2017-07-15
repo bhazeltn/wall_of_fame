@@ -50,11 +50,14 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= form.label "Competition", class: "control-label" %>
-    <%= form.collection_select :competition_id, Competition.all, :id, :name, class: "input" %>
+    <%= form.collection_select :competition_id, Competition.all, :id, :name, class: "input", include_blank => true %>
     Not Listed? <%= link_to 'Add a new competition', new_competition_path %>
   </div>
+
+
 
   <div class="field">
     <%= form.label :year %>
