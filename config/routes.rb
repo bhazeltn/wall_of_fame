@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :star_golds
   resources :skaters
   resources :competitions
   resources :goves

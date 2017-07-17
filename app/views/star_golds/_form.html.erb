@@ -1,0 +1,44 @@
+<%= form_with(model: star_gold, local: true) do |form| %>
+  <% if star_gold.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(star_gold.errors.count, "error") %> prohibited this star_gold from being saved:</h2>
+
+      <ul>
+      <% star_gold.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Level" %>
+    <%= form.collection_select :star_level_id, StarLevel.where.not(id: 5), :id, :level %>
+  </div>
+  
+  <div class="field">
+    <%= form.label "Skater Name" %>
+    <%= form.collection_select :skater_id, Skater.all, :id, :name %>
+    Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Competition", class: "control-label" %>
+    <%= form.collection_select :competition_id, Competition.all, :id, :name %>
+    Not Listed? <%= link_to 'Add a new competition', new_competition_path %>
+  </div>
+
+  <div class="field">
+    <%= form.label :element %>
+    <%= form.text_field :element, id: :star_gold_element %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.number_field :year, id: :star_gold_year %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

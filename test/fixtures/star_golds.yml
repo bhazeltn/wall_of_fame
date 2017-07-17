@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  star_level: one
+  skater: one
+  competition: one
+  element: MyString
+  year: 1
+
+two:
+  star_level: two
+  skater: two
+  competition: two
+  element: MyString
+  year: 1

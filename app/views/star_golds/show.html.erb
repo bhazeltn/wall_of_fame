@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Star level:</strong>
+  <%= @star_gold.star_level.level %>
+</p>
+
+<p>
+  <strong>Skater:</strong>
+  <%= @star_gold.skater.name %>
+</p>
+
+<p>
+  <strong>Competition:</strong>
+  <%= @star_gold.competition.name %>
+</p>
+
+<p>
+  <strong>Element:</strong>
+  <%= @star_gold.element %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @star_gold.year %>
+</p>
+
+<%= link_to 'Edit', edit_star_gold_path(@star_gold) %> |
+<%= link_to 'Back', star_golds_path %>

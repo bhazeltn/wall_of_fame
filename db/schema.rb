@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713185655) do
+ActiveRecord::Schema.define(version: 20170717175554) do
 
   create_table "competitions", force: :cascade do |t|
     t.string "name"
@@ -113,6 +113,33 @@ ActiveRecord::Schema.define(version: 20170713185655) do
   create_table "skaters", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "star_assesses", force: :cascade do |t|
+    t.integer "star_levels_id"
+    t.string "assessment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["star_levels_id"], name: "index_star_assesses_on_star_levels_id"
+  end
+
+  create_table "star_golds", force: :cascade do |t|
+    t.integer "star_level_id"
+    t.integer "skater_id"
+    t.integer "competition_id"
+    t.string "element"
+    t.integer "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["competition_id"], name: "index_star_golds_on_competition_id"
+    t.index ["skater_id"], name: "index_star_golds_on_skater_id"
+    t.index ["star_level_id"], name: "index_star_golds_on_star_level_id"
+  end
+
+  create_table "star_levels", force: :cascade do |t|
+    t.string "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
