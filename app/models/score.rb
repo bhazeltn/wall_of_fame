@@ -1,4 +1,6 @@
 class Score < ApplicationRecord
+  before_save :update_year
+  
   belongs_to :event
   belongs_to :segment
   belongs_to :score_type
@@ -17,15 +19,9 @@ class Score < ApplicationRecord
   skater.split('/')
   end
 
-  def isteam
-    if team_name == ""
-      team = false
-    elsif team_name
-      team = true
-    else
-      team = false
-    end
-    team
+  private
+  def update_year
+    self.year = achieved.strftime("%Y")
   end
-  
+
 end

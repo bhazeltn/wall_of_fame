@@ -11,7 +11,9 @@ class CreateScores < ActiveRecord::Migration[5.1]
       t.string :skater3
       t.string :skater4
       t.string :team_name
+      t.date :achieved
       t.integer :year
+
 
       t.timestamps
     end

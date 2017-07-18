@@ -19,8 +19,8 @@
     <% @years.each_with_index do |y, i| %>
       <div role="tabpanel" id='y<%= y %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
         <% @comps.each do |c| %>
-          <% if @star_golds.where(year: y, competition_id: c).present? %>
-            <h5><%= Competition.find(c).name %></h5>
+          <% if @star_golds.where(year: y.to_s, competition_id: c).present? %>
+           <h5><%= Competition.find(c).name %></h5>
               <table class="table table-layout:fixed">
                 <thead>
                   <th col style="width:25%">Skater</th>
@@ -31,7 +31,7 @@
                   <th></th>
                 </thead>
                 <tbody>
-                  <% @star_golds.where(year: y, competition_id: c).in_groups_of(2).each do |group| %>
+                  <% @star_golds.where(year: y.to_s, competition_id: c).in_groups_of(2).each do |group| %>
                   <tr>
                     <% group.each do |sg| %>
                       <% if sg.present? %>

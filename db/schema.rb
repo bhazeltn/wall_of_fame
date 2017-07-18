@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170717175554) do
     t.string "skater2"
     t.string "element"
     t.integer "grade"
+    t.date "achieved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_goves_on_event_id"
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(version: 20170717175554) do
     t.string "skater3"
     t.string "skater4"
     t.string "team_name"
+    t.date "achieved"
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -117,19 +119,12 @@ ActiveRecord::Schema.define(version: 20170717175554) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "star_assesses", force: :cascade do |t|
-    t.integer "star_levels_id"
-    t.string "assessment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["star_levels_id"], name: "index_star_assesses_on_star_levels_id"
-  end
-
   create_table "star_golds", force: :cascade do |t|
     t.integer "star_level_id"
     t.integer "skater_id"
     t.integer "competition_id"
     t.string "element"
+    t.date "achieved"
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

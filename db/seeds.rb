@@ -124,7 +124,7 @@ score_csv.each do |row|
   t.skater3 = row['s3']
   t.skater4 = row['s4']
   t.team_name = row['tn']
-  t.year = row['yr']
+  t.achieved = row['yr']
   
   t.save!
 end

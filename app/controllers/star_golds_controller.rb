@@ -5,7 +5,13 @@ class StarGoldsController < ApplicationController
   # GET /star_golds.json
   def index
     @star_golds = StarGold.all
-    @years = StarGold.pluck(:year).map{|x| x}.uniq.sort
+    @dates = StarGold.pluck(:achieved).map{|x| x}
+    years = Array.new
+    @dates.each_with_index do |d, i|
+      years[i] = d.year
+    end
+    @years = years.uniq.sort
+    
     @comps = StarGold.pluck(:competition_id).map{|x| x}.uniq.sort
   end
 
@@ -71,6 +77,6 @@ class StarGoldsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def star_gold_params
-      params.require(:star_gold).permit(:star_level_id, :skater_id, :competition_id, :element, :year)
+      params.require(:star_gold).permit(:star_level_id, :skater_id, :competition_id, :element, :year, :date)
     end
 end

@@ -5,6 +5,7 @@ class CreateStarGolds < ActiveRecord::Migration[5.1]
       t.belongs_to :skater, foreign_key: true
       t.belongs_to :competition, foreign_key: true
       t.string :element
+      t.date  :achieved
       t.integer :year
 
       t.timestamps

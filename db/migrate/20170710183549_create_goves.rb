@@ -10,6 +10,7 @@ class CreateGoves < ActiveRecord::Migration[5.1]
       t.string :skater2
       t.string :element
       t.integer :grade
+      t.date :achieved
 
       t.timestamps
     end
