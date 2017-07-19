@@ -74,6 +74,6 @@ class GovesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gofe_params
-      params.require(:gofe).permit(:level_id, :event_id, :segment_id, :year, :competition, :skater1, :skater2, :element, :grade)
+      params.require(:gofe).permit(:level_id, :event_id, :segment_id, :year, :competition, :skater1, :skater2, :element, :grade, :achieved)
     end
 end

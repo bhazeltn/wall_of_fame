@@ -53,15 +53,14 @@
 
   <div class="field">
     <%= form.label "Competition", class: "control-label" %>
-    <%= form.collection_select :competition_id, Competition.all, :id, :name, class: "input", include_blank => true %>
+    <%= form.collection_select :competition_id, Competition.all, :id, :name, class: "input" %>
     Not Listed? <%= link_to 'Add a new competition', new_competition_path %>
   </div>
 
 
-
   <div class="field">
-    <%= form.label :year %>
-    <%= form.number_field :year, id: :score_year %>
+    <%= form.label "Date" %>
+    <%= form.date_field :achieved, id: :score_achieved %>
   </div>
 
   <div class="actions">
