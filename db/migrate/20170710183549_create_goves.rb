@@ -5,7 +5,7 @@ class CreateGoves < ActiveRecord::Migration[5.1]
       t.belongs_to :event, foreign_key: true
       t.belongs_to :segment, foreign_key: true
       t.integer :year
-      t.string :competition
+       t.belongs_to :competition, foreign_key: true
       t.string :skater1
       t.string :skater2
       t.string :element

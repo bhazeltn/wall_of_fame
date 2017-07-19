@@ -9,11 +9,13 @@
   <div>
     <%= link_to 'Create a New Record', new_gofe_path %>
   </div>
+  <hr />
+  
   <div>
     <% @years.each do |y| %>
       <% @comps.each do |c| %>
-        <% if @gofes.where(year: y, competition: c).present? %>
-          <h5><%= c %> <%= y %></h5>
+        <% if @gofes.where(year: y, competition_id: c).present? %>
+          <h5><%= Competition.find(c).name %> <%= y %></h5>
           <table class="table table-layout:fixed">
             <thead>
               <tr>

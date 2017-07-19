@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20170717175554) do
     t.integer "event_id"
     t.integer "segment_id"
     t.integer "year"
-    t.string "competition"
+    t.integer "competition_id"
     t.string "skater1"
     t.string "skater2"
     t.string "element"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170717175554) do
     t.date "achieved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["competition_id"], name: "index_goves_on_competition_id"
     t.index ["event_id"], name: "index_goves_on_event_id"
     t.index ["level_id"], name: "index_goves_on_level_id"
     t.index ["segment_id"], name: "index_goves_on_segment_id"

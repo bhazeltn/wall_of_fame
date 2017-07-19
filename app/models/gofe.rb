@@ -3,6 +3,7 @@ class Gofe < ApplicationRecord
   belongs_to :level
   belongs_to :event
   belongs_to :segment
+  belongs_to :competition
   
   private
   def update_year

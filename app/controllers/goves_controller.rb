@@ -9,7 +9,7 @@ class GovesController < ApplicationController
     @events = Event.all
     @groups = Group.all
     @years = Gofe.pluck(:year).map{|x| x}.uniq.sort
-    @comps = Gofe.pluck(:competition).map{|x| x}.uniq.sort
+    @comps = Gofe.pluck(:competition_id).map{|x| x}.uniq.sort
   end
 
   # GET /goves/1
@@ -74,6 +74,6 @@ class GovesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gofe_params
-      params.require(:gofe).permit(:level_id, :event_id, :segment_id, :year, :competition, :skater1, :skater2, :element, :grade, :achieved)
+      params.require(:gofe).permit(:level_id, :event_id, :segment_id, :year, :competition_id, :skater1, :skater2, :element, :grade, :achieved)
     end
 end
