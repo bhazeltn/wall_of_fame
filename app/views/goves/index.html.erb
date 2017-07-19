@@ -10,51 +10,62 @@
     <%= link_to 'Create a New Record', new_gofe_path %>
   </div>
   <hr />
-  
   <div>
-    <% @years.each do |y| %>
-      <% @comps.each do |c| %>
-        <% if @gofes.where(year: y, competition_id: c).present? %>
-          <h5><%= Competition.find(c).name %> <%= y %></h5>
-          <table class="table table-layout:fixed">
-            <thead>
-              <tr>
-                <th col style="width:20%">Event</th>
-                <th col style="width:20%">Segment</th>
-                <th col style="width:20%">Skater</th>
-                <th col style="width:10%">Element</th>
-                <th col style="width:17%">Grade of Execution</th>
-                <th col style="width:3%" colspan="3"></th>
-              </tr>
-            </thead>
-            <% @gofes.where(year: y, competition: c).each do |g| %>
-              <tbody>
-                <tr>
-                  <td><%= g.level.level %> <%= g.event.event_name %></td>
-                  <td><%= g.segment.segment_type %></td>
-                  <td><%= g.skater1 %>
+  <ul class="nav nav-pills">
+    <% @years.each_with_index do |y, i| %>
+      <li class="nav-item">
+        <a href='#y<%= y %>'  aria-controls='y<%= y %>' role="tab" data-toggle="tab" <% if i == 0 %> class="active nav-link" <% else %> class="nav-link" <% end %>>
+          <%= y %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <% @years.each_with_index do |y, i| %>
+      <div role="tabpanel" id='y<%= y %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+        <% @comps.each do |c| %>
+          <% if @gofes.where(year: y.to_s, competition_id: c).present? %>
+           <h5><%= Competition.find(c).name %></h5>
+              <table class="table table-layout:fixed">
+                <thead>
+                  <tr>
+                    <th col style="width:20%">Event</th>
+                    <th col style="width:20%">Segment</th>
+                    <th col style="width:20%">Skater</th>
+                    <th col style="width:10%">Element</th>
+                    <th col style="width:17%">Grade of Execution</th>
+                    <th col style="width:3%" colspan="3"></th>
+                  </tr>
+                </thead>
+              <% @gofes.where(year: y.to_s, competition: c).each do |g| %>
+                <tbody>
+                  <tr>
+                    <td><%= g.level.level %> <%= g.event.event_name %></td>
+                    <td><%= g.segment.segment_type %></td>
+                    <td><%= g.skater1 %>
                       <% if g.skater2 and g.skater2 != "" %>
                         <br /><%= g.skater2 %>
                       <% end %>
-                  </td>
-                  <td><%= g.element %></td>
-                  <td>+<%= g.grade %></td>
-                  <td>
-                    <%= link_to edit_gofe_path(g) do %>
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= link_to g, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                      <i class="fa fa-trash" aria-hidden="true"></i>
-                    <% end %>
-                  </td>
-                </tr>
-              </tbody>
-            <% end %>  
-          </table>
-        <% end %>
-      <% end %> 
+                    </td>
+                    <td><%= g.element %></td>
+                    <td>+<%= g.grade %></td>
+                    <td>
+                      <%= link_to edit_gofe_path(g) do %>
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= link_to g, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      <% end %>
+                    </td>
+                  </tr>
+                </tbody>
+              <% end %>  
+            </table>
+          <% end %>
+        <% end %> 
+      </div>
     <% end %>
   </div>
 </div>
