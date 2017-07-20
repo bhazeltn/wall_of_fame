@@ -15,18 +15,18 @@
   
   <div class="field">
     <%= form.label "Level" %>
-    <%= form.collection_select :level_id, Level.all, :id, :level, {}, {} %>
+    <%= form.collection_select :level_id, Level.all, :id, :name, {}, {} %>
   </div>
 
 
   <div class="field">
     <%= form.label "Event" %>
-    <%= form.collection_select :event_id, Event.all, :id, :event_name %>
+    <%= form.collection_select :event_id, Event.all, :id, :name %>
   </div>
 
   <div class="field">
     <%= form.label "Segment" %>
-    <%= form.collection_select :segment_id, Segment.all,  :id, :segment_type %>
+    <%= form.collection_select :segment_id, Segment.all,  :id, :name %>
   </div>
 
   <div class="field">

@@ -40,8 +40,8 @@
               <% @gofes.where(year: y.to_s, competition: c).each do |g| %>
                 <tbody>
                   <tr>
-                    <td><%= g.level.level %> <%= g.event.event_name %></td>
-                    <td><%= g.segment.segment_type %></td>
+                    <td><%= g.level.name %> <%= g.event.name %></td>
+                    <td><%= g.segment.name %></td>
                     <td><%= g.skater1 %>
                       <% if g.skater2 and g.skater2 != "" %>
                         <br /><%= g.skater2 %>

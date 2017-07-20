@@ -31,11 +31,7 @@
           <span>
             <ul class="nav nav-pills">
               <% @levels.where(group_id: g.id).each_with_index do |l, idx1| %>
-                <li class="nav-item">
-                  <a href='#<%= g.html_name %><%= l.html_name %>'  aria-controls='<%= g.html_name %><%= l.html_name %>' role="tab" data-toggle="tab" <% if idx1 == 0 %> class="nav-link active" <% else %> class="nav-link" <% end %>>
-                    <%= l.name %>
-                  </a>
-                </li>
+                <%= render :partial => 'tab', :locals => { a: g, b: l, i: idx1 } %> 
               <% end %>
             </ul>
             <div class="tab-content">
@@ -44,9 +40,7 @@
                   <span>
                     <ul class="nav nav-pills">
                       <% @events.where(level_id: l.id).each_with_index do |e, idx3| %>
-                        <a href='#<%= l.html_name %><%= e.html_name %>'  aria-controls='<%= l.html_name %><%= e.html_name %>' role="tab" data-toggle="tab" <% if idx3 == 0 %> class="nav-link active" <% else %> class="nav-link" <% end %>>
-                          <%= e.name %>
-                        </a>
+                        <%= render :partial => 'tab', :locals => { a: l, b: e, i: idx3 } %> 
                       <% end %>
                     </ul>
                     <div class="tab-content">
