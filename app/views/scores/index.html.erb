@@ -15,7 +15,7 @@
   <% @groups.each_with_index do |g| %>
     <li class="nav-item">
       <a href='#<%= g.html_name %>'  aria-controls='<%= g.html_name %>' role="tab" data-toggle="tab" class="nav-link">
-      <br /><%= g.group_name %>
+      <br /><%= g.name %>
       </a>
     </li>
   <% end %>
@@ -33,7 +33,7 @@
               <% @levels.where(group_id: g.id).each_with_index do |l, idx1| %>
                 <li class="nav-item">
                   <a href='#<%= g.html_name %><%= l.html_name %>'  aria-controls='<%= g.html_name %><%= l.html_name %>' role="tab" data-toggle="tab" <% if idx1 == 0 %> class="nav-link active" <% else %> class="nav-link" <% end %>>
-                    <%= l.level %>
+                    <%= l.name %>
                   </a>
                 </li>
               <% end %>
@@ -45,7 +45,7 @@
                     <ul class="nav nav-pills">
                       <% @events.where(level_id: l.id).each_with_index do |e, idx3| %>
                         <a href='#<%= l.html_name %><%= e.html_name %>'  aria-controls='<%= l.html_name %><%= e.html_name %>' role="tab" data-toggle="tab" <% if idx3 == 0 %> class="nav-link active" <% else %> class="nav-link" <% end %>>
-                          <%= e.event_name %>
+                          <%= e.name %>
                         </a>
                       <% end %>
                     </ul>

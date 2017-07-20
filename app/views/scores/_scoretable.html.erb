@@ -6,9 +6,9 @@
     <% if evnt.score_type.count > 1 %>
       <th>Score Type</th>
     <% end %>
-    <% if evnt.event_name == "Pairs" or evnt.event_name == "Dance" %>
+    <% if evnt.name == "Pairs" or evnt.name == "Dance" %>
       <th>Skaters</th>
-    <% elsif evnt.event_name == "Team" %>
+    <% elsif evnt.name == "Team" %>
       <th>Team Name<br/ >Skaters</th>
     <% else %>
       <th>Skater</th>
@@ -29,13 +29,13 @@
         <tr class="table-warning">
       <% end %>
         <% if evnt.segment.count > 1 %>
-          <td><%= s.segment.segment_type %></td>
+          <td><%= s.segment.name %></td>
         <% end %>
         <% if evnt.score_type.count > 1 %>
           <td><%= s.score_type.score_type %></td>
         <% end %>
         <td>
-          <% if evnt.event_name == "Team" %>
+          <% if evnt.name == "Team" %>
             <%= s.team_name %><br />
           <% end %>
           <% s.name.each do |n| %>

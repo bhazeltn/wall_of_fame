@@ -44,29 +44,29 @@ skater_csv = CSV.parse(skater_text, :headers => true, :encoding => 'ISO-8859-1')
 
 group_csv.each do |row|
   t = Group.new
-  t.group_name = row['group']
+  t.name = row['group']
   t.html_name = row['htmlname']
   t.save!
-  puts "#{t.group_name}, #{t.html_name} saved"
+  puts "#{t.name}, #{t.html_name} saved"
 end
 
 levels_csv.each do |row|
   l = Level.new
-  l.level = row['lvl']
+  l.name = row['lvl']
   l.html_name = row['htmlname']
   l.group_id = row['grp']
   l.save!
   l.errors
-  puts "#{l.level} saved"
+  puts "#{l.name} saved"
 end
 
 event_csv.each do |row|
   t = Event.new
-  t.event_name = row['evtn']
+  t.name = row['evtn']
   t.html_name = row['htmlname']
   t.level_id = row['lvl']
   t.save!
-  puts "#{t.event_name} saved"
+  puts "#{t.name} saved"
 end
 
 score_type_csv.each do |row|
@@ -78,7 +78,7 @@ end
 
 segments_csv.each do |row|
   t = Segment.new
-  t.segment_type = row['segmenttype']
+  t.name = row['segmenttype']
   t.save!
 end
 

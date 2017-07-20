@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170717175554) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string "event_name"
+    t.string "name"
     t.string "html_name"
     t.integer "level_id"
     t.datetime "created_at", null: false
@@ -47,14 +47,14 @@ ActiveRecord::Schema.define(version: 20170717175554) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string "group_name"
+    t.string "name"
     t.string "html_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "levels", force: :cascade do |t|
-    t.string "level"
+    t.string "name"
     t.string "html_name"
     t.integer "group_id"
     t.datetime "created_at", null: false
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20170717175554) do
   end
 
   create_table "segments", force: :cascade do |t|
-    t.string "segment_type"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

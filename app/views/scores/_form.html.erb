@@ -23,7 +23,7 @@
     Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
   </div>
   
-  <% if score.event.event_name == "Pairs" or score.event.event_name == "Dance" or score.event.event_name == "Team" %>
+  <% if score.event.name == "Pairs" or score.event.name == "Dance" or score.event.name == "Team" %>
     <div class="field">
       <%= form.label "Skater Name" %>
       <%= form.collection_select :skater2, Skater.all, :name, :name %>
@@ -31,7 +31,7 @@
     </div>
   <% end %>
   
-  <% if score.event.event_name == "Team" %>
+  <% if score.event.name == "Team" %>
     <div class="field">
       <%= form.label "Skater Name" %>
       <%= form.collection_select :skater3, Skater.all, :name, :name %>

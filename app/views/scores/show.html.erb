@@ -7,16 +7,16 @@
   <div class = "card col-md-4">
     <div class="card-header">
       <h4>
-        <%= @score.event.level.level %> <%= @score.event.event_name %>
+        <%= @score.event.level.name %> <%= @score.event.name %>
       </h4>
     </div>
     <div class = "card block">
       <div class="row card-title">
         <h5 class = "col">
-          <% if @score.segment.segment_type == "Total" %>
-            <%= @score.segment.segment_type %>
+          <% if @score.segment.name == "Total" %>
+            <%= @score.segment.name %>
           <% else %>
-            <%= @score.segment.segment_type %><br /><%= @score.score_type.score_type %>
+            <%= @score.segment.name %><br /><%= @score.score_type.score_type %>
           <% end %>
         </h5>
         <h5 class = "col" style="text-align: right">
@@ -26,7 +26,7 @@
       <div class = "card-text">
         <div class="row">
           <span class = "col">
-            <% if @score.event.event_name == "Team" %>
+            <% if @score.event.name == "Team" %>
               <%= @score.team_name %><br >
             <% end %>
             <% @score.name.each do |n| %>

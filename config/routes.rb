@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :dynamic_selectable do
+    get 'groups/:group_id/levels', to: 'group_levels#index', as: :group_levels
+    get 'levels/:level_id/events', to: 'level_events#index', as: :level_events
+  end
+
   resources :star_golds
   resources :skaters
   resources :competitions

@@ -11,9 +11,11 @@
     </div>
   <% end %>
  <!-- TODO: AJAX multi level drop box -->
+  
+  
   <div class="field">
     <%= form.label "Level" %>
-    <%= form.collection_select :level_id, Level.all, :id, :level %>
+    <%= form.collection_select :level_id, Level.all, :id, :level, {}, {} %>
   </div>
 
 

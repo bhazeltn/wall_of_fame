@@ -3,9 +3,9 @@
 
 <div style="text-align: center;">
   <h3>Update Score</h3>
-  <h4><%= @score.event.level.level %> <%= @score.event.event_name %></h4>
-  <% if @score.segment.segment_type != "Total" %>
-    <h5><%= @score.segment.segment_type %></h5>
+  <h4><%= @score.event.level.name %> <%= @score.event.name %></h4>
+  <% if @score.segment.name != "Total" %>
+    <h5><%= @score.segment.name %></h5>
     <% if @score.score_type.score_type != "Total" %>
       <h5><%= @score.score_type.score_type %></h5>
     <% end %>
