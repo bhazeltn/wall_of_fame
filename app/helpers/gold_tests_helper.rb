@@ -1,0 +1,2 @@
+module GoldTestsHelper
+end

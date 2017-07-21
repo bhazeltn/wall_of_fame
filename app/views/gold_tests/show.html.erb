@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Skater:</strong>
+  <%= @gold_test.skater %>
+</p>
+
+<p>
+  <strong>Testlevel:</strong>
+  <%= @gold_test.testLevel %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @gold_test.year %>
+</p>
+
+<%= link_to 'Edit', edit_gold_test_path(@gold_test) %> |
+<%= link_to 'Back', gold_tests_path %>

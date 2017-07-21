@@ -57,9 +57,10 @@
     <%= form.text_field :element, id: :gofe_element %>
   </div>
 
-  <div class="field"
-  <%= form.label "Grade of Execution" %>
-  <%= form.select(:grade, options_for_select([['+2', 2], ['+3', 3]])) %>
+  <div class="field">
+    <%= form.label "Grade of Execution" %>
+    <%= form.select(:grade, options_for_select([['+2', 2], ['+3', 3]])) %>
+  </div>
   
   <div class="actions">
     <%= form.submit %>

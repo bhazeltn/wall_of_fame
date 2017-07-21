@@ -1,0 +1,58 @@
+<h2>Gold and Diamond Tests</h2>
+</div>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'New Record', new_gold_test_path %>
+<hr />
+
+<div class="container">
+  <ul class="nav nav-pills">
+    <% @years.each_with_index do |y, i| %>
+      <li class="nav-item">
+        <a href='#y<%= y %>'  aria-controls='y<%= y %>' role="tab" data-toggle="tab" <% if i == 0 %> class="nav-link active" <% else %> class="nav-link" <% end %>>
+          <%= y %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <% @years.each_with_index do |y, i| %>
+      <div role="tabpanel" id='y<%= y %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+        <span>
+          <ul class="nav nav-pills">
+            <% @tests.each_with_index do |t, i| %>
+              <% if @gold_tests.where(year: y, testLevel: t).present? %>
+              <li class="nav-item">
+                <a href='#<%= t.gsub(/\s+/, "")  %><%= y %>' aria-controls='<%= t %><%= y %>' role="tab" data-toggle="tab" class="nav-link">
+                  <%= t %>
+                </a>
+              </li>
+              <% end %>
+            <% end %>
+          </ul>
+          <div class="tab-content">
+            <% @tests.each do |t| %>
+              <div role="tabpanel" id='<%= t.gsub(/\s+/, "")  %><%= y %>' class="tab-pane">
+                <table class="table">
+                  <% @gold_tests.where(year: y, testLevel: t).in_groups_of(4).each do |group| %>
+                    <tr>
+                      <% group.each do |gt| %>
+                        <% if gt.present? %>
+                          <td><%= gt.skater.name %></td>
+                        <% end %>
+                      <% end %>
+                    </tr>
+                  <% end %>
+                </table>
+              </div>
+            <% end %>
+          </div>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
