@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  star_test: one
+  skater_id: one
+  date: 2017-07-21
+  year: 1
+
+two:
+  star_test: two
+  skater_id: two
+  date: 2017-07-21
+  year: 1

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720185415) do
+ActiveRecord::Schema.define(version: 20170721181307) do
 
   create_table "competitions", force: :cascade do |t|
     t.string "name"
@@ -147,6 +147,26 @@ ActiveRecord::Schema.define(version: 20170720185415) do
     t.string "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "star_tests", force: :cascade do |t|
+    t.integer "star_level_id"
+    t.string "name"
+    t.string "name_with_level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["star_level_id"], name: "index_star_tests_on_star_level_id"
+  end
+
+  create_table "star_with_honors", force: :cascade do |t|
+    t.integer "star_test_id"
+    t.integer "skater_id"
+    t.date "achieved"
+    t.integer "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skater_id"], name: "index_star_with_honors_on_skater_id"
+    t.index ["star_test_id"], name: "index_star_with_honors_on_star_test_id"
   end
 
 end

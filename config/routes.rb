@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :star_with_honors
   resources :gold_tests
   namespace :dynamic_selectable do
     get 'groups/:group_id/levels', to: 'group_levels#index', as: :group_levels

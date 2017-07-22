@@ -1,0 +1,37 @@
+<%= form_with(model: star_with_honor, local: true) do |form| %>
+  <% if star_with_honor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(star_with_honor.errors.count, "error") %> prohibited this star_with_honor from being saved:</h2>
+
+      <ul>
+      <% star_with_honor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Assessment Level" %>
+    
+    <%= form.collection_select :star_test_id, StarTest.all, :id, :name_with_level %>
+    
+    </select>
+  </div>
+   
+
+  <div class="field">
+    <%= form.label "Skater Name" %>
+    <%= form.collection_select :skater_id, Skater.all, :id, :name %>
+    Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
+  </div>
+
+  <div class="field">
+    <%= form.label :achieved %>
+    <%= form.date_select :achieved, id: :star_with_honor_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

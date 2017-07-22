@@ -42,6 +42,12 @@ score_csv = CSV.parse(score_text, :headers => true, :encoding => 'ISO-8859-1')
 skater_text = File.read(Rails.root.join('lib', 'seeds', 'skaters.csv'))
 skater_csv = CSV.parse(skater_text, :headers => true, :encoding => 'ISO-8859-1')
 
+starlvl_text = File.read(Rails.root.join('lib', 'seeds', 'starlevels.csv'))
+starlvl_csv = CSV.parse(starlvl_text, :headers => true, :encoding => 'ISO-8859-1')
+
+startest_text = File.read(Rails.root.join('lib', 'seeds', 'startests.csv'))
+startest_csv = CSV.parse(startest_text, :headers => true, :encoding => 'ISO-8859-1')
+
 group_csv.each do |row|
   t = Group.new
   t.name = row['group']
@@ -109,6 +115,18 @@ skater_csv.each do |row|
   t.save!
 end
 
+starlvl_csv.each do |row|
+  t = StarLevel.new
+  t.level = row['lvl']
+  t.save!
+end
+
+startest_csv.each do |row|
+  t = StarTest.new
+  t.star_level_id = row['lvlid']
+  t.name = row['tst']
+  t.save!
+end
 
 score_csv.each do |row|
   puts row.to_hash
