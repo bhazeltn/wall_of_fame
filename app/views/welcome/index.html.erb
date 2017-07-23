@@ -54,11 +54,18 @@
 </div>
 
 <div class="row card-deck">
-  <div class="card col-md-4 offset-md-4">
+  <div class="card col-md-4 offset-md-2">
     <div class="card-block" style="visibility: hidden;">
       <h4 class="card-header card-danger text-center">Provincial, National and International Awards</h4>
       <p class="card-text">Calalta skaters who have recieved awards outside of our club</p>
       <%= link_to "Awards", root_path, class: 'btn btn-danger' %>
+    </div>
+  </div>
+  <div class="card col-md-4">
+    <div class="card-block">
+      <h4 class="card-header card-danger text-center">Provincial Team Members</h4>
+      <p class="card-text">Calalta Members of the Jr Development, Select, Canada Games, and other Provincial teams</p>
+      <%= link_to "Provincial Teams", ab_teams_path, class: 'btn btn-danger' %>
     </div>
   </div>
 </div>

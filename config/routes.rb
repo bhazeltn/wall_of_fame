@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ab_teams
   resources :star_with_honors
   resources :gold_tests
   namespace :dynamic_selectable do

@@ -5,6 +5,11 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
+
+<%= link_to 'New Record', new_star_with_honor_path %>
+
+<hr />
+
   <ul class="nav nav-pills">
     <% @years.each_with_index do |y, i| %>
       <%= render :partial => 'tab', :locals => { y: y.to_s, b: y.to_s, i: i } %> 
@@ -57,47 +62,6 @@
     <% end %>
   </div>
 
-</div>
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<hr />
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Star test</th>
-      <th>Skater</th>
-      <th>Date</th>
-      <th>Year</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @star_with_honors.each do |star_with_honor| %>
-      <tr>
-        <td><%= star_with_honor.star_test.name_with_level %></td>
-        <td><%= star_with_honor.skater.name %></td>
-        <td><%= star_with_honor.achieved %></td>
-        <td><%= star_with_honor.year %></td>
-        <td><%= link_to 'Show', star_with_honor %></td>
-        <td><%= link_to 'Edit', edit_star_with_honor_path(star_with_honor) %></td>
-        <td><%= link_to 'Destroy', star_with_honor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 
 
-
-
-
-
-
-
-
-
-
-<br>
-
-<%= link_to 'New Star With Honor', new_star_with_honor_path %>
