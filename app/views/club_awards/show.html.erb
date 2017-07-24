@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Skater:</strong>
+  <%= @club_award.skater %>
+</p>
+
+<p>
+  <strong>Award:</strong>
+  <%= @club_award.award %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @club_award.year %>
+</p>
+
+<%= link_to 'Edit', edit_club_award_path(@club_award) %> |
+<%= link_to 'Back', club_awards_path %>

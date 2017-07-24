@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  skater: one
+  award: one
+  year: 1
+
+two:
+  skater: two
+  award: two
+  year: 1

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Skater:</strong>
+  <%= @external_award.skater %>
+</p>
+
+<p>
+  <strong>Award:</strong>
+  <%= @external_award.award %>
+</p>
+
+<p>
+  <strong>Web site:</strong>
+  <%= @external_award.web_site %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @external_award.year %>
+</p>
+
+<%= link_to 'Edit', edit_external_award_path(@external_award) %> |
+<%= link_to 'Back', external_awards_path %>

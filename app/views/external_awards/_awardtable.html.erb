@@ -1,0 +1,26 @@
+<div class="col-md-5">
+<table class="table">
+<thead>
+  <tr>
+    <th>Skater</th>
+    <th>Award</th>
+    <th>Year</th>
+  </tr>
+</thead>
+<tbody>
+  <% awards.each do |a| %>
+    <tr>
+      <td><%= a.skater.name %></td>
+      <td>
+        <% if a.web_site.present? %>
+          <%= link_to a.award, a.web_site %>
+        <% else %>
+            <%= a.award %>
+        <% end %>
+      </td>
+      <td><%= a.year %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+</div>

@@ -1,0 +1,34 @@
+<%= form_with(model: club_award, local: true) do |form| %>
+  <% if club_award.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(club_award.errors.count, "error") %> prohibited this club_award from being saved:</h2>
+
+      <ul>
+      <% club_award.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Skater Name" %>
+    <%= form.collection_select :skater_id, Skater.all, :id, :name %>
+    Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Award" %>
+    <%= form.collection_select :award_id, Award.all, :id, :name %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.select :year, (2000)..(Time.zone.now.year + 1), id: :club_award_year %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

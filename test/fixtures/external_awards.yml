@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  skater: one
+  award: MyString
+  web_site: MyString
+  year: 1
+
+two:
+  skater: two
+  award: MyString
+  web_site: MyString
+  year: 1

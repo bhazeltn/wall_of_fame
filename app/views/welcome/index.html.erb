@@ -44,21 +44,21 @@
       <%= link_to "Pass With Honors", star_with_honors_path, class: 'btn btn-danger' %>
     </div>
   </div>
-  <div class="card" style="visibility: hidden;">
+  <div class="card">
     <div class="card-block">
-      <h4 class="card-header card-danger text-center">Calalta Awards</h4>
+      <h4 class="card-header card-danger">Club Awards</h4>
       <p class="card-text">Our annual award winners</p>
-      <%= link_to "Club Awards", root_path, class: 'btn btn-danger' %>
+      <%= link_to "Club Awards", club_awards_path, class: 'btn btn-danger' %>
     </div>
   </div>
 </div>
 
 <div class="row card-deck">
   <div class="card col-md-4 offset-md-2">
-    <div class="card-block" style="visibility: hidden;">
+    <div class="card-block">
       <h4 class="card-header card-danger text-center">Provincial, National and International Awards</h4>
-      <p class="card-text">Calalta skaters who have recieved awards outside of our club</p>
-      <%= link_to "Awards", root_path, class: 'btn btn-danger' %>
+      <p class="card-text">Skaters who have recieved awards outside of our club</p>
+      <%= link_to "Awards", external_awards_path, class: 'btn btn-danger' %>
     </div>
   </div>
   <div class="card col-md-4">
