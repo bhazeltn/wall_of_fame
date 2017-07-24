@@ -2,22 +2,19 @@
 </div>
 </div>
 <p id="notice"><%= notice %></p>
+
 <div>
   <%= link_to 'Add Record', new_star_gold_path %>
 </div>
 <div>
   <ul class="nav nav-pills">
     <% @years.each_with_index do |y, i| %>
-      <li class="nav-item">
-        <a href='#y<%= y %>'  aria-controls='y<%= y %>' role="tab" data-toggle="tab" <% if i == 0 %> class="active nav-link" <% else %> class="nav-link" <% end %>>
-          <%= y %>
-        </a>
-      </li>
+      <%= render :partial => '/layouts/tab', :locals => { y: y.to_s, b: y.to_s, i: i} %>
     <% end %>
   </ul>
   <div class="tab-content">
     <% @years.each_with_index do |y, i| %>
-      <div role="tabpanel" id='y<%= y %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+      <div role="tabpanel" id='y<%= y %><%= y %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
         <% @comps.each do |c| %>
           <% if @star_golds.where(year: y.to_s, competition_id: c).present? %>
            <h5><%= Competition.find(c).name %></h5>
