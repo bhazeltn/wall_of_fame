@@ -1,4 +1,5 @@
-<%= form_with(model: score, local: true) do |form| %>
+<div class="container">
+<%= form_for @score, :html => {:class => "form-horizontal"} do |form| %>
   <% if score.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(score.errors.count, "error") %> prohibited this score from being saved:</h2>
@@ -10,60 +11,55 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label "Score" %>
-    <%= form.text_field :score, id: :score_score %>
-  </div>
-
-
-  <div class="field">
-    <%= form.label "Skater Name" %>
-    <%= form.collection_select :skater1, Skater.all, :name, :name %>
-    Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
-  </div>
   
-  <% if score.event.name == "Pairs" or score.event.name == "Dance" or score.event.name == "Team" %>
-    <div class="field">
-      <%= form.label "Skater Name" %>
-      <%= form.collection_select :skater2, Skater.all, :name, :name %>
-      Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
+
+  <div class="form-group row">
+    <%= form.label "Score", class: 'col-form-label col-md-2' %>
+    <div class="col-md-2">
+      <%= form.text_field :score, id: :score_score, class: 'form-control' %>
     </div>
-  <% end %>
-  
+    <% if score.event.name == "Team" %>
+      <%= form.label :team_name, class: 'col-form-label col-md-2 offset-md-2' %>
+      <div class="col-md-4">
+        <%= form.text_field :team_name, id: :score_team_name %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="form-group row">
+    <%= render :partial => 'skater', :locals => {skater: :skater1, form: form} %>
+    <% if score.event.name == "Pairs" or score.event.name == "Dance" or score.event.name == "Team" %>
+      <%= render :partial => 'skater', :locals => {skater: :skater2, form: form} %>
+    <% end %>
+  </div>
+
   <% if score.event.name == "Team" %>
-    <div class="field">
-      <%= form.label "Skater Name" %>
-      <%= form.collection_select :skater3, Skater.all, :name, :name %>
-      Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
-    </div>
-    
-    <div class="field">
-      <%= form.label "Skater Name" %>
-      <%= form.collection_select :skater4, Skater.all, :name, :name %>
-      Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :team_name %>
-      <%= form.text_field :team_name, id: :score_team_name %>
+    <div class="form-group row">
+      <%= render :partial => 'skater', :locals => {skater: :skater3, form: form} %>
+      <%= render :partial => 'skater', :locals => {skater: :skater4, form: form} %>
     </div>
   <% end %>
 
-
-  <div class="field">
-    <%= form.label "Competition", class: "control-label" %>
-    <%= form.collection_select :competition_id, Competition.all, :id, :name, class: "input" %>
-    Not Listed? <%= link_to 'Add a new competition', new_competition_path %>
+  <div class="form-group row">
+    <%= form.label "Competition", class: "col-form-label col-md-2" %>
+    <div class="col-md-4">
+      <%= form.collection_select :competition_id, Competition.all, :id, :name, {:include_blank => false}, {class: "custom-select"} %><br />
+      Not Listed? <%= link_to 'Add a new competition', new_competition_path %>
+    </div>
   </div>
 
 
-  <div class="field">
-    <%= form.label "Date" %>
-    <%= form.date_select :achieved, id: :score_achieved %>
+  <div class="form-group row">
+    <%= form.label "Date Achieved", class: "col-form-label col-md-2" %>
+    <div class="col-md-4">
+       <%= form.text_field :achieved, data:{ provide:'datepicker', "date-format" => 'yyyy-mm-dd' }, class: 'form-control' %>
+    </div>
   </div>
+  
+ 
 
   <div class="actions">
     <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+</div>
