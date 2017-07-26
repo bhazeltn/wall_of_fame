@@ -1,33 +1,15 @@
 <%= form_with(model: ab_team, local: true) do |form| %>
-  <% if ab_team.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(ab_team.errors.count, "error") %> prohibited this ab_team from being saved:</h2>
+  <%= render :partial => '/layouts/partials/formerror', :locals => {model: @ab_team} %>
 
-      <ul>
-      <% ab_team.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label "Skater Name" %>
-    <%= form.collection_select :skater_id, Skater.all, :id, :name %>
-    Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
+  <div class="form-group row">
+    <%= render :partial => '/layouts/partials/select', :locals => {lbl: "Skater", fld: :skater_id, model: Skater, newpath: new_skater_path, f: form} %>
+    <%= render :partial => '/layouts/partials/textfield', :locals => {lbl: "Team", fld: :team, f: form} %>
   </div>
 
-  <div class="field">
-    <%= form.label :team %>
-    <%= form.text_field :team, id: :ab_team_team %>
+  <div class="form-group row">
+    <%= render :partial => '/layouts/partials/year', :locals => {yr: :year, f: form} %>
   </div>
 
-  <div class="field">
-    <%= form.label :year %>
-    <%= form.select :year, (2000)..(Time.zone.now.year + 1), id: :ab_team_year %>
-  </div>
+  <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: ab_teams_path, f: form} %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

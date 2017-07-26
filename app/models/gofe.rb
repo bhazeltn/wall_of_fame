@@ -5,6 +5,19 @@ class Gofe < ApplicationRecord
   belongs_to :segment
   belongs_to :competition
   
+  def couple?
+    if self.event.name == "Pairs"
+      true
+    elsif self.event.name == "Dance"
+      true
+    elsif self.event.name == "Couples"
+      true
+    else
+      false
+    end
+  end
+  
+  
   private
   def update_year
     self.year = achieved.strftime("%Y")

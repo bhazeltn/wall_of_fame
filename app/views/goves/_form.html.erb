@@ -1,68 +1,24 @@
 <%= form_with(model: gofe, local: true) do |form| %>
-  <% if gofe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(gofe.errors.count, "error") %> prohibited this gofe from being saved:</h2>
-
-      <ul>
-      <% gofe.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
- <!-- TODO: AJAX multi level drop box -->
+  <%= render :partial => '/layouts/partials/formerror', :locals => {model: @gofe} %>
   
-  
-  <div class="field">
-    <%= form.label "Level" %>
-    <%= form.collection_select :level_id, Level.all, :id, :name, {}, {} %>
-  </div>
+  <!-- TODO: AJAX multi level drop box -->
+  <%= render :partial => '/layouts/partials/els', :locals => {level: :level_id, event: :event_if, segment: :segment_id, f: form} %>
 
+  <div class="form-group row">
+    <%= render :partial => '/layouts/partials/date', :locals => {achieved: :achieved, f: form} %>
+    <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Competition", fld: :competition_id, model: Competition, newpath: new_competition_path, f: form} %>
+  </div>  
 
-  <div class="field">
-    <%= form.label "Event" %>
-    <%= form.collection_select :event_id, Event.all, :id, :name %>
+  <div class="form-group row">
+<%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Skater", fld: :skater1, model: Skater, newpath: new_skater_path, f: form} %>
+      <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Skater", fld: :skater2, model: Skater, newpath: new_skater_path, f: form} %>
   </div>
+ 
+  <div class="form-group row">
+    <%= render :partial => '/layouts/partials/textfield', :locals => {lbl: "Element", fld: :element, f: form} %>
+    <%= render :partial => '/layouts/partials/goe', :locals => {grade: :grade, f: form} %>
+  </div> 
 
-  <div class="field">
-    <%= form.label "Segment" %>
-    <%= form.collection_select :segment_id, Segment.all,  :id, :name %>
-  </div>
+  <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: goves_path, f: form} %>
 
-  <div class="field">
-    <%= form.label "Date" %>
-    <%= form.date_field :achieved, id: :gofe_achieved %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Competition", class: "control-label" %>
-    <%= form.collection_select :competition_id, Competition.all, :id, :name %>
-    Not Listed? <%= link_to 'Add a new competition', new_competition_path %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Skater Name" %>
-    <%= form.collection_select :skater1, Skater.all, :name, :name %>
-    Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
-  </div>
-
-  <div class="field">
-      <%= form.label "Skater Name" %>
-      <%= form.collection_select :skater2, Skater.all, :name, :name, :include_blank => true %>
-      Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
-  </div>
-
-  <div class="field">
-    <%= form.label :element %>
-    <%= form.text_field :element, id: :gofe_element %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Grade of Execution" %>
-    <%= form.select(:grade, options_for_select([['+2', 2], ['+3', 3]])) %>
-  </div>
-  
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

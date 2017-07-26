@@ -18,6 +18,24 @@ class Score < ApplicationRecord
     end
   skater.split('/')
   end
+  
+  def team?
+    self.event.name == "Team"
+  end
+  
+  def couple?
+    if self.event.name == "Pairs"
+      true
+    elsif self.event.name == "Dance"
+      true
+    elsif self.event.name == "Couples"
+      true
+    elsif self.team?
+      true
+    else
+      false
+    end
+  end
 
   private
   def update_year

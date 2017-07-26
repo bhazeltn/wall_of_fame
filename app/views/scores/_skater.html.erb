@@ -1,6 +1,0 @@
-
-    <%= form.label "Skater Name", class: 'col-form-label col-md-2' %>
-    <div class="col-md-4">
-      <%= form.collection_select :skater1, Skater.all, :name, :name, {:include_blank => true}, {class: "custom-select"} %><br />
-      Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
-    </div>

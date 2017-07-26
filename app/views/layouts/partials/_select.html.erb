@@ -1,0 +1,13 @@
+<% if w == 3 %>
+  <% w1 = "col-form-label col-md-1" %>
+<% else %>
+  <% w1 = "col-form-label col-md-2" %>
+<% end %>
+<%= f.label lbl, class: w1 %>
+<div class="col-md-<%= w %>">
+  <%= f.collection_select fld, model.all, :id, :name, {:include_blank => false}, {class: "custom-select"} %>
+  <% if newpath %>
+    <br />
+    Not Listed? <%= link_to 'Add New', newpath %>
+  <% end %>
+</div>
