@@ -5,7 +5,7 @@ class StarGoldsController < ApplicationController
   # GET /star_golds.json
   def index
     @star_golds = StarGold.all
-    @years = StarGold.pluck(:year).map{|x| x}
+    @years = StarGold.pluck(:year).map{|x| x}.uniq.sort
     @comps = StarGold.pluck(:competition_id).map{|x| x}.uniq.sort
   end
 

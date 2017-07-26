@@ -12,8 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :skater_id %>
-    <%= form.text_field :skater_id, id: :external_award_skater_id %>
+    <%= form.label "Skater Name" %>
+    <%= form.collection_select :skater_id, Skater.all, :id, :name %>
+    Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
   </div>
 
   <div class="field">
@@ -28,7 +29,7 @@
 
   <div class="field">
     <%= form.label :year %>
-    <%= form.number_field :year, id: :external_award_year %>
+    <%= form.select :year, (2000)..(Time.zone.now.year + 1), id: :external_award_year %>
   </div>
 
   <div class="actions">
