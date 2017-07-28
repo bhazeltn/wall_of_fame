@@ -6,9 +6,9 @@
     <% if evnt.score_type.count > 1 %>
       <th>Score Type</th>
     <% end %>
-    <% if evnt.name == "Pairs" or evnt.name == "Dance" %>
+    <% if evnt.couples? or evnt.dance? or evnt.pairs? %>
       <th>Skaters</th>
-    <% elsif evnt.name == "Team" %>
+    <% elsif evnt.team? %>
       <th>Team Name<br/ >Skaters</th>
     <% else %>
       <th>Skater</th>
@@ -35,7 +35,7 @@
           <td><%= s.score_type.score_type %></td>
         <% end %>
         <td>
-          <% if evnt.name == "Team" %>
+          <% if evnt.team? %>
             <%= s.team_name %><br />
           <% end %>
           <% s.name.each do |n| %>

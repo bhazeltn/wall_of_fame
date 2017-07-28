@@ -9,12 +9,24 @@ class Event < ApplicationRecord
     self.name == "Team"
   end
   
-  def couple?
-    if self.name == "Pairs"
+  def pairs?
+    self.name == "Pairs"
+  end
+  
+  def dance?
+    self.name == "Dance"
+  end
+  
+  def couples?
+    self.name == "Couples"
+  end
+  
+  def two_skaters?
+    if self.pairs?
       true
-    elsif self.name == "Dance"
+    elsif self.dance?
       true
-    elsif self.name == "Couples"
+    elsif self.couples?
       true
     elsif self.team?
       true
@@ -22,5 +34,4 @@ class Event < ApplicationRecord
       false
     end
   end
-  
 end
