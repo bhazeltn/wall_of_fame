@@ -1,14 +1,7 @@
 <%= render :partial => 'head' %>
-
-<p id="notice"><%= notice %></p>
+<%= render :partial => '/layouts/partials/addrecord', :locals => {addpath: new_gofe_path } %>
 
 <div class = "container">
- <% if admin_signed_in? %>
-   <div>
-      <%= link_to 'Create a New Record', new_gofe_path %>
-    </div>
-    <hr />
-  <% end %>
   <div>
   <ul class="nav nav-pills">
     <% @years.each_with_index do |y, i| %>

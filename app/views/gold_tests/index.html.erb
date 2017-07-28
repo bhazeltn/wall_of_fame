@@ -2,11 +2,7 @@
 </div>
 </div>
 
-<p id="notice"><%= notice %></p>
-<% if admin_signed_in? %>
-  <%= link_to 'New Record', new_gold_test_path %>
-  <hr />
-<% end %>
+<%= render :partial => '/layouts/partials/addrecord', :locals => {addpath: new_gold_test_path } %>
 
 <div class="container">
   <ul class="nav nav-pills">

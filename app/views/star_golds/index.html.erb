@@ -1,18 +1,13 @@
 <h2>STAR Gold Assessments</h2>
 </div>
 </div>
-<p id="notice"><%= notice %></p>
-<% if admin_signed_in? %>
-  <div>
-    <%= link_to 'Add Record', new_star_gold_path %>
-    <hr />
-  </div>
-<% end %>
+
+<%= render :partial => '/layouts/partials/addrecord', :locals => {addpath: new_star_gold_path } %>
 
 <div>
   <ul class="nav nav-pills">
     <% @years.each_with_index do |y, i| %>
-      <%= render :partial => '/layouts/tab', :locals => { y: y.to_s, b: y.to_s, i: i} %>
+      <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: y.to_s, i: i} %>
     <% end %>
   </ul>
   <div class="tab-content">

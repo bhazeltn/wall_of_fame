@@ -1,15 +1,7 @@
 <h2>Alberta Teams</h2>
 </div>
 </div>
-<p id="notice"><%= notice %></p>
-
-<% if admin_signed_in? %>
-  <div>
-    <%= link_to 'Add Team Member', new_ab_team_path %>
-  </div>
-  <hr />
-<% end %>
-
+<%= render :partial => '/layouts/partials/addrecord', :locals => {addpath: new_ab_team_path } %>
 <div class="container">
   <ul class="nav nav-pills">
     <% @years.each_with_index do |y, i| %>

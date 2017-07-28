@@ -2,13 +2,9 @@
 </div>
 </div>
 
-<p id="notice"><%= notice %></p>
+<%= render :partial => '/layouts/partials/addrecord', :locals => {addpath: new_star_with_honor_path } %>
 
 <div class="container">
-<% if admin_signed_in? %>
-  <%= link_to 'New Record', new_star_with_honor_path %>
-  <hr />
-<% end %>
   <ul class="nav nav-pills">
     <% @years.each_with_index do |y, i| %>
       <%= render :partial => '/layouts/tab', :locals => { y: y.to_s, b: y.to_s, i: i } %> 
