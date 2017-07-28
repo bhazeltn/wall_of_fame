@@ -9,9 +9,18 @@
   </div>
 
   <div class="form-group row">
-    <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Skater", fld: :skater1, model: Skater, newpath: new_skater_path, f: form} %>
-    <% if @score.couple? %>
-      <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Skater", fld: :skater2, model: Skater, newpath: new_skater_path, f: form} %>
+    
+    <% if @score.pairs? or @score.dance? %>
+      <% l1 = "Lady" %>
+      <% l2 = "Man" %>
+    <% else %>
+      <% l1 = "Skater" %>
+      <% l2 = "Skater" %>
+    <% end %>
+    
+    <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: l1, fld: :skater1, model: Skater, newpath: new_skater_path, f: form} %>
+    <% if @score.two_skaters? %>
+      <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: l2, fld: :skater2, model: Skater, newpath: new_skater_path, f: form} %>
     <% end %>
   </div>
 

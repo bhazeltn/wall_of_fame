@@ -7,14 +7,16 @@ class Score < ApplicationRecord
   belongs_to :competition
   
   def name
-    if skater4 != ""
-      skater = "#{skater1}/#{skater2}/#{skater3}/#{skater4}"
-    elsif skater3 != ""
-      skater = "#{skater1}/#{skater2}/#{skater3}"
-    elsif skater2 != ""
-      skater = "#{skater1}/#{skater2}"
+    if skater4 != nil
+      skater = "#{Skater.find(skater1).name}/#{Skater.find(skater2).name}/#{Skater.find(skater3).name}/#{Skater.find(skater4).name}"
+    elsif skater3!= nil
+      skater = "#{Skater.find(skater1).name}/#{Skater.find(skater2).name}/#{Skater.find(skater3).name}"
+    elsif skater2 != nil
+      skater = "#{Skater.find(skater1).name}/#{Skater.find(skater2).name}"
+    elsif skater1 != nil
+      skater ="#{Skater.find(skater1).name}"
     else
-      skater ="#{skater1}"
+      skater =""
     end
   skater.split('/')
   end
@@ -23,12 +25,24 @@ class Score < ApplicationRecord
     self.event.name == "Team"
   end
   
-  def couple?
-    if self.event.name == "Pairs"
+  def pairs?
+    self.event.name == "Pairs"
+  end
+  
+  def dance?
+    self.event.name == "Dance"
+  end
+  
+  def couples?
+    self.event.name == "Couples"
+  end
+  
+  def two_skaters?
+    if self.pairs?
       true
-    elsif self.event.name == "Dance"
+    elsif self.dance?
       true
-    elsif self.event.name == "Couples"
+    elsif self.couples?
       true
     elsif self.team?
       true

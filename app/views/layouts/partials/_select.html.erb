@@ -5,7 +5,7 @@
 <% end %>
 <%= f.label lbl, class: w1 %>
 <div class="col-md-<%= w %>">
-  <%= f.collection_select fld, model.all, :id, :name, {:include_blank => false}, {class: "custom-select"} %>
+  <%= f.collection_select fld, model.all, :id, :name, {:include_blank => true}, {class: "custom-select"} %>
   <% if newpath %>
     <br />
     Not Listed? <%= link_to 'Add New', newpath %>
