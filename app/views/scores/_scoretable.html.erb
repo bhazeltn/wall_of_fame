@@ -17,7 +17,9 @@
     <th>Competition</th>
     <th>Year</th>
     <th>Updated</th>
-    <th></th>
+    <% if admin_signed_in? %>
+      <th></th>
+    <% end %>
   </thead>
   <tbody>
     <% scores.where(event_id: evnt.id).each do |s| %>
@@ -46,11 +48,13 @@
         <td><%= s.competition.name %></td>
         <td><%= s.year %></td>
         <td><%= local_time_ago(s.updated_at) %></td>
-        <td>
-          <%= link_to edit_score_path(s) do %>
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-          <% end %>
-        </td>
+        <% if admin_signed_in? %>
+          <td>
+            <%= link_to edit_score_path(s) do %>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            <% end %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

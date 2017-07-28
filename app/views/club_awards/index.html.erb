@@ -5,13 +5,16 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
-
-  <%= link_to 'New Club Award', new_club_award_path %>
-  <hr />
-
+  
+  <% if admin_signed_in? %>
+  
+    <%= link_to 'New Club Award', new_club_award_path %>
+    <hr />
+  <% end %>
+  
   <ul class="nav nav-pills">
     <% @awards.each_with_index do |a, i| %>
-      <%= render :partial => '/layouts/tab', :locals => { y: a.name, b: a.name, i: i } %> 
+      <%= render :partial => '/layouts/partials/tab', :locals => { y: a.name, b: a.name, i: i } %> 
     <% end %>
   </ul>
   <div class="tab-content">

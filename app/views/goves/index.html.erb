@@ -3,10 +3,12 @@
 <p id="notice"><%= notice %></p>
 
 <div class = "container">
-  <div>
-    <%= link_to 'Create a New Record', new_gofe_path %>
-  </div>
-  <hr />
+ <% if admin_signed_in? %>
+   <div>
+      <%= link_to 'Create a New Record', new_gofe_path %>
+    </div>
+    <hr />
+  <% end %>
   <div>
   <ul class="nav nav-pills">
     <% @years.each_with_index do |y, i| %>

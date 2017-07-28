@@ -42,6 +42,10 @@ gem "font-awesome-rails"
 
 gem "bootstrap-datepicker-rails"
 
+gem 'devise'
+gem 'devise-bootstrap-views'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -49,7 +53,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+  gem 'sqlite3'
 end
 
 group :development do

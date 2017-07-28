@@ -5,11 +5,10 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
-
-<%= link_to 'New Record', new_star_with_honor_path %>
-
-<hr />
-
+<% if admin_signed_in? %>
+  <%= link_to 'New Record', new_star_with_honor_path %>
+  <hr />
+<% end %>
   <ul class="nav nav-pills">
     <% @years.each_with_index do |y, i| %>
       <%= render :partial => '/layouts/tab', :locals => { y: y.to_s, b: y.to_s, i: i } %> 
