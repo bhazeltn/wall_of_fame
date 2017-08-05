@@ -1,13 +1,11 @@
-<%= render :partial => 'head' %>
 <%= render :partial => '/layouts/partials/addrecord', :locals => {addpath: new_gofe_path } %>
 
 <div class = "container">
-  <div>
-  <ul class="nav nav-pills">
+  <ul class="nav nav-pills nav-fill">
     <% @years.each_with_index do |y, i| %>
-      <li class="nav-item">
-        <a href='#y<%= y %>'  aria-controls='y<%= y %>' role="tab" data-toggle="tab" <% if i == 0 %> class="active nav-link" <% else %> class="nav-link" <% end %>>
-          <%= y %>
+      <li class="nav-item" >
+        <a href='#y<%= y %>'  aria-controls='y<%= y %>' role="tab" data-toggle="tab" <% if i == 0 %> class="active nav-link red-tab" <% else %> class="nav-link red-tab" <% end %>>
+          <h4><%= y %></h4>
         </a>
       </li>
     <% end %>
@@ -17,26 +15,30 @@
       <div role="tabpanel" id='y<%= y %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
         <% @comps.each do |c| %>
           <% if @gofes.where(year: y.to_s, competition_id: c).present? %>
-           <h5><%= Competition.find(c).name %></h5>
-              <table class="table table-layout:fixed">
-                <thead>
+           <div class="card">
+              <h5 class="card-header card-danger text-center">
+                <%= Competition.find(c).name %>
+              </h5>
+           </div>
+           <div class="card=-text">
+              <table class="table table-hover table-sm">
+                <thead class="thead-default">
                   <tr>
-                    <th col style="width:20%">Event</th>
-                    <th col style="width:20%">Segment</th>
-                    <th col style="width:20%">Skater</th>
-                    <th col style="width:10%">Element</th>
-                    <th col style="width:17%">Grade of Execution</th>
-                    <th col style="width:3%" colspan="3"></th>
+                    <th col style="width:20%"></th>
+                    <th col style="width:25%">Skater(s)</th>
+                    <th col style="width:25%">Element</th>
+                    <th col style="width:25%">GOE</th>
+                    <th col style="width:5%" colspan="3"></th>
                   </tr>
                 </thead>
               <% @gofes.where(year: y.to_s, competition: c).each do |g| %>
                 <tbody>
                   <tr>
-                    <td><%= g.level.name %> <%= g.event.name %></td>
-                    <td><%= g.segment.name %></td>
-                    <td><%= g.skater1 %>
+                    <th scope="row"><%= g.level.name %> <%= g.event.name %><br />
+                    <%= g.segment.name %></th>
+                    <td><%= Skater.find(g.skater1).name %>
                       <% if g.skater2 and g.skater2 != "" %>
-                        <br /><%= g.skater2 %>
+                        <br /><%= Skater.find(g.skater2).name %>
                       <% end %>
                     </td>
                     <td><%= g.element %></td>
@@ -55,17 +57,12 @@
                 </tbody>
               <% end %>  
             </table>
+            </div>
           <% end %>
         <% end %> 
       </div>
     <% end %>
   </div>
 </div>
-       
-             
-<hr>
 
-<div class="container">
-  
-</div>
 

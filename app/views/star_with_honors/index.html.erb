@@ -1,13 +1,9 @@
-<h2>STAR Assesments With Honors</h2>
-</div>
-</div>
-
 <%= render :partial => '/layouts/partials/addrecord', :locals => {addpath: new_star_with_honor_path } %>
 
 <div class="container">
   <ul class="nav nav-pills">
     <% @years.each_with_index do |y, i| %>
-      <%= render :partial => '/layouts/tab', :locals => { y: y.to_s, b: y.to_s, i: i } %> 
+      <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: y.to_s, i: i } %> 
     <% end %>
   </ul>
   <div class="tab-content">
@@ -16,7 +12,7 @@
         <span>
           <ul class="nav nav-pills">
             <% StarLevel.all.each_with_index do |sl, i| %>
-              <%= render :partial => '/layouts/tab', :locals => { y: y.to_s, b: sl.level, i: i} %>
+              <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: sl.level, i: i} %>
             <% end %>
           </ul>
           <div class="tab-content">
@@ -25,7 +21,7 @@
                 <span>
                   <ul class="nav nav-pills">
                     <% StarTest.where(star_level: sl).each_with_index do |st, i| %>
-                      <%= render :partial => '/layouts/tab', :locals => { y: y.to_s + st.star_level.level, b: st.name, i: i} %>
+                      <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s + st.star_level.level, b: st.name, i: i} %>
                     <% end %>
                   </ul>
                   <div class="tab-content">

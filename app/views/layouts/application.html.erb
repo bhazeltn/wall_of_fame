@@ -3,25 +3,30 @@
   <head>
     <title>Calalta Wall Of Fame</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
   </head>
-
   <body>
-
-    
     <%= render 'layouts/navigation' %>
-   <p id="notice"><%= notice %></p>
- 
+    <p id="notice"><%= notice %></p>
     <div class="container">
-      <div class="jumbotron">
-        <div style="text-align: center">
-            <img src="http://calalta.net/wp-content/uploads/2015/03/Calalta-Logo.png"/>
-            <h1><b>Wall Of Fame</b></h1>
-
+      <div style="text-align: center;">
+        <img class="img-responsive" src="http://calalta.net/wp-content/uploads/2015/03/Calalta-Logo.png"/>
+        <div class="page-header">
+          <h1>Wall Of Fame</h1>
+          <%= render 'layouts/headers/clubawards' if controller_name == "club_awards" %>
+          <%= render 'layouts/headers/competitions' if controller_name == "competitions" %>
+          <%= render 'layouts/headers/extawards' if controller_name == "external_awards" %>
+          <%= render 'layouts/headers/goe' if controller_name == "goves" %>
+          <%= render 'layouts/headers/skaters' if controller_name == "skaters" %>
+          <%= render 'layouts/headers/stargold' if controller_name == "star_golds" %>
+          <%= render 'layouts/headers/starhonors' if controller_name == "star_with_honors" %>
+          <%= render 'layouts/headers/teams' if controller_name == "ab_teams" %>
+          <%= render 'layouts/headers/scores' if controller_name == "scores" %>
+          <%= render 'layouts/headers/goldtest' if controller_name == "gold_tests" %>
+        </div>
+      </div>
         <%= yield %>    
     </div>
   </body>

@@ -16,7 +16,6 @@
     <th>Score</th>
     <th>Competition</th>
     <th>Year</th>
-    <th>Updated</th>
     <% if admin_signed_in? %>
       <th></th>
     <% end %>
@@ -24,11 +23,11 @@
   <tbody>
     <% scores.where(event_id: evnt.id).each do |s| %>
       <% if s.score_type_id == 1 %>
-        <tr class="table-success">
+        <tr class="">
       <% elsif s.score_type_id == 2 %>
-        <tr class="table-info">
+        <tr class="">
       <% else %>
-        <tr class="table-warning">
+        <tr class="">
       <% end %>
         <% if evnt.segment.count > 1 %>
           <td><%= s.segment.name %></td>
@@ -47,7 +46,6 @@
         <td><%= s.score %></td>
         <td><%= s.competition.name %></td>
         <td><%= s.year %></td>
-        <td><%= local_time_ago(s.updated_at) %></td>
         <% if admin_signed_in? %>
           <td>
             <%= link_to edit_score_path(s) do %>

@@ -1,0 +1,61 @@
+<% evnt.segment.each do |s| %>
+  <div class="card">
+    <h5 class="card-header card-danger text-center">
+      <% if s.name =="Total" %>
+        Event Total
+      <% else %>
+        <%= s.name %>
+      <% end %>
+    </h5>
+    <div class="card-text">
+      <table class="table">
+        <thead>
+          <% if evnt.score_type.count > 1 %>
+            <th col style="width:10%"></th>
+          <% end %>
+          <% if evnt.couples? or evnt.dance? or evnt.pairs? %>
+            <th col style="width:20%">Skaters</th>
+          <% elsif evnt.team? %>
+            <th col style="width:20%">Team Name<br/ >Skaters</th>
+          <% else %>
+            <th col style="width:20%">Skater</th>
+          <% end %>
+          <th  col style="width:5%">Score</th>
+          <th  col style="width:20%">Competition</th>
+          <th  col style="width:5%">Year</th>
+          <% if admin_signed_in? %>
+            <th col style="width:3%"></th>
+          <% end %>
+        </thead>
+        <tbody>
+          <% scores.where(event_id: evnt.id, segment_id: s.id).each do |s| %>
+            <tr>
+              <% if evnt.score_type.count > 1 %>
+                <td><b><%= s.score_type.score_type %></b></td>
+              <% end %>
+              <td>
+                <% if evnt.team? %>
+                  <%= s.team_name %><br />
+                <% end %>
+                <% s.name.each do |n| %>
+                  <%= n %><br />
+                <% end %>
+              </td>
+              <td><%= s.score %></td>
+              <td><%= s.competition.name %></td>
+              <td><%= s.year %></td>
+              <% if admin_signed_in? %>
+                <td>
+                  <%= link_to edit_score_path(s) do %>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>  
+          <% end %>  
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+<% end %>
