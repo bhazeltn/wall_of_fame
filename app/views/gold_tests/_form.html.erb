@@ -1,33 +1,12 @@
 <%= form_with(model: gold_test, local: true) do |form| %>
-  <% if gold_test.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(gold_test.errors.count, "error") %> prohibited this gold_test from being saved:</h2>
-
-      <ul>
-      <% gold_test.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <%= render :partial => '/layouts/partials/formerror', :locals => {model: @gold_test} %>
+  <div class="form-group row">
+    <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Skater", fld: :skater_id, model: Skater, newpath: new_skater_path, f: form} %>
+    <%= form.label "Test", class: 'col-form-label col-md-1' %>
+    <div class="col-md-4">
+      <%= form.select(:testLevel, options_for_select([['Gold Freeskate'], ['Gold Skills'], ['Gold Intrepretive'], ['Gold Dance'], ['Diamond Dance']]), {}, {class: "form-control"}) %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label "Skater Name" %>
-    <%= form.collection_select :skater_id, Skater.all, :id, :name %>
-    Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
+    <%= render :partial => '/layouts/partials/year', :locals => {f: form, yr: :year} %>
   </div>
-  
-  <div class="field">
-    <%= form.label "Test" %>
-    <%= form.select(:testLevel, options_for_select([['Gold Freeskate'], ['Gold Skills'], ['Gold Intrepretive'], ['Gold Dance'], ['Diamond Dance']])) %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :year %>
-    <%= form.number_field :year, id: :gold_test_year %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: gold_tests_path, f: form} %>
 <% end %>
