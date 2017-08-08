@@ -1,0 +1,36 @@
+<table class="table table-hover table-sm">
+  <thead class="thead-default">
+    <tr>
+      <th col style="width:20%"></th>
+      <th col style="width:25%">Skater(s)</th>
+      <th col style="width:25%">Element</th>
+      <th col style="width:25%">GOE</th>
+      <th col style="width:5%" colspan="3"></th>
+    </tr>
+  </thead>
+  <% @gofes.where(year: y.to_s, competition: c).each do |g| %>
+    <tbody>
+      <tr <% if g.grade == 3 %> class="table-success" <% end %>>
+        <th scope="row"><%= g.level.name %> <%= g.event.name %><br />
+        <%= g.segment.name %></th>
+        <td><%= Skater.find(g.skater1).name %>
+          <% if g.skater2 and g.skater2 != "" %>
+            <br /><%= Skater.find(g.skater2).name %>
+          <% end %>
+        </td>
+        <td><%= g.element %></td>
+        <td>+<%= g.grade %></td>
+        <td>
+          <%= link_to edit_gofe_path(g) do %>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to g, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  <% end %>  
+</table>
