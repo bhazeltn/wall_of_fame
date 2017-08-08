@@ -2,7 +2,7 @@
 <div class="container">
   <ul class="nav nav-pills">
     <% @years.each_with_index do |y, i| %>
-      <%= render :partial => '/layouts/tab', :locals => { y: y.to_s, b: y.to_s, i: i } %> 
+      <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: y.to_s, i: i } %> 
     <% end %>
   </ul>
   <div class="tab-content">
@@ -12,7 +12,7 @@
           <ul class="nav nav-pills">
             <% @teams.each do |t| %>
               <% if @ab_teams.where(team: t, year: y).present? %>
-                <%= render :partial => '/layouts/tab', :locals => { y: y.to_s, b: t, i: 1 } %>
+                <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: t, i: 1 } %>
               <% end %>
             <% end %>
           </ul>
@@ -45,34 +45,3 @@
   </ul>
 </div>
 
-
-
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<hr />
-<table>
-  <thead>
-    <tr>
-      <th>Skater</th>
-      <th>Team</th>
-      <th>Year</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @ab_teams.each do |ab_team| %>
-      <tr>
-        <td><%= ab_team.skater.name %></td>
-        <td><%= ab_team.team %></td>
-        <td><%= ab_team.year %></td>
-        <td><%= link_to 'Show', ab_team %></td>
-        <td><%= link_to 'Edit', edit_ab_team_path(ab_team) %></td>
-        <td><%= link_to 'Destroy', ab_team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Ab Team', new_ab_team_path %>
