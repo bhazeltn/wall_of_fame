@@ -23,7 +23,7 @@
       <% @groups.each do |g| %>
         <div role="tabpanel" id='<%= g.html_name %>' class="tab-pane">
           <span>
-            <ul class="nav nav-pills nav-fill">
+            <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
               <% @levels.where(group_id: g.id).each_with_index do |l, idx1| %>
                 <%= render :partial => 'tab', :locals => { a: g, b: l, i: idx1 } %> 
               <% end %>
@@ -32,7 +32,7 @@
               <% @levels.where(group_id: g.id).each_with_index do |l, idx2| %>
                 <div role="tabpanel" id='<%= g.html_name %><%= l.html_name %>' <% if idx2 == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
                   <span>
-                    <ul class="nav nav-pills nav-fill">
+                    <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
                       <% @events.where(level_id: l.id).each_with_index do |e, idx3| %>
                         <%= render :partial => 'tab', :locals => { a: l, b: e, i: idx3 } %> 
                       <% end %>

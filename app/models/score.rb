@@ -51,6 +51,23 @@ class Score < ApplicationRecord
     end
   end
 
+  def bronze?
+    Date.today - 6.months < self.achieved
+  end
+  
+  def silver?
+    Date.today - 2.years  < self.achieved
+  end
+  
+  def gold?
+    Date.today - 5.years  < self.achieved
+  end
+  
+  def score?
+    self.score > 0
+  end
+  
+
   private
   def update_year
     self.year = achieved.strftime("%Y")
