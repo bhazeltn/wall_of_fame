@@ -1,70 +1,55 @@
-<h3 style="text-align: center">Calalta Skating Club is proud to reconize the achievements of our skaters</h3>
-
-<h4 style="text-align: center"><i>This site is under active development</i></h4>
-
-<div class="row card-deck">
+<div class="row card-group">
+  <%= render :partial => 'card', :locals => { title: "Top Scores", path: scores_path, description: "Top Scores at any sanctioned competition for STAR 5 to Senior including Adult, Intrepretive, and Team Events."} %>
   <div class="card">
     <div class="card-block">
-      <h4 class="card-header card-danger text-center">Top Scores</h4>
-      <p class="card-text">Top Scores at any sanctioned competition for STAR 5 to Senior including Adult, Intrepretive, and Team Events.</p>
-      <%= link_to "Top Scores", scores_path, class: 'btn btn-danger' %>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-header card-danger text-center">&#43;2 GOE</h4>
+      <h5 class="card-header card-danger text-center"><%= link_to "+2 Grade of Execution", goves_path, class: 'btn btn-danger' %></h5>
       <p class="card-text">&#43;2 Grade of Execution is a huge achievement. Any Calalta skater or team getting a &#43;2 GOE will be featured on this page</p>
-      <%= link_to "+2 GOE", goves_path, class: 'btn btn-danger' %>
     </div>
   </div>
   <div class="card">
     <div class="card-block">
-      <h4 class="card-header card-danger text-center">Gold and Diamond Tests</h4>
-      <p class="card-text">Gold and Diamond Tests are the pinnacle of Skate Canada tests</p>
-      <%= link_to "Tests", root_path, class: 'btn btn-danger' %>
-    </div>
-  </div>
-</div>
-
-<div class="row card-deck">
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-header card-danger text-center">STAR 1-4 Gold Assessment</h4>
-      <p class="card-text">STAR 1-4 uses the STAR Judging System and each skater recieves an assessment of Merit, Bronze, Silver, or Gold for each element. This category is for them.</p>
-      <%= link_to "STAR Gold", star_golds_path, class: 'btn btn-danger' %>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-header card-danger text-center">STAR Pass With Honors</h4>
-      <p class="card-text">STAR 1-5 Assessmens can be a Retry, Pass, or Pass with Honors. These skaters have the distinction of achieving Pass with Honors</p>
-      <%= link_to "Pass With Honors", star_with_honors_path, class: 'btn btn-danger' %>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-header card-danger">Club Awards</h4>
-      <p class="card-text">Our annual award winners</p>
-      <%= link_to "Club Awards", club_awards_path, class: 'btn btn-danger' %>
-    </div>
-  </div>
-</div>
-
-<div class="row card-deck">
-  <div class="card col-md-4 offset-md-2">
-    <div class="card-block">
-      <h4 class="card-header card-danger text-center">Provincial, National and International Awards</h4>
-      <p class="card-text">Skaters who have recieved awards outside of our club</p>
-      <%= link_to "Awards", external_awards_path, class: 'btn btn-danger' %>
-    </div>
-  </div>
-  <div class="card col-md-4">
-    <div class="card-block">
-      <h4 class="card-header card-danger text-center">Provincial Team Members</h4>
+      <h5 class="card-header card-danger text-center"><%= link_to "Provincial Team Members", ab_teams_path, class: 'btn btn-danger' %></h5>
       <p class="card-text">Calalta Members of the Jr Development, Select, Canada Games, and other Provincial teams</p>
-      <%= link_to "Provincial Teams", ab_teams_path, class: 'btn btn-danger' %>
     </div>
   </div>
+</div>
+
+<div class="row card-group">
+  <div class="card">
+    <div class="card-block">
+      <h5 class="card-header card-danger text-center"> <%= link_to "STAR 1-4 Gold Assessment", star_golds_path, class: 'btn btn-danger' %></h5>
+      <p class="card-text">STAR 1-4 uses the STAR Judging System and each skater recieves an assessment of Merit, Bronze, Silver, or Gold for each element. This category is for them.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <h5 class="card-header card-danger text-center"> <%= link_to "STAR Pass With Honors", star_with_honors_path, class: 'btn btn-danger' %></h5>
+      <p class="card-text">STAR 1-5 Assessmens can be a Retry, Pass, or Pass with Honors. These skaters have the distinction of achieving Pass with Honors</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <h5 class="card-header card-danger text-center"><%= link_to "Gold and Diamond Tests", root_path, class: 'btn btn-danger' %></h5>
+      <p class="card-text">Gold and Diamond Tests are the pinnacle of Skate Canada tests</p>
+    </div>
+  </div>
+</div>
+
+<div class="row card-group">
+  <div class="col-md-2"></div>
+  <div class="card">
+    <div class="card-block">
+      <h5 class="card-header card-danger text-center"><%= link_to "Other Awards", external_awards_path, class: 'btn btn-danger' %></h5>
+      <p class="card-text">Skaters who have recieved awards outside of our club</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <h5 class="card-header card-danger text-center"><%= link_to "Club Awards", club_awards_path, class: 'btn btn-danger' %></h5>
+      <p class="card-text">Our annual award winners</p>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
 </div>
 
 
