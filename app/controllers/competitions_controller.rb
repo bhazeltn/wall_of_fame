@@ -1,4 +1,5 @@
 class CompetitionsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_competition, only: [:show, :edit, :update, :destroy]
 
   # GET /competitions

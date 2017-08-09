@@ -1,5 +1,6 @@
 class SkatersController < ApplicationController
   before_action :set_skater, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!
 
   # GET /skaters
   # GET /skaters.json
