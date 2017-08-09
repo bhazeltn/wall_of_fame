@@ -25,7 +25,7 @@
           <th col style="width:5%">Score</th>
           <th col style="width:30%">Competition</th>
           <% if admin_signed_in? %>
-            <th col style="width:3%"></th>
+            <th col style="width:5%"></th>
           <% end %>
         </thead>
         <tbody>
@@ -61,6 +61,9 @@
                   <td>
                     <%= link_to edit_score_path(s) do %>
                       <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <% end %>
+                    <%= link_to s, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <i class="fa fa-trash" aria-hidden="true"></i>
                     <% end %>
                   </td>
               </tr>
