@@ -1,37 +1,14 @@
-<%= form_with(model: star_with_honor, local: true) do |form| %>
-  <% if star_with_honor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(star_with_honor.errors.count, "error") %> prohibited this star_with_honor from being saved:</h2>
+<%= form_for @star_with_honor, :html => {:class => "form-horizontal"} do |form| %>
+  <%= render :partial => '/layouts/partials/formerror', :locals => {model: @star_with_honor} %>
 
-      <ul>
-      <% star_with_honor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label "Assessment Level" %>
-    
-    <%= form.collection_select :star_test_id, StarTest.all, :id, :name_with_level %>
-    
-    </select>
+  <div class="form-group row">
+    <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Assessment Level", fld: :star_test_id, list: StarTest.all, fld2: :name_with_level, f: form, newpath: nil} %>
+    <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Skater", fld: :skater_id, list: Skater.all, fld2: :name, newpath: new_skater_path, f: form} %>
   </div>
-   
-
-  <div class="field">
-    <%= form.label "Skater Name" %>
-    <%= form.collection_select :skater_id, Skater.all, :id, :name %>
-    Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
+  
+  <div class="form-group row">
+    <%= render :partial => '/layouts/partials/date', :locals => {achieved: :achieved, f: form} %>
   </div>
 
-  <div class="field">
-    <%= form.label :achieved %>
-    <%= form.date_select :achieved, id: :star_with_honor_date %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: star_with_honors_path, f: form} %>
 <% end %>
