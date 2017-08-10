@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :teams
   devise_for :admins, controllers: { registrations: "registrations"}
   resources :external_awards
   resources :club_awards

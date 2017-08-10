@@ -30,7 +30,7 @@ class AbTeamsController < ApplicationController
 
     respond_to do |format|
       if @ab_team.save
-        format.html { redirect_to @ab_team, notice: 'Ab team was successfully created.' }
+        format.html { redirect_to @ab_team, notice: 'Record was created.' }
         format.json { render :show, status: :created, location: @ab_team }
       else
         format.html { render :new }
@@ -44,8 +44,7 @@ class AbTeamsController < ApplicationController
   def update
     respond_to do |format|
       if @ab_team.update(ab_team_params)
-        format.html { redirect_to @ab_team, notice: 'Ab team was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ab_team }
+        format.html { redirect_to @ab_team, notice: 'Record was updated' }
       else
         format.html { render :edit }
         format.json { render json: @ab_team.errors, status: :unprocessable_entity }
@@ -58,7 +57,7 @@ class AbTeamsController < ApplicationController
   def destroy
     @ab_team.destroy
     respond_to do |format|
-      format.html { redirect_to ab_teams_url, notice: 'Ab team was successfully destroyed.' }
+      format.html { redirect_to ab_teams_url, notice: 'Record was destroyed.' }
       format.json { head :no_content }
     end
   end
