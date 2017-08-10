@@ -1,19 +1,21 @@
-<nav class="navbar navbar-toggleable-md bg-faded navbar-inverse bg-danger">
+<nav class="navbar navbar-toggleable-md bg-faded navbar-inverse bg-danger sticky-top">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <%= link_to "Wall Of Fame", root_path, class: "navbar-brand" %>
   
   <div class="collapse navbar-collapse " id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       <li class="<%= 'active' if current_page?(scores_path) %>"><%= link_to "Top Scores", scores_path, class: "nav-link" %></li>
       <li class="<%= 'active' if current_page?(goves_path) %>"><%= link_to "+2 GOE", goves_path, class: "nav-link" %></li>
-      <li class="<%= 'active' if current_page?(gold_tests_path) %>"><%= link_to "Gold and Diamond Tests", gold_tests_path, class: "nav-link" %></li>
+      <li class="<%= 'active' if current_page?(ab_teams_path) %>"><%= link_to "Provincial Teams",ab_teams_path, class: "nav-link" %></li>
       <li class="<%= 'active' if current_page?(star_golds_path) %>"><%= link_to "STAR Gold", star_golds_path, class: "nav-link" %></li>
       <li class="<%= 'active' if current_page?(star_with_honors_path) %>"><%= link_to "STAR Pass With Honors", star_with_honors_path, class: "nav-link" %></li>
-      <li class="<%= 'active' if current_page?(ab_teams_path) %>"><%= link_to "Provincial Teams",ab_teams_path, class: "nav-link" %></li>
+      <li class="<%= 'active' if current_page?(gold_tests_path) %>"><%= link_to "Gold and Diamond Tests", gold_tests_path, class: "nav-link" %></li>
       <li class="<%= 'active' if current_page?(club_awards_path) %>"><%= link_to "Club Awards", club_awards_path, class: "nav-link" %></li>
-      <li class="<%= 'active' if current_page?(external_awards_path) %>"><%= link_to "Provincial and National Awards", external_awards_path, class: "nav-link" %></li>
+      <li class="<%= 'active' if current_page?(external_awards_path) %>"><%= link_to "Other Awards", external_awards_path, class: "nav-link" %></li>
+    </ul>  
+    <ul class="navbar-nav my-2 mt-lg-0">
       <li>
         <% if admin_signed_in? %>
           <%= link_to('Logout', destroy_admin_session_path, method: :delete, class: "nav-link") %>
