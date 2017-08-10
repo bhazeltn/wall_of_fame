@@ -2,16 +2,13 @@
   <%= render :partial => '/layouts/partials/formerror', :locals => {model: @star_gold} %>
 
   <div class="form-group row">
-    <%= form.label "Level", class: "col-form-label col-md-1" %>
-    <div class="col-md-2">
-      <%= form.collection_select :star_level_id, StarLevel.where.not(id: 5), :id, :level, {:include_blank => true}, {class: "custom-select"} %>
-    </div>
-    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Skater", fld: :skater_id, model: Skater, newpath: new_skater_path, f: form} %>
+    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Level", fld: :star_level_id, fld2: :level, list: StarLevel.where.not(id: 5), newpath: new_skater_path, f: form} %>
+    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Skater", fld: :skater_id, fld2: :name, list: Skater.all, newpath: new_skater_path, f: form} %>
     <%= render :partial => '/layouts/partials/date', :locals => {achieved: :achieved, f: form} %>
   </div>
   
   <div class="form-group row">
-     <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Competition", fld: :competition_id, model: Competition, newpath: new_competition_path, f: form} %>
+     <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Competition", fld: :competition_id, fld2: :name, list: Competition.all, newpath: new_competition_path, f: form} %>
      <%= render :partial => '/layouts/partials/textfield', :locals => {lbl: "Element", fld: :element, f: form} %>
   </div>
 
