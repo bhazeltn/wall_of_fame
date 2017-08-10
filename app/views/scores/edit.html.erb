@@ -1,15 +1,9 @@
+<div style="text-align: center;">
+  <h4><%= @score.event.level.name %> <%= @score.event.name %>
+  <% if @score.segment.name != "Total" %>
+    - <%= @score.segment.name %>
+  <% end %></h4>
+  <h5><%= @score.score_type.score_type %> Score</h5>
 </div>
-</div>
-<div class="container">
-  <div style="text-align: center;">
-    <h4><%= @score.event.level.name %> <%= @score.event.name %> -
-    <% if @score.segment.name != "Total" %>
-      <%= @score.segment.name %>
-      <% if @score.score_type.score_type != "Total" %>
-        <h5><%= @score.score_type.score_type %></h5>
-      <% end %>
-    <% end %>
-  </div>
-  <%= render 'form', score: @score %>
-</div>
+<%= render 'form', score: @score %>
 
