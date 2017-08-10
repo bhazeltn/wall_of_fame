@@ -1,44 +1,50 @@
-<h2>Annual Award Winners</h2>
 <%= render :partial => '/layouts/partials/addrecord', :locals => {addpath: new_club_award_path } %>
 
-<div class="container">
-  <ul class="nav nav-pills">
-    <% @awards.each_with_index do |a, i| %>
-      <%= render :partial => '/layouts/partials/tab', :locals => { y: "z", b: a.name, i: i } %> 
-    <% end %>
-  </ul>
-  <div class="tab-content">
-    <% @awards.each_with_index do |a, i| %>
-      <div role="tabpanel" id='yz<%= a.name.gsub(/[!@%&" ]/,'') %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
-        <span>
-          <table class="table">
-            <thead>
-              <th col style="width:8.3%">Year</th>
-              <th col style="width:25%">Recipient</th>
-              <th col style="width:8.3%">Year</th>
-              <th col style="width:25%">Recipient</th>
-              <th col style="width:8.3%">Year</th>
-              <th col style="width:25%">Recipient</th>
-            </thead>
-            <tbody>
-              <% @club_awards.where(award: a).in_groups_of(3) do |grp| %>
-                <tr>
-                  <% grp.each_with_index do |ca, i| %>
-                    <% if ca.present? %>
-                      <td><%= ca.year %></td>
-                      <td><%= ca.skater.name %></td>
-                    <% end %>
-                  <% end %>
-                </tr>
-              <% end %>  
-            </tbody>
-          </table>
-        </span>
-      </div>
-    <% end %>
-  </div>
+<ul class="nav nav-pills flex-column flex-sm-row nav-fill">
+  <% @award_types.each_with_index do |at, i| %>
+    <%= render :partial => '/layouts/partials/tab', :locals => { y: "z", b: at.name, i: i } %> 
+  <% end %>
+</ul>
+<div class="tab-content">
+  <% @award_types.each_with_index do |at, i| %>
+    <div role="tabpanel" id='yz<%= at.name.gsub(/[!@%&" ]/,'') %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+      <span>
+        <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
+          <% @awards.where(award_type_id: at.id).each_with_index do |a, idx| %>
+            <%= render :partial => '/layouts/partials/tab', :locals => { y: "x", b: a.name, i: idx } %> 
+          <% end %>
+        </ul>
+        <div class="tab-content">
+          <% @awards.where(award_type_id: at.id).each_with_index do |a, idx| %>
+            <div role="tabpanel" id='yx<%= a.name.gsub(/[!@%&" ]/,'') %>' <% if idx == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+              <span>
+                <table class="table">
+                  <thead>
+                    <th col style="width:8.3%">Year</th>
+                    <th col style="width:25%">Recipient</th>
+                    <th col style="width:8.3%">Year</th>
+                    <th col style="width:25%">Recipient</th>
+                  </thead>
+                  <tbody>
+                    <% @club_awards.where(award_id: a.id).in_groups_of(2) do |grp| %>
+                      <tr>
+                        <% grp.each_with_index do |ca, i| %>
+                          <% if ca.present? %>
+                            <td><%= ca.year %></td>
+                            <td><%= ca.skater.name %></td>
+                          <% end %>
+                        <% end %>
+                      </tr>
+                    <% end %>  
+                  </tbody>
+                </table>
+              </span>
+            </div>
+          <% end %>
+        </div>
+      </span>
+    </div>
+  <% end %>
 </div>
-
-
 
 

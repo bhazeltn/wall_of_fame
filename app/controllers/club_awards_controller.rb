@@ -6,7 +6,8 @@ class ClubAwardsController < ApplicationController
   def index
     @club_awards = ClubAward.all
     @years = ClubAward.pluck(:year).map{|x| x}.uniq.sort
-    @awards = Award.all.sort
+    @awards = Award.all
+    @award_types = AwardType.all
   end
 
   # GET /club_awards/1
