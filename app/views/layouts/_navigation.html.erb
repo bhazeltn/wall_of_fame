@@ -16,13 +16,22 @@
       <li class="<%= 'active' if current_page?(external_awards_path) %>"><%= link_to "Other Awards", external_awards_path, class: "nav-link" %></li>
     </ul>  
     <ul class="navbar-nav my-2 mt-lg-0">
-      <li>
-        <% if admin_signed_in? %>
-          <%= link_to('Logout', destroy_admin_session_path, method: :delete, class: "nav-link") %>
-        <% else %>
-          <%= link_to('Admin Login', new_admin_session_path, class: "nav-link") %>
-        <% end %>
-      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Admin
+        </a>
+        <div class="dropdown-menu dropdown-menu-right pull-right" aria-labelledby="navbarDropdownMenuLink" style="background: #d9534f;">
+          <% if admin_signed_in? %>
+            <%= link_to('Competitions', competitions_path, class: "dropdown-item") %>
+            <%= link_to('Skaters', skaters_path, class: "dropdown-item") %>
+            <%= link_to('Teams', teams_path, class: "dropdown-item") %>
+            <%= link_to('Logout', destroy_admin_session_path, method: :delete, class: "dropdown-item") %>
+          <% else %>
+            <%= link_to('Login', new_admin_session_path, class: "dropdown-item") %>
+          <% end %>
+        </div>
+      </li> 
     </ul>
+
   </div>
 </nav>
