@@ -1,44 +1,20 @@
-<%= form_with(model: star_gold, local: true) do |form| %>
-  <% if star_gold.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(star_gold.errors.count, "error") %> prohibited this star_gold from being saved:</h2>
+<%= form_for @star_gold, :html => {:class => "form-horizontal"} do |form| %>
+  <%= render :partial => '/layouts/partials/formerror', :locals => {model: @star_gold} %>
 
-      <ul>
-      <% star_gold.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="form-group row">
+    <%= form.label "Level", class: "col-form-label col-md-1" %>
+    <div class="col-md-2">
+      <%= form.collection_select :star_level_id, StarLevel.where.not(id: 5), :id, :level, {:include_blank => true}, {class: "custom-select"} %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label "Level" %>
-    <%= form.collection_select :star_level_id, StarLevel.where.not(id: 5), :id, :level %>
+    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Skater", fld: :skater_id, model: Skater, newpath: new_skater_path, f: form} %>
+    <%= render :partial => '/layouts/partials/date', :locals => {achieved: :achieved, f: form} %>
   </div>
   
-  <div class="field">
-    <%= form.label "Skater Name" %>
-    <%= form.collection_select :skater_id, Skater.all, :id, :name %>
-    Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
+  <div class="form-group row">
+     <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Competition", fld: :competition_id, model: Competition, newpath: new_competition_path, f: form} %>
+     <%= render :partial => '/layouts/partials/textfield', :locals => {lbl: "Element", fld: :element, f: form} %>
   </div>
 
-  <div class="field">
-    <%= form.label "Competition", class: "control-label" %>
-    <%= form.collection_select :competition_id, Competition.all, :id, :name %>
-    Not Listed? <%= link_to 'Add a new competition', new_competition_path %>
-  </div>
+  <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: star_golds_path, f: form} %>
 
-  <div class="field">
-    <%= form.label :element %>
-    <%= form.text_field :element, id: :star_gold_element %>
-  </div>
-  
-  <div class="field">
-    <%= form.label "Date" %>
-    <%= form.date_select :achieved, id: :star_gold_achieved %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
