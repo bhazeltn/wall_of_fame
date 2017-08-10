@@ -1,12 +1,17 @@
 class GoldTestsController < ApplicationController
   before_action :set_gold_test, only: [:show, :edit, :update, :destroy]
+  before_action :set_test_levels
+  
+  def set_test_levels
+    @tests = 'Gold Freeskate', 'Gold Skills', 'Gold Intrepretive', 'Gold Dance', 'Diamond Dance'
+  end
 
   # GET /gold_tests
   # GET /gold_tests.json
   def index
     @gold_tests = GoldTest.order(year: :desc)
     @years = GoldTest.pluck(:year).map{|x| x}.uniq.sort
-    @tests = 'Gold Freeskate', 'Gold Skills', 'Gold Intrepretive', 'Gold Dance', 'Diamond Dance'
+    
   end
 
   # GET /gold_tests/1

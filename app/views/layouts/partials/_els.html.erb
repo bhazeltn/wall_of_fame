@@ -1,5 +1,5 @@
 <div class="form-group row">
-  <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Level", fld: level, model: Level, newpath: nil, f: f} %>
-  <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Event", fld: event, model: Event, newpath: nil, f: f} %>
-  <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Segment", fld: segment, model: Segment, newpath: nil, f: f} %>
+  <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Level", fld: level, fld2: :name, list: Level.all, newpath: nil, f: f} %>
+  <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Event", fld: event, fld2: :name, list: Event.all, newpath: nil, f: f} %>
+  <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Segment", fld: segment, fld2: :name, list: Segment.all, newpath: nil, f: f} %>
 </div>
