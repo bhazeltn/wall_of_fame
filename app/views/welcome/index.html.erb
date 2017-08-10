@@ -1,55 +1,20 @@
 <div class="row card-group">
   <%= render :partial => 'card', :locals => { title: "Top Scores", path: scores_path, description: "Top Scores at any sanctioned competition for STAR 5 to Senior including Adult, Intrepretive, and Team Events."} %>
-  <div class="card">
-    <div class="card-block">
-      <h5 class="card-header card-danger text-center"><%= link_to "+2 Grade of Execution", goves_path, class: 'btn btn-danger' %></h5>
-      <p class="card-text">&#43;2 Grade of Execution is a huge achievement. Any Calalta skater or team getting a &#43;2 GOE will be featured on this page</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h5 class="card-header card-danger text-center"><%= link_to "Provincial Team Members", ab_teams_path, class: 'btn btn-danger' %></h5>
-      <p class="card-text">Calalta Members of the Jr Development, Select, Canada Games, and other Provincial teams</p>
-    </div>
-  </div>
+  <%= render :partial => 'card', :locals => { title: "+2 Grade of Execution", path: goves_path, description: "+2 Grade of Execution is a huge achievement. Any Calalta skater or team getting a +2 GOE will be reconized on this page"} %>
+  <%= render :partial => 'card', :locals => { title: "Provincial Team Members", path: ab_teams_path, description: "Calalta Members of the Jr Development, Select, Canada Games, and other Provincial teams"} %>
 </div>
 
 <div class="row card-group">
-  <div class="card">
-    <div class="card-block">
-      <h5 class="card-header card-danger text-center"> <%= link_to "STAR 1-4 Gold Assessment", star_golds_path, class: 'btn btn-danger' %></h5>
-      <p class="card-text">STAR 1-4 uses the STAR Judging System and each skater recieves an assessment of Merit, Bronze, Silver, or Gold for each element. This category is for them.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h5 class="card-header card-danger text-center"> <%= link_to "STAR Pass With Honors", star_with_honors_path, class: 'btn btn-danger' %></h5>
-      <p class="card-text">STAR 1-5 Assessmens can be a Retry, Pass, or Pass with Honors. These skaters have the distinction of achieving Pass with Honors</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h5 class="card-header card-danger text-center"><%= link_to "Gold and Diamond Tests", root_path, class: 'btn btn-danger' %></h5>
-      <p class="card-text">Gold and Diamond Tests are the pinnacle of Skate Canada tests</p>
-    </div>
-  </div>
+  <%= render :partial => 'card', :locals => { title: "STAR 1-4 Gold Assessment", path: star_golds_path, description: "STAR 1-4 uses the STAR Judging System and each skater recieves an assessment of Merit, Bronze, Silver, or Gold for each element."} %>
+  <%= render :partial => 'card', :locals => { title: "STAR Pass With Honors", path: star_with_honors_path, description: "STAR 1-5 Assessmens can be a Retry, Pass, or Pass with Honors. These skaters have the distinction of achieving Pass with Honors"} %>
+  <%= render :partial => 'card', :locals => { title: "Gold and Diamond Tests", path: gold_tests_path, description: "Gold and Diamond Tests are the pinnacle of Skate Canada tests"} %>
 </div>
 
 <div class="row card-group">
-  <div class="col-md-2"></div>
-  <div class="card">
-    <div class="card-block">
-      <h5 class="card-header card-danger text-center"><%= link_to "Other Awards", external_awards_path, class: 'btn btn-danger' %></h5>
-      <p class="card-text">Skaters who have recieved awards outside of our club</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h5 class="card-header card-danger text-center"><%= link_to "Club Awards", club_awards_path, class: 'btn btn-danger' %></h5>
-      <p class="card-text">Our annual award winners</p>
-    </div>
-  </div>
-  <div class="col-md-2"></div>
+  <div class="col-2"></div>
+  <%= render :partial => 'card', :locals => { title: "Club Awards", path: club_awards_path, description: "Our annual award winners"} %>
+  <%= render :partial => 'card', :locals => { title: "Other Awards", path: gold_tests_path, description: "Members who have recieved awards outside of our club"} %>
+  <div class="col-2"></div>
 </div>
 
 
