@@ -1,10 +1,4 @@
-<% if w == 3 %>
-  <% w1 = "col-form-label col-md-1" %>
-<% else %>
-  <% w1 = "col-form-label col-md-2" %>
-<% end %>
-
-<%= f.label lbl, class: w1 %>
+<%= f.label lbl, class:"col-form-label col-md-1" %>
 <div class="col-md-<%= w %>">
   <%= f.collection_select fld, list, :id, fld2, {:include_blank => true}, {class: "custom-select"} %>
   <% if newpath %>

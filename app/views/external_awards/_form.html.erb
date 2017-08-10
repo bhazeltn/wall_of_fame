@@ -1,38 +1,12 @@
-<%= form_with(model: external_award, local: true) do |form| %>
-  <% if external_award.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(external_award.errors.count, "error") %> prohibited this external_award from being saved:</h2>
+<%= form_for @external_award, :html => {:class => "form-horizontal"} do |form| %>
+  <%= render :partial => '/layouts/partials/formerror', :locals => {model: @external_award} %>
 
-      <ul>
-      <% external_award.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label "Skater Name" %>
-    <%= form.collection_select :skater_id, Skater.all, :id, :name %>
-    Not Listed? <%= link_to 'Add a new Skater', new_skater_path %>
+  <div class="form-group row">
+    <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Skater", fld: :skater_id, fld2: :name, list: Skater.all, newpath: new_skater_path, f: form} %>
+    <%= render :partial => '/layouts/partials/textfield', :locals => {lbl: "Award", fld: :award, f: form} %>
+    <%= render :partial => '/layouts/partials/year', :locals => {yr: :year, f: form } %>
   </div>
 
-  <div class="field">
-    <%= form.label :award %>
-    <%= form.text_field :award, id: :external_award_award %>
-  </div>
-
-  <div class="field">
-    <%= form.label :web_site %>
-    <%= form.text_field :web_site, id: :external_award_web_site %>
-  </div>
-
-  <div class="field">
-    <%= form.label :year %>
-    <%= form.select :year, (2000)..(Time.zone.now.year + 1), id: :external_award_year %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: external_awards_path, f: form} %>
+  
 <% end %>
