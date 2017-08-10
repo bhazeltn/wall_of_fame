@@ -11,19 +11,19 @@
         <span>
           <ul class="nav nav-pills">
             <% @teams.each do |t| %>
-              <% if @ab_teams.where(team: t, year: y).present? %>
-                <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: t, i: 1 } %>
+              <% if @ab_teams.where(team_id: t.id, year: y).present? %>
+                <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: t.name, i: 1 } %>
               <% end %>
             <% end %>
           </ul>
           <div class="tab-content">
             <% @teams.each do |t| %>
-              <% if @ab_teams.where(team: t, year: y).present? %>
-                <div role="tabpanel" id='y<%= y.to_s %><%= t.gsub(/\s+/, "") %>' class="tab-pane">
+              <% if @ab_teams.where(team_id: t.id, year: y).present? %>
+                <div role="tabpanel" id='y<%= y.to_s %><%= t.name.gsub(/\s+/, "") %>' class="tab-pane">
                   <span>
                     <table class="table">
                       <tbody>
-                        <% @ab_teams.where(team: t, year: y).in_groups_of(4).each do |grp| %>
+                        <% @ab_teams.where(team_id: t.id, year: y).in_groups_of(4).each do |grp| %>
                           <tr>
                             <% grp.each do |abt| %>
                               <% if abt.present? %>

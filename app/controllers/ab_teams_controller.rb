@@ -6,7 +6,8 @@ class AbTeamsController < ApplicationController
   def index
     @ab_teams = AbTeam.all
     @years = AbTeam.pluck(:year).map{|x| x}.uniq.sort
-    @teams = AbTeam.pluck(:team).map{|x| x}.uniq.sort
+    @skaters = Skater.order(last_name: :asc, first_name: :asc)
+    @teams = Team.order(name: :asc)
   end
 
   # GET /ab_teams/1
@@ -70,6 +71,6 @@ class AbTeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ab_team_params
-      params.require(:ab_team).permit(:skater_id, :team, :year)
+      params.require(:ab_team).permit(:skater_id, :team_id, :year)
     end
 end
