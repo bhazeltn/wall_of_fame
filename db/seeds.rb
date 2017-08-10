@@ -54,6 +54,12 @@ award_csv = CSV.parse(award_text, :headers => true, :encoding => 'ISO-8859-1')
 teams_text = File.read(Rails.root.join('lib', 'seeds', 'teams.csv'))
 teams_csv = CSV.parse(teams_text, :headers => true, :encoding => 'ISO-8859-1')
 
+award_types_text = File.read(Rails.root.join('lib', 'seeds', 'award_types.csv'))
+award_types_csv = CSV.parse(award_types_text, :headers => true, :encoding => 'ISO-8859-1')
+
+club_awards_text = File.read(Rails.root.join('lib', 'seeds', 'club_awards.csv'))
+club_awards_csv = CSV.parse(club_awards_text, :headers => true, :encoding => 'ISO-8859-1')
+
 
 group_csv.each do |row|
   t = Group.new
@@ -135,11 +141,28 @@ startest_csv.each do |row|
   t.save!
 end
 
+award_types_csv.each do |row|
+  t = AwardType.new
+  t.name = row['awrd_typ']
+  t.save!
+end
+
 award_csv.each do |row|
   t = Award.new
   t.name = row['awrd']
+  t.award_type_id = row['typ']
   t.save!
 end
+
+club_awards_csv.each do |row|
+  t = ClubAward.new
+  t.skater_id = row['n']
+  t.award_id = row['awrd']
+  t.year = row['yr']
+   puts row.to_hash
+  t.save!
+end
+
 
 teams_csv.each do |row|
   t = Team.new

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810162209) do
+ActiveRecord::Schema.define(version: 20170810185547) do
 
   create_table "ab_teams", force: :cascade do |t|
     t.integer "skater_id"
@@ -39,10 +39,18 @@ ActiveRecord::Schema.define(version: 20170810162209) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "awards", force: :cascade do |t|
+  create_table "award_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "awards", force: :cascade do |t|
+    t.integer "award_type_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["award_type_id"], name: "index_awards_on_award_type_id"
   end
 
   create_table "club_awards", force: :cascade do |t|

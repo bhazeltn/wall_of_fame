@@ -1,0 +1,2 @@
+class AwardType < ApplicationRecord
+end

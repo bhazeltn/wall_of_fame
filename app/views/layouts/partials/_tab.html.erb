@@ -1,5 +1,5 @@
 <li class="nav-item danger">
-  <a href='#y<%= y.gsub(/\s+/, "") %><%=b.gsub(/\s+/, "") %>' aria-controls='y<%= y.gsub(/\s+/, "") %><%=b.gsub(/\s+/, "") %>' role="tab" data-toggle="tab" <% if i == 0 %> class="nav-link active" <% else %> class="nav-link" <% end %>>
+  <a href='#y<%= y.gsub(/[!@%&" ]/,'') %><%=b.gsub(/[!@%&" ]/,'') %>' aria-controls='y<%= y.gsub(/[!@%&" ]/,'') %><%=b.gsub(/[!@%&" ]/,'') %>' role="tab" data-toggle="tab" <% if i == 0 %> class="nav-link active" <% else %> class="nav-link" <% end %>>
     <%= b %>
   </a>
 </li>
