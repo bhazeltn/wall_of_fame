@@ -20,10 +20,12 @@
               <span>
                 <table class="table">
                   <thead>
-                    <th col style="width:8.3%">Year</th>
-                    <th col style="width:25%">Recipient</th>
-                    <th col style="width:8.3%">Year</th>
-                    <th col style="width:25%">Recipient</th>
+                    <th col style="width:10%">Year</th>
+                    <th col style="width:30%">Recipient</th>
+                    <th col style="width:5%"></th>
+                    <th col style="width:10%">Year</th>
+                    <th col style="width:30%">Recipient</th>
+                    <th col style="width:5%"></th>
                   </thead>
                   <tbody>
                     <% @club_awards.where(award_id: a.id).in_groups_of(2) do |grp| %>
@@ -32,6 +34,16 @@
                           <% if ca.present? %>
                             <td><%= ca.year %></td>
                             <td><%= ca.skater.name %></td>
+                            <td>
+                              <% if admin_signed_in? %>
+                                <%= link_to edit_club_award_path(ca) do %>
+                                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                                <% end %>
+                                <%= link_to ca, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                                  <i class="fa fa-trash" aria-hidden="true"></i>
+                                <% end %>
+                              <% end %>
+                            </td>
                           <% end %>
                         <% end %>
                       </tr>
