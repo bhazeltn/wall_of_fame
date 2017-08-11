@@ -21,7 +21,7 @@
       <div class="tab-content">
         <% i = 0 %>
         <% @tests.each do |t| %>
-          <div role="tabpanel" id='y<%= y.to_s %><%= t.gsub(/\s+/, "")  %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+          <div role="tabpanel" id='y<%= y.to_s %><%= t.gsub(/[!@%&" ]/,'')  %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
             <table class="table">
               <% @gold_tests.where(year: y, testLevel: t).in_groups_of(4).each do |group| %>
                 <tr>

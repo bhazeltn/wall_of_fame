@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+    <th col style="width:25%">Skater</th>
+    <th col style="width:15%">Element</th>
+    <th col style="width:20%"></th>
+    <th col style="width:25%">Skater</th>
+    <th col style="width:15%">Element</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% star_golds.where(year: y.to_s, competition_id: c).in_groups_of(2).each do |group| %>
+      <tr>
+        <% group.each do |sg| %>
+          <% if sg.present? %>
+            <td><%= sg.skater.name %></td>
+            <td><%= sg.element %></td>
+            <td>
+              <%= link_to edit_star_gold_path(sg) do %>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              <% end %>
+            </td>
+          <% end %>
+        <% end %>
+      </tr>  
+    <% end %>
+  </tbody>
+</table>
