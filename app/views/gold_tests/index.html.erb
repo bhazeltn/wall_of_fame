@@ -1,51 +1,45 @@
 <%= render :partial => '/layouts/partials/addrecord', :locals => {addpath: new_gold_test_path } %>
 
-<div class="container">
-  <ul class="nav nav-pills">
-    <% @years.each_with_index do |y, i| %>
-      <li class="nav-item">
-        <a href='#y<%= y %>'  aria-controls='y<%= y %>' role="tab" data-toggle="tab" <% if i == 0 %> class="nav-link active" <% else %> class="nav-link" <% end %>>
-          <%= y %>
-        </a>
-      </li>
-    <% end %>
-  </ul>
-  <div class="tab-content">
-    <% @years.each_with_index do |y, i| %>
-      <div role="tabpanel" id='y<%= y %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
-        <span>
-          <ul class="nav nav-pills">
-            <% @tests.each_with_index do |t, i| %>
-              <% if @gold_tests.where(year: y, testLevel: t).present? %>
-              <li class="nav-item">
-                <a href='#<%= t.gsub(/\s+/, "")  %><%= y %>' aria-controls='<%= t %><%= y %>' role="tab" data-toggle="tab" class="nav-link">
-                  <%= t %>
-                </a>
-              </li>
-              <% end %>
-            <% end %>
-          </ul>
-          <div class="tab-content">
-            <% @tests.each do |t| %>
-              <div role="tabpanel" id='<%= t.gsub(/\s+/, "")  %><%= y %>' class="tab-pane">
-                <table class="table">
-                  <% @gold_tests.where(year: y, testLevel: t).in_groups_of(4).each do |group| %>
-                    <tr>
-                      <% group.each do |gt| %>
-                        <% if gt.present? %>
-                          <td><%= gt.skater.name %></td>
-                        <% end %>
-                      <% end %>
-                    </tr>
+
+<ul class="nav nav-pills flex-column flex-sm-row nav-fill">
+  <% @years.each_with_index do |y, i| %>
+    <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: y.to_s, i: i } %> 
+  <% end %>
+</ul>
+<div class="tab-content">
+  <% @years.each_with_index do |y, i| %>
+    <div role="tabpanel" id='y<%= y.to_s %><%= y.to_s %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+      <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
+        <% i = 0 %>
+        <% @tests.each do |t| %>
+          <% if @gold_tests.where(year: y, testLevel: t).present? %>
+            <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: t, i: i } %> 
+            <% i = i + 1 %>
+          <% end %>
+        <% end %>
+      </ul>
+      <div class="tab-content">
+        <% i = 0 %>
+        <% @tests.each do |t| %>
+          <div role="tabpanel" id='y<%= y.to_s %><%= t.gsub(/\s+/, "")  %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+            <table class="table">
+              <% @gold_tests.where(year: y, testLevel: t).in_groups_of(4).each do |group| %>
+                <tr>
+                  <% group.each do |gt| %>
+                    <% if gt.present? %>
+                      <td><%= gt.skater.name %></td>
+                    <% end %>
                   <% end %>
-                </table>
-              </div>
-            <% end %>
+                </tr>
+              <% end %>
+            </table>
           </div>
-        </span>
+          <% i = i + 1 %>
+        <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
+
 
 
