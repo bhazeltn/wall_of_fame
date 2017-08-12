@@ -12,39 +12,51 @@
       <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
         <% i = 0 %>
         <% StarLevel.all.each do |sl| %>
-          <%# if @star_with_honors.where(star_test.level: sl, year: y).present? %>
+          <% if sl.star_with_honor.present? %>
             <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: sl.level, i: i} %>
             <% i = i + 1 %>
-          <%# end %>
+          <% end %>
         <% end %>
       </ul>
         <div class="tab-content">
-          <% StarLevel.all.each_with_index do |sl, i| %>
-            <div role="tabpanel" id='y<%= y.to_s %><%= sl.level.gsub(/[!@%&" ]/,'') %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
-              <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
-                <% StarTest.where(star_level: sl).each_with_index do |st, i| %>
-                  <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s + st.star_level.level, b: st.name, i: i} %>
-                <% end %>
-              </ul>
-              <div class="tab-content">
-                <% StarTest.where(star_level: sl).each_with_index do |st, i| %>
-                  <div role="tabpanel" id='y<%= y.to_s %><%= sl.level.gsub(/[!@%&" ]/,'') %><%= st.name.gsub(/[!@%&" ]/,'') %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>                    
-                    <table class="table">
-                      <% @star_with_honors.where(star_test: st).in_groups_of(4). each do |grp| %>
-                          <tr>
-                            <% grp.each do |sh| %>
-                              <% if sh.present? %>
-                                <td col style="width:25%"><%= sh.skater.name %></td>
-                              <% end %>
+          <% i = 0 %>
+          <% StarLevel.all.each do |sl| %>
+            <% if sl.star_with_honor.present? %>
+              <div role="tabpanel" id='y<%= y.to_s %><%= sl.level.gsub(/[!@%&" ]/,'') %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+                <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
+                  <% i2 = 0 %>
+                  <% StarTest.where(star_level: sl).each do |st| %>
+                    <% if st.star_with_honor.present? %>
+                      <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s + st.star_level.level, b: st.name, i: i2} %>
+                      <% i2 = i2 + 1 %>
+                    <% end %>
+                  <% end %>
+                </ul>
+                <div class="tab-content">
+                  <% i2 = 0 %>
+                  <% StarTest.where(star_level: sl).each_with_index do |st, i| %>
+                    <% if st.star_with_honor.present? %>
+                      <div role="tabpanel" id='y<%= y.to_s %><%= sl.level.gsub(/[!@%&" ]/,'') %><%= st.name.gsub(/[!@%&" ]/,'') %>' <% if i2 == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>                    
+                        <table class="table">
+                          <% @star_with_honors.where(star_test: st).in_groups_of(4). each do |grp| %>
+                              <tr>
+                                <% grp.each do |sh| %>
+                                  <% if sh.present? %>
+                                    <td col style="width:25%"><%= sh.skater.name %></td>
+                                  <% end %>
+                                <% end %>
+                              </tr>
                             <% end %>
-                          </tr>
-                        <% end %>
-                      </tbody>
-                    </table>
-                  </div>
-                <% end %>
+                          </tbody>
+                        </table>
+                      </div>
+                      <% i2 = i2 + 2 %>
+                    <% end %>
+                  <% end %>
+                </div>
               </div>
-            </div>
+              <% i = i + 1 %>
+            <% end %>
           <% end %>
         </div>
     </div>
