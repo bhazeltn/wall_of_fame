@@ -1,14 +1,46 @@
 <p id="notice"><%= notice %></p>
+<div style="text-align: center;">
+  <h3>
+    <%= @skater.first_name %> <%= @skater.last_name %>
+  </h3>
+  <h4>Achievements</h4>
+</div>
 
-<p>
-  <strong>First name:</strong>
-  <%= @skater.first_name %>
-</p>
+<div class="row card-group">
+  
+  <div class="card">
+    <div class="card-block">
+      <h5 class="card-header card-danger text-centre">Top Scores</h5>
+      <p class="card-text">
+        <table class="table table-sm">
+          <tbody>
+            <% Score.where(skater1: @skater.id).or(Score.where(skater2: @skater.id)).or(Score.where(skater3: @skater.id)).or(Score.where(skater4: @skater.id)).each do |s| %>
+              <tr>
+                <td>
+                  <%= s.event.level.name %> <%=s.event.name%><br />
+                  <%= s.segment.name %> <%= s.score_type.score_type if s.segment.name != "Total" %> Score
+                </td>  
+                <td><%= s.score %></td>
+                <td><%= s.year %> <%= s.competition.name %></td>
+              </tr>
+            <% end %>  
+          </tbody>
+        </table>
+      </p>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-block">
+      <h5 class="card-header card-danger text-centre">+2 Grade Of Execution</h5>
+    </div>
+  </div>
+  
+  
+  
+</div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @skater.last_name %>
-</p>
+
 
 <%= link_to 'Edit', edit_skater_path(@skater) %> |
 <%= link_to 'Back', skaters_path %>

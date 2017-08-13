@@ -3,7 +3,6 @@
   <% if @score.segment.name != "Total" %>
     - <%= @score.segment.name %>
   <% end %></h4>
-  <h5><%= @score.score_type.score_type %> Score</h5>
 </div>
 <%= render 'form', score: @score %>
 

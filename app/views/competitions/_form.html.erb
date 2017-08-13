@@ -1,22 +1,9 @@
-<%= form_with(model: competition, local: true) do |form| %>
-  <% if competition.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(competition.errors.count, "error") %> prohibited this competition from being saved:</h2>
+<%= form_for @competition, :html => {:class => "form-horizontal"} do |form| %>
+  <%= render :partial => '/layouts/partials/formerror', :locals => {model: @competition} %>
 
-      <ul>
-      <% competition.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :competition_name %>
+  <div class="form-group row">
+    <%= render :partial => '/layouts/partials/textfield', :locals => {lbl: "Name", fld: :name, fld2: :competition_name, f: form } %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: competitions_path, f: form} %>
 <% end %>

@@ -1,22 +1,9 @@
-<%= form_with(model: team, local: true) do |form| %>
-  <% if team.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
+<%= form_for @team, :html => {:class => "form-horizontal"} do |form| %>
+  <%= render :partial => '/layouts/partials/formerror', :locals => {model: @team} %>
 
-      <ul>
-      <% team.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :team_name %>
+  <div class="form-group row">
+    <%= render :partial => '/layouts/partials/textfield', :locals => {lbl: "Name", fld: :name, fld2: :team_name, f: form } %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: teams_path, f: form} %>
 <% end %>

@@ -159,7 +159,7 @@ club_awards_csv.each do |row|
   t.skater_id = row['n']
   t.award_id = row['awrd']
   t.year = row['yr']
-   puts row.to_hash
+  puts row.to_hash
   t.save!
 end
 

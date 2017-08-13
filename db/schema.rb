@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(version: 20170810185547) do
     t.integer "skater2"
     t.integer "skater3"
     t.integer "skater4"
-    t.integer "team_name"
+    t.string "team_name"
     t.date "achieved"
     t.integer "year"
     t.datetime "created_at", null: false

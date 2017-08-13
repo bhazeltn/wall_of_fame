@@ -29,10 +29,14 @@
           <% end %>
         </thead>
         <tbody>
+          <% last = "" %>
           <% scores.where(event_id: evnt.id, segment_id: s.id).each do |s| %>
               <tr>
-               <% if evnt.score_type.count > 1 %>
-                  <th scope="row"><%= s.score_type.score_type %></th>
+                <% if evnt.score_type.count > 1 %>
+                  <th scope="row">
+                    <%= s.score_type.score_type if s.score_type.score_type != last %>
+                  </th>
+                  <% last = s.score_type.score_type %>
                 <% end %>
                   <td>
                     <% if s.score? %>
@@ -71,6 +75,9 @@
           <% end %>  
         </tbody>
       </table>
+      <% if admin_signed_in? %>
+        <%= link_to "Add Record", new_score_path(:event_id => evnt.id, :segment_id => s.id) %>
+      <% end %>
     </div>
   </div>
 <% end %>

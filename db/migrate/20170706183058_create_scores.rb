@@ -10,7 +10,7 @@ class CreateScores < ActiveRecord::Migration[5.1]
       t.integer :skater2
       t.integer :skater3
       t.integer :skater4
-      t.integer :team_name
+      t.string :team_name
       t.date :achieved
       t.integer :year
 

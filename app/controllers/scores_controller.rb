@@ -21,7 +21,7 @@ class ScoresController < ApplicationController
 
   # GET /scores/new
   def new
-    @score = Score.new
+    @score = Score.new(event_id: params[:event_id], segment_id: params[:segment_id])
   end
 
   # GET /scores/1/edit

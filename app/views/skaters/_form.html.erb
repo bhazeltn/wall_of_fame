@@ -1,27 +1,11 @@
-<%= form_with(model: skater, local: true) do |form| %>
-  <% if skater.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(skater.errors.count, "error") %> prohibited this skater from being saved:</h2>
-
-      <ul>
-      <% skater.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, id: :skater_first_name %>
+<%= form_for @skater, :html => {:class => "form-horizontal"} do |form| %>
+  <%= render :partial => '/layouts/partials/formerror', :locals => {model: @skater} %>
+  
+  <div class="form-group row">
+    <%= render :partial => '/layouts/partials/textfield', :locals => {lbl: "First Name", fld: :first_name, fld2: :skater_first_name, f: form } %>
+    <%= render :partial => '/layouts/partials/textfield', :locals => {lbl: "Last Name", fld: :last_name, fld2: :skater_last_name, f: form } %>
   </div>
-
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :skater_last_name %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  
+  <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: skaters_path, f: form} %>
+  
 <% end %>

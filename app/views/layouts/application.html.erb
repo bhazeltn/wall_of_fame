@@ -15,9 +15,7 @@
         <img class="img-responsive" src="http://calalta.net/wp-content/uploads/2015/03/Calalta-Logo.png"/>
         <div class="page-header">
           <h1>Wall Of Fame</h1>
-          <% if controller_name != "sessions" %>
-            <%= render "/layouts/headers/#{controller_name}" if controller_name != "welcome" %>
-          <% end %>
+          <%= render "/layouts/headers/#{controller_name}" %>
         </div>
       </div>
         <%= yield %>    

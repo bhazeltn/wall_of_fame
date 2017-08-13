@@ -2,11 +2,17 @@
   <%= render :partial => '/layouts/partials/formerror', :locals => {model: @score} %>
 
   <div class="form-group row">
+     <%= form.label "Score", class:"col-form-label col-md-1" %>
+     <% lbl = @score.score_type.score_type + " Score" %>
+     <%= form.label lbl , class:"col-form-label col-md-3" %>
      <%= render :partial => '/layouts/partials/score', :locals => {score: :score, f: form} %>
-    <% if @score.team? %>
-      <%= render :partial => '/layouts/partials/team', :locals => {team_name: :team_name, f: form} %>
-    <% end %>
   </div>
+
+  <% if @score.team? %>
+    <div class="form-group row">  
+      <%= render :partial => '/layouts/partials/textfield', :locals => {fld: :team_name, lbl: "Team", fld2: :score_team_name, f: form} %>
+    </div>
+  <% end %>
 
   <div class="form-group row">
     
