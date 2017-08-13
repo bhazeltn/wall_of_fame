@@ -2,7 +2,7 @@
   <%= render :partial => '/layouts/partials/formerror', :locals => {model: @gofe} %>
   
   <!-- TODO: AJAX multi level drop box -->
-  <%= render :partial => '/layouts/partials/els', :locals => {level: :level_id, event: :event_id, segment: :segment_id, f: form} %>
+  <!-- render :partial => '/layouts/partials/els', :locals => {level: :level_id, event: :event_id, segment: :segment_id, f: form} -->
 
   <div class="form-group row">
     <%= render :partial => '/layouts/partials/date', :locals => {achieved: :achieved, f: form} %>
@@ -20,5 +20,24 @@
   </div> 
 
   <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: goves_path, f: form} %>
+
+  <hr />
+  <div>
+    <span>dynamic select</span>
+    
+    <div class="form-group row">
+
+    <%= form.label :level_id, "Level", class:"col-form-label col-md-1" %>
+    <div class="col-md-4>">
+      <%= form.collection_select :level_id, Level.all, :id, :name, {:include_blank => true}, {class: "custom-select"} %>
+    </div>
+    </div>
+    <div class="form-group row">
+      <%= form.label :event_id, "Event", class:"col-form-label col-md-1" %>
+      <div class="col-md-5">
+       <%= form.grouped_collection_select :event_id, Level.all, :event, :name, :id, :name, {:include_blank => true}, {class: "custom-select"} %>
+      </div>
+    </div>
+  </div>
 
 <% end %>
