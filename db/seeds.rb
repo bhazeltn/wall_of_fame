@@ -66,8 +66,8 @@ group_csv.each do |row|
   t.name = row['group']
   t.html_name = row['htmlname']
   t.save!
-  puts "#{t.name}, #{t.html_name} saved"
 end
+puts "Groups = #{Group.count} rows"
 
 levels_csv.each do |row|
   l = Level.new
@@ -75,9 +75,8 @@ levels_csv.each do |row|
   l.html_name = row['htmlname']
   l.group_id = row['grp']
   l.save!
-  l.errors
-  puts "#{l.name} saved"
 end
+puts "Levels = #{Level.count} rows"
 
 event_csv.each do |row|
   t = Event.new
@@ -85,21 +84,23 @@ event_csv.each do |row|
   t.html_name = row['htmlname']
   t.level_id = row['lvl']
   t.save!
-  puts "#{t.name} saved"
 end
+puts "Events = #{Event.count} rows"
+
 
 score_type_csv.each do |row|
   t = ScoreType.new
   t.score_type = row['scoretype']
   t.save!
-  puts "#{t.score_type} saved"
 end
+puts "ScoreType = #{ScoreType.count} rows"
 
 segments_csv.each do |row|
   t = Segment.new
   t.name = row['segmenttype']
   t.save!
 end
+puts "Segment = #{Segment.count} rows"
 
 segmentevent_csv.each do |row|
   t = SegmentEvent.new
@@ -107,6 +108,7 @@ segmentevent_csv.each do |row|
   t.event_id = row['event']
   t.save!
 end
+puts "SegmentEvent = #{SegmentEvent.count} rows"
 
 segmentscore_csv.each do |row|
   t = SegmentScoreType.new
@@ -114,12 +116,14 @@ segmentscore_csv.each do |row|
   t.score_type_id = row['scoretype']
   t.save!
 end
+puts "SegmentScore = #{SegmentScoreType.count} rows"
 
 comp_csv.each do |row|
   t = Competition.new
   t.name = row['nm']
   t.save!
 end
+puts "Competition = #{Competition.count} rows"
 
 skater_csv.each do |row|
   t = Skater.new
@@ -127,12 +131,14 @@ skater_csv.each do |row|
   t.last_name = row['l_name']
   t.save!
 end
+puts "Skater =  #{Skater.count} rows"
 
 starlvl_csv.each do |row|
   t = StarLevel.new
   t.level = row['lvl']
   t.save!
 end
+puts "StarLevel =  #{StarLevel.new}"
 
 startest_csv.each do |row|
   t = StarTest.new
@@ -140,12 +146,14 @@ startest_csv.each do |row|
   t.name = row['tst']
   t.save!
 end
+puts "StarTest =  #{StarTest.count} rows"
 
 award_types_csv.each do |row|
   t = AwardType.new
   t.name = row['awrd_typ']
   t.save!
 end
+puts "AwardType =  #{AwardType.count} rows"
 
 award_csv.each do |row|
   t = Award.new
@@ -153,15 +161,16 @@ award_csv.each do |row|
   t.award_type_id = row['typ']
   t.save!
 end
+puts "Awards =  #{Award.count} rows"
 
 club_awards_csv.each do |row|
   t = ClubAward.new
   t.skater_id = row['n']
   t.award_id = row['awrd']
   t.year = row['yr']
-  puts row.to_hash
   t.save!
 end
+puts "Club Awards = #{ClubAward.count} rows"
 
 
 teams_csv.each do |row|
@@ -169,12 +178,12 @@ teams_csv.each do |row|
   t.name = row['tn']
   t.save!
 end
+puts "Teams = #{Team.count} rows"
 
 
 
 score_csv.each do |row|
-  puts row.to_hash
-  
+  #puts row.to_hash
   t = Score.new
   t.event_id = row['evt']
   t.segment_id = row['seg']
@@ -190,13 +199,4 @@ score_csv.each do |row|
   
   t.save!
 end
-
-puts "Groups = #{Group.count} rows"
-puts "Levels = #{Level.count} rows"
-puts "Events = #{Event.count} rows"
-puts "ScoreType = #{ScoreType.count} rows"
-puts "Segment = #{Segment.count} rows"
-puts "SegmentEvent = #{SegmentEvent.count} rows"
-puts "SegmentScore = #{SegmentScoreType.count} rows"
-puts "Competition = #{Competition.count} rows"
 puts "Scores = #{Score.count} rows"

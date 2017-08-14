@@ -2,24 +2,31 @@
 <div class="container">
   <ul class="nav nav-pills">
     <% @years.each_with_index do |y, i| %>
-      <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: y.to_s, i: i } %> 
+      <% y2 = y + 1 %>
+      <% display = y.to_s + "-" + y2.to_s %>
+      <%= render :partial => '/layouts/partials/tab', :locals => { y: "z" , b: display, i: i } %> 
     <% end %>
   </ul>
   <div class="tab-content">
     <% @years.each_with_index do |y, i| %>
-      <div role="tabpanel" id='y<%= y.to_s %><%= y.to_s %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+      <% y2 = y + 1.year %>
+      <% display = y.to_s + " " + y2.to_s %>
+      <div role="tabpanel" id='yz<%= display %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
         <span>
           <ul class="nav nav-pills">
+            <% i2 = 0 %>
             <% @teams.each do |t| %>
               <% if @ab_teams.where(team_id: t.id, year: y).present? %>
-                <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: t.name, i: 1 } %>
+                <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: t.name, i: i2 } %>
+                <% i2 = i2 + 1 %>
               <% end %>
             <% end %>
           </ul>
           <div class="tab-content">
+            <% i2 = 0 %>
             <% @teams.each do |t| %>
               <% if @ab_teams.where(team_id: t.id, year: y).present? %>
-                <div role="tabpanel" id='y<%= y.to_s %><%= t.name.gsub(/\s+/, "") %>' class="tab-pane">
+                <div role="tabpanel" id='y<%= y.to_s %><%= t.name.gsub(/\s+/, "") %>' <% if i2 == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
                   <span>
                     <table class="table">
                       <tbody>
@@ -36,6 +43,7 @@
                     </table>
                   </span>
                 </div>
+                <% i2 = i2 + 1 %>
               <% end %>
             <% end %>
           </div>
