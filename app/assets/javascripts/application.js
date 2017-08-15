@@ -12,12 +12,9 @@
 //
 //= require jquery
 //= require tether
-
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-datepicker
-
 //= require local_time
-
 //= require_tree .
 
