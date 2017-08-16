@@ -5,11 +5,13 @@
     </a>
   </li>
   <% @groups.each_with_index do |g| %>
-    <li class="nav-item ">
-      <a href='#<%= g.html_name %>'  aria-controls='<%= g.html_name %>' role="tab" data-toggle="tab" class="nav-link flex-sm-fill text-sm-center">
-      <br /><%= g.name %>
-      </a>
-    </li>
+    <% if g.score.count > 0 or admin_signed_in? %>
+      <li class="nav-item ">
+        <a href='#<%= g.html_name %>'  aria-controls='<%= g.html_name %>' role="tab" data-toggle="tab" class="nav-link flex-sm-fill text-sm-center">
+        <br /><%= g.name %>
+        </a>
+      </li>
+    <% end %>
   <% end %>
 </ul>
 <div class="tab-content">
@@ -19,36 +21,55 @@
     </span>
   </div>
   <% @groups.each do |g| %>
-    <div role="tabpanel" id='<%= g.html_name %>' class="tab-pane">
-      <span>
-        <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
-          <% @levels.where(group_id: g.id).each_with_index do |l, idx1| %>
-            <%= render :partial => 'tab', :locals => { a: g, b: l, i: idx1 } %> 
-          <% end %>
-        </ul>
-        <div class="tab-content">
-          <% @levels.where(group_id: g.id).each_with_index do |l, idx2| %>
-            <div role="tabpanel" id='<%= g.html_name %><%= l.html_name %>' <% if idx2 == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
-              <span>
-                <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
-                  <% @events.where(level_id: l.id).each_with_index do |e, idx3| %>
-                    <%= render :partial => 'tab', :locals => { a: l, b: e, i: idx3 } %> 
-                  <% end %>
-                </ul>
-                <div class="tab-content">
-                  <% @events.where(level_id: l.id).each_with_index do |e, idx4| %>
-                    <div role="tabpanel" id='<%= l.html_name %><%= e.html_name %>' <% if idx4 == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
-                      <span>
-                        <%= render :partial => 'scoretable2', :locals => {evnt: e, scores: @scores} %>
-                      </span>
+    <% if g.score.count > 0 or admin_signed_in? %>
+      <div role="tabpanel" id='<%= g.html_name %>' class="tab-pane">
+        <span>
+          <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
+            <% idx1 = 0 %>
+            <% @levels.where(group_id: g.id).each do |l| %>
+              <% if l.score.count > 0 or admin_signed_in? %>
+                <%= render :partial => 'tab', :locals => { a: g, b: l, i: idx1 } %> 
+                <% idx1 = idx1 + 1 %>
+              <% end %>
+            <% end %>
+          </ul>
+          <div class="tab-content">
+            <% idx2 = 0 %>
+            <% @levels.where(group_id: g.id).each do |l| %>
+              <% if l.score.count > 0 or admin_signed_in? %>
+                <div role="tabpanel" id='<%= g.html_name %><%= l.html_name %>' <% if idx2 == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+                  <span>
+                    <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
+                      <% idx3 = 0 %>
+                      <% @events.where(level_id: l.id).each do |e| %>
+                        <% if e.score.count > 0 or admin_signed_in? %>
+                          <%= render :partial => 'tab', :locals => { a: l, b: e, i: idx3 } %> 
+                          <% idx3 = idx3 + 1 %>
+                        <% end %>
+                      <% end %>
+                    </ul>
+                    <div class="tab-content">
+                      <% idx4 = 0 %>
+                      <% @events.where(level_id: l.id).each do |e| %>
+                        <% if e.score.count > 0 or admin_signed_in? %>
+                          <div role="tabpanel" id='<%= l.html_name %><%= e.html_name %>' <% if idx4 == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+                            <span>
+                              <%= render :partial => 'scoretable2', :locals => {evnt: e, scores: @scores} %>
+                            </span>
+                          </div>
+                          <% idx4 = idx4 + 1 %>
+                        <% end %>
+                      <% end %>
                     </div>
-                  <% end %>
+                  </span>
                 </div>
-              </span>
-            </div>
-          <% end %>
-        </div>
-      </span>
-    </div>
+                <% idx2 = idx2 + 1 %>
+              <% end %>
+            <% end %>
+          </div>
+        </span>
+      </div>
+    <% end %>
   <% end %>
+</div>
 

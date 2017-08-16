@@ -1,0 +1,83 @@
+<% evnt.segment.each do |s| %>
+  <div class="card">
+    <h5 class="card-header card-danger text-center">
+      <% if s.name =="Total" %>
+        Event Total
+      <% else %>
+        <%= s.name %>
+      <% end %>
+    </h5>
+    <div class="card-text">
+      <table class="table table-sm table-hover">
+        <thead>
+          <% if evnt.score_type.count > 1 %>
+            <th col style="width:10%"></th>
+          <% end %>
+          <th col style="width:30%">
+            <% if evnt.couples? or evnt.dance? or evnt.pairs? %>
+              Skaters
+            <% elsif evnt.team? %>
+              Team Name<br/ >Skaters
+            <% else %>
+              Skater
+            <% end %>
+          </th>
+          <th col style="width:5%">Score</th>
+          <th col style="width:30%">Competition</th>
+          <% if admin_signed_in? %>
+            <th col style="width:5%"></th>
+          <% end %>
+        </thead>
+        <tbody>
+          <% last = "" %>
+          <% scores.where(event_id: evnt.id, segment_id: s.id).each do |s| %>
+              <tr>
+                <% if evnt.score_type.count > 1 %>
+                  <th scope="row">
+                    <%= s.score_type.score_type if s.score_type.score_type != last %>
+                  </th>
+                  <% last = s.score_type.score_type %>
+                <% end %>
+                  <td>
+                    <% if s.score? %>
+                      <% if s.bronze? %>
+                        <i class="fa fa-trophy fa-lg" style="color: #8C7853;"></i>
+                      <% elsif s.silver? %>
+                        <i class="fa fa-trophy fa-lg" style="color: silver;"></i>
+                      <% elsif s.gold? %>
+                        <i class="fa fa-trophy fa-lg" style="color: gold;"></i>
+                      <% else %>
+                        <i class="fa fa-diamond fa-lg" style="color: #b9f2ff;"></i>
+                      <% end %>
+                      <% if evnt.team? %>
+                        <%= s.team_name %><br />
+                      <% end %>
+                      <% s.name.each do |n| %>
+                        <%= n %><br />
+                      <% end %>
+                    <% else %>
+                      <i>No Record</i>
+                    <% end %>
+                  </td>
+                  <td><%= s.score if s.score? %></td>
+                  <td><%= s.year if s.score?%> <%= s.competition.name if s.score? %></td>
+                <% if admin_signed_in? %>
+                  <td>
+                    <%= link_to edit_score_path(s) do %>
+                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <% end %>
+                    <%= link_to s, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                    <% end %>
+                  </td>
+              </tr>
+            <% end %>
+          <% end %>  
+        </tbody>
+      </table>
+      <% if admin_signed_in? %>
+        <%= link_to "Add Record", new_score_path(:event_id => evnt.id, :segment_id => s.id) %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
