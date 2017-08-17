@@ -1,47 +1,41 @@
-</div>
-</div>
-
 <p id="notice"><%= notice %></p>
-
-<div class="container">
-  <div class = "card col-md-4">
-    <div class="card-header">
-      <h4>
-        <%= @score.event.level.name %> <%= @score.event.name %>
-      </h4>
+<div class = "card col-md-4">
+  <div class="card-header">
+    <h4>
+      <%= @score.event.level.name %> <%= @score.event.name %>
+    </h4>
+  </div>
+  <div class = "card block">
+    <div class="row card-title">
+      <h5 class = "col">
+        <% if @score.segment.name == "Total" %>
+          <%= @score.segment.name %>
+        <% else %>
+          <%= @score.segment.name %><br /><%= @score.score_type.score_type %>
+        <% end %>
+      </h5>
+      <h5 class = "col" style="text-align: right">
+        <%= @score.score %>
+      </h5>
     </div>
-    <div class = "card block">
-      <div class="row card-title">
-        <h5 class = "col">
-          <% if @score.segment.name == "Total" %>
-            <%= @score.segment.name %>
-          <% else %>
-            <%= @score.segment.name %><br /><%= @score.score_type.score_type %>
+    <div class = "card-text">
+      <div class="row">
+        <span class = "col">
+          <% if @score.event.name == "Team" %>
+            <%= @score.team_name %><br >
           <% end %>
-        </h5>
-        <h5 class = "col" style="text-align: right">
-          <%= @score.score %>
-        </h5>
-      </div>
-      <div class = "card-text">
-        <div class="row">
-          <span class = "col">
-            <% if @score.event.name == "Team" %>
-              <%= @score.team_name %><br >
-            <% end %>
-            <% @score.name.each do |n| %>
-              <%= n %><br />
-            <% end %>
-            
-          </span>
-          <span class = "col" style="text-align: right">
-            <%= @score.competition.name %> <%= @score.year %>
-          </span>
-        </div>
+          <% @score.name.each do |n| %>
+            <%= n %><br />
+          <% end %>
+          
+        </span>
+        <span class = "col" style="text-align: right">
+          <%= @score.competition.name %> <%= @score.year %>
+        </span>
       </div>
     </div>
   </div>
 </div>
 
 <%= link_to 'Edit', edit_score_path(@score) %> |
-<%= link_to 'Back', scores_path %>
+<%= link_to 'Index', scores_path %>
