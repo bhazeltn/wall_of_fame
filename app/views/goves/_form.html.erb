@@ -5,12 +5,12 @@
 
   <div class="form-group row">
     <%= render :partial => '/layouts/partials/date', :locals => {achieved: :achieved, f: form} %>
-    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Competition", fld: :competition_id, fld2: :name, list: Competition.all, newpath: new_competition_path, f: form} %>
+    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Competition", fld: :competition_id, fld2: :name, list: @competitions, newpath: new_competition_path, f: form} %>
   </div>  
 
   <div class="form-group row">
-    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Skater", fld: :skater1, fld2: :name, list: Skater.all, newpath: new_skater_path, f: form} %>
-    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Skater", fld: :skater2, fld2: :name, list: Skater.all, newpath: new_skater_path, f: form} %>
+    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Skater", fld: :skater1, fld2: :name, list: @skaters, newpath: new_skater_path, f: form} %>
+    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Skater", fld: :skater2, fld2: :name, list: @skaters, newpath: new_skater_path, f: form} %>
   </div>
  
   <div class="form-group row">

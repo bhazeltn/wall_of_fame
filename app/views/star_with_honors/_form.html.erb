@@ -3,7 +3,7 @@
 
   <div class="form-group row">
     <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Assessment Level", fld: :star_test_id, list: StarTest.all, fld2: :name_with_level, f: form, newpath: nil} %>
-    <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Skater", fld: :skater_id, list: Skater.all, fld2: :name, newpath: new_skater_path, f: form} %>
+    <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Skater", fld: :skater_id, list: @skaters, fld2: :name, newpath: new_skater_path, f: form} %>
   </div>
   
   <div class="form-group row">

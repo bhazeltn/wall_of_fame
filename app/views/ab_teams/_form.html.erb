@@ -2,7 +2,7 @@
   <%= render :partial => '/layouts/partials/formerror', :locals => {model: @ab_team} %>
 
   <div class="form-group row">
-    <%= render :partial => '/layouts/partials/select', :locals => {lbl: "Skater", fld: :skater_id, fld2: :name, list: Skater.all, newpath: new_skater_path, f: form, w: 3} %>
+    <%= render :partial => '/layouts/partials/select', :locals => {lbl: "Skater", fld: :skater_id, fld2: :name, list: @skater, newpath: new_skater_path, f: form, w: 3} %>
     <%= render :partial => '/layouts/partials/select', :locals => {lbl: "Team", fld: :team_id, fld2: :name, list: Team.all, newpath: new_team_path, f: form, w: 3} %>
     <%= render :partial => '/layouts/partials/year', :locals => {yr: :year, f: form} %>
   </div>
