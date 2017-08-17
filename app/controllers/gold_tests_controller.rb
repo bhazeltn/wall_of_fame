@@ -1,7 +1,8 @@
 class GoldTestsController < ApplicationController
   before_action :set_gold_test, only: [:show, :edit, :update, :destroy]
   before_action :set_test_levels
-  
+  before_action :set_skaters
+    
   def set_test_levels
     @tests = 'Gold Freeskate', 'Gold Skills', 'Gold Intrepretive', 'Gold Dance', 'Diamond Dance'
   end

@@ -1,6 +1,7 @@
 class ExternalAwardsController < ApplicationController
   before_action :set_external_award, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_skaters
+  
   # GET /external_awards
   # GET /external_awards.json
   def index

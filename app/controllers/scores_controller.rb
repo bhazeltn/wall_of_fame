@@ -1,7 +1,8 @@
 class ScoresController < ApplicationController
   before_action :set_score, only: [:show, :edit, :update, :destroy]
+  before_action :set_skaters
+  before_action :set_competitions
   
-
   # GET /scores
   # GET /scores.json
   def index
@@ -10,8 +11,7 @@ class ScoresController < ApplicationController
     @events = Event.all
     @groups = Group.all
     @levels = Level.all
-    @competitions = Competition.all
-    @skaters = Skater.order(last_name: :asc, first_name: :asc)
+
   end
 
   # GET /scores/1
@@ -73,7 +73,7 @@ class ScoresController < ApplicationController
     def set_score
       @score = Score.find(params[:id])
     end
-
+  
     # Never trust parameters from the scary internet, only allow the white list through.
     def score_params
       params.require(:score).permit(:event_id, :segment_id, :score_type_id, :score, :skater1, :skater2, :skater3, :skater4, :team_name, :competition_id, :year, :achieved)

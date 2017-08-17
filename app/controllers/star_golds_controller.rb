@@ -1,5 +1,7 @@
 class StarGoldsController < ApplicationController
   before_action :set_star_gold, only: [:show, :edit, :update, :destroy]
+  before_action :set_skaters
+  before_action :set_competitions
 
   # GET /star_golds
   # GET /star_golds.json

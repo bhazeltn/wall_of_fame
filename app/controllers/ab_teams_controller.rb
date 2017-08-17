@@ -1,12 +1,12 @@
 class AbTeamsController < ApplicationController
   before_action :set_ab_team, only: [:show, :edit, :update, :destroy]
+  before_action :set_skaters
 
   # GET /ab_teams
   # GET /ab_teams.json
   def index
     @ab_teams = AbTeam.all
     @years = AbTeam.pluck(:year).map{|x| x}.uniq.sort
-    @skaters = Skater.order(last_name: :asc, first_name: :asc)
     @teams = Team.order(name: :asc)
   end
 

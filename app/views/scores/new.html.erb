@@ -36,16 +36,16 @@
       <% l2 = "Skater" %>
     <% end %>
     
-    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: l1, fld: :skater1, fld2: :name, list: Skater.all, newpath: new_skater_path, f: form} %>
+    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: l1, fld: :skater1, fld2: :name, list: @skaters, newpath: new_skater_path, f: form} %>
     <% if @score.two_skaters? %>
-      <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: l2, fld: :skater2, fld2: :name, list: Skater.all, newpath: new_skater_path, f: form} %>
+      <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: l2, fld: :skater2, fld2: :name, list: @skaters, newpath: new_skater_path, f: form} %>
     <% end %>
   </div>
 
   <% if @score.team? %>
     <div class="form-group row">
-      <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Skater", fld: :skater3, fld2: :name, list: Skater.all, newpath: new_skater_path, f: form} %>
-      <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Skater", fld: :skater4, fld2: :name, list: Skater.all, newpath: new_skater_path, f: form} %>
+      <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Skater", fld: :skater3, fld2: :name, list: @skaters, newpath: new_skater_path, f: form} %>
+      <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Skater", fld: :skater4, fld2: :name, list: @skaters, newpath: new_skater_path, f: form} %>
     </div>
   <% end %>
   

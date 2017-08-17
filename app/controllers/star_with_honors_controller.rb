@@ -1,5 +1,6 @@
 class StarWithHonorsController < ApplicationController
   before_action :set_star_with_honor, only: [:show, :edit, :update, :destroy]
+  before_action :set_skaters
 
   # GET /star_with_honors
   # GET /star_with_honors.json

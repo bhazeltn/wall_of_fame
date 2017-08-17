@@ -1,5 +1,7 @@
 class GovesController < ApplicationController
   before_action :set_gofe, only: [:show, :edit, :update, :destroy]
+  before_action :set_skaters
+  before_action :set_competitions
 
   # GET /goves
   # GET /goves.json

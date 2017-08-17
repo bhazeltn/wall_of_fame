@@ -1,5 +1,6 @@
 class ClubAwardsController < ApplicationController
   before_action :set_club_award, only: [:show, :edit, :update, :destroy]
+  before_action :set_skaters
 
   # GET /club_awards
   # GET /club_awards.json
