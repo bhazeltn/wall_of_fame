@@ -60,7 +60,7 @@ award_types_csv = CSV.parse(award_types_text, :headers => true, :encoding => 'IS
 club_awards_text = File.read(Rails.root.join('lib', 'seeds', 'club_awards.csv'))
 club_awards_csv = CSV.parse(club_awards_text, :headers => true, :encoding => 'ISO-8859-1')
 
-goves_text = File.read(Rails.root.join('lib', 'seeds', 'club_awards.csv'))
+goves_text = File.read(Rails.root.join('lib', 'seeds', 'goves.csv'))
 goves_csv = CSV.parse(goves_text, :headers => true, :encoding => 'ISO-8859-1')
 
 
@@ -185,6 +185,7 @@ puts "Teams = #{Team.count} rows"
 
 goves_csv.each do |row|
   t = Gofe.new
+  #puts row.to_hash
   t.level_id = row['lvl_id']
   t.event_id = row['evnt_id']
   t.segment_id = row['seg']

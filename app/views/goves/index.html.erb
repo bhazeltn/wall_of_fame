@@ -1,4 +1,4 @@
-<%= render :partial => '/layouts/partials/addrecord', :locals => {addpath: new_gofe_path } %>
+<%= render '/layouts/partials/addrecord', addpath: new_gofe_path %>
 
 <ul class="nav nav-pills nav-fill">
   <% @years.each_with_index do |y, i| %>
@@ -14,11 +14,11 @@
     <div role="tabpanel" id='y<%= y %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
       <ul class="nav nav-pills nav-fill">
         <% idx = 0 %>
-        <% @comps.each do |c| %>
-          <% if @gofes.where(year: y.to_s, competition_id: c).present? %>
+        <% @competitions.each do |c| %>
+          <% if @gofes.where(year: y.to_s, competition_id: c.id).present? %>
            <li class="nav-item">
-              <a href='#y<%= y %><%= Competition.find(c).name.gsub(/\s+/, "") %>'  aria-controls='y<%= y %><%= Competition.find(c).name.gsub(/\s+/, "") %>' role="tab" data-toggle="tab" <% if idx == 0 %> class="active nav-link" <% else %> class="nav-link" <% end %>>
-                <h5><%= Competition.find(c).name %></h5>
+              <a href='#y<%= y %><%= c.name.gsub(/\s+/, "") %>'  aria-controls='y<%= y %><%= c.name.gsub(/\s+/, "") %>' role="tab" data-toggle="tab" <% if idx == 0 %> class="active nav-link" <% else %> class="nav-link" <% end %>>
+                <h5><%= c.name %></h5>
               </a>
             </li>
             <% idx = idx + 1%>
@@ -27,13 +27,13 @@
       </ul>
       <div class="tab-content">
         <% idx = 0 %>
-        <% @comps.each do |c| %>
-          <% if @gofes.where(year: y.to_s, competition_id: c).present? %>
-            <div role="tabpanel" id='y<%= y %><%= Competition.find(c).name.gsub(/\s+/, "") %>' <% if idx == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
-              <%= render :partial => 'goetable', :locals => {y: y, c: c} %>
+        <% @competitions.each do |c| %>
+          <% if @gofes.where(year: y.to_s, competition_id: c.id).present? %>
+            <div role="tabpanel" id='y<%= y %><%= c.name.gsub(/\s+/, "") %>' <% if idx == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+              <%= render 'goetable', y: y, c: c.id %>
+              <% idx = idx + 1 %>
             </div>
           <% end %>
-          <% idx = idx + 1 %>
         <% end %>
       </div>
     </div>
