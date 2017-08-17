@@ -1,8 +1,20 @@
 <div style="text-align: center;">
   <h4><%= @score.event.level.name %> <%= @score.event.name %>
-  <% if @score.segment.name != "Total" %>
+  <% unless @score.segment.name == "Total" %>
     - <%= @score.segment.name %>
   <% end %></h4>
 </div>
-<%= render 'form', score: @score %>
+<%= form_for @score, :html => {:class => "form-horizontal"} do |form| %>
+  <%= render '/layouts/partials/formerror', model: @score %>
+
+  <div class="form-group row">
+     <%= form.label "Score", class:"col-form-label col-md-1" %>
+     <% lbl = @score.score_type.score_type + " Score" %>
+     <%= form.label lbl , class:"col-form-label col-md-3" %>
+     <%= render '/layouts/partials/score', score: :score, f: form %>
+  </div>
+
+  <%= render 'form', score: @score, form: form %>
+
+<% end %>
 

@@ -2,59 +2,22 @@
   <h4>Create a New Record</h4>
   <h5>
     <%= @score.event.level.name %> <%= @score.event.name %>
-    <% if @score.segment.name != "Total" %>
+    <% unless @score.segment.name == "Total" %>
       - <%= @score.segment.name %>
     <% end %>
   </h5>
 </div>
 
 <%= form_for @score, :html => {:class => "form-horizontal"} do |form| %>
-  <%= render :partial => '/layouts/partials/formerror', :locals => {model: @score} %>
+  <%= render '/layouts/partials/formerror', model: @score %>
   <%= form.hidden_field :segment_id %>
   <%= form.hidden_field :event_id %>
 
   <div class="form-group row">
-     <%= render :partial => '/layouts/partials/select', :locals => {w: 2, lbl: "Score", fld: :score_type_id, fld2: :score_type, list: @score.segment.score_type.all, newpath: nil, f: form} %>
-     <%= render :partial => '/layouts/partials/score', :locals => {score: :score, f: form} %>
+     <%= render '/layouts/partials/select', w: 2, lbl: "Score", fld: :score_type_id, fld2: :score_type, list: @score.segment.score_type.all, newpath: nil, f: form %>
+     <%= render '/layouts/partials/score', score: :score, f: form %>
   </div>
 
-  <% if @score.team? %>
-    <div class="form-group row">
-      <%= form.label "Team", class: 'col-form-label col-md-1' %>
-      <div class="col-md-4">
-        <%= form.text_field :team_name, id: :score_team_name, class: 'form-control' %>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="form-group row">
-    <% if @score.pairs? or @score.dance? %>
-      <% l1 = "Lady" %>
-      <% l2 = "Man" %>
-    <% else %>
-      <% l1 = "Skater" %>
-      <% l2 = "Skater" %>
-    <% end %>
-    
-    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: l1, fld: :skater1, fld2: :name, list: @skaters, newpath: new_skater_path, f: form} %>
-    <% if @score.two_skaters? %>
-      <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: l2, fld: :skater2, fld2: :name, list: @skaters, newpath: new_skater_path, f: form} %>
-    <% end %>
-  </div>
-
-  <% if @score.team? %>
-    <div class="form-group row">
-      <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Skater", fld: :skater3, fld2: :name, list: @skaters, newpath: new_skater_path, f: form} %>
-      <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Skater", fld: :skater4, fld2: :name, list: @skaters, newpath: new_skater_path, f: form} %>
-    </div>
-  <% end %>
+  <%= render 'form', score: @score, form: form %>
   
-  <div class="form-group row">
-    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Competition", fld: :competition_id, fld2: :name, list: @competitions, newpath: new_competition_path, f: form} %>
-    <%= render :partial => '/layouts/partials/date', :locals => {achieved: :achieved, f: form} %>
-  </div>
-
-  <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: scores_path, f: form} %>
-
-
 <% end %>
