@@ -1,4 +1,4 @@
-id,first_name,last_name,created_at,updated_at,
+id,f_name,l_name,created_at,updated_at,
 1,Melissa,Alfonso,2017-08-15 16:53:05,2017-08-15 16:53:05,
 2,Nika,Alinejad,2017-08-15 16:53:05,2017-08-15 16:53:05,
 3,Luke,Arbib,2017-08-15 16:53:05,2017-08-15 16:53:05,

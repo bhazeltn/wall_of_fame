@@ -1,4 +1,4 @@
-id,level_id,event_id,segment_id,year,competition_id,skater1,skater2,element,grade,achieved,created_at,updated_at,
+id,lvl_id,evnt_id,seg,yr,comp_id,s1,s2,elm,gr,ach,created_at,updated_at,
 1,13,45,7,2017,26,276,,SpSqB,2,2017-08-04,2017-08-16 13:52:21,2017-08-16 13:52:21,
 2,4,13,3,2017,26,109,,SSp2,2,2017-08-05,2017-08-16 14:00:27,2017-08-16 14:00:27,
 3,4,13,3,2017,26,15,,SSp3,2,2017-08-05,2017-08-16 14:04:30,2017-08-16 14:04:30,

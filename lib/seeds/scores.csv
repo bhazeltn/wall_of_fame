@@ -1,4 +1,4 @@
-id,event_id,segment_id,score_type_id,competition_id,score,skater1,skater2,skater3,skater4,team_name,achieved,year,created_at,updated_at,
+id,evt,seg,scr_ty,comp,scr,s1,s2,s3,s4,tn,ach,yr,created_at,updated_at,
 1,1,1,1,26,115.51,138,,,,,2017-08-04,2017,2017-08-15 16:53:15,2017-08-16 00:03:07,
 2,1,3,1,20,44.48,138,,,,,2016-11-03,2016,2017-08-15 16:53:15,2017-08-15 23:54:14,
 3,1,3,2,26,22.2,138,,,,,2017-08-04,2017,2017-08-15 16:53:15,2017-08-16 00:01:01,

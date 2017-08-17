@@ -60,6 +60,9 @@ award_types_csv = CSV.parse(award_types_text, :headers => true, :encoding => 'IS
 club_awards_text = File.read(Rails.root.join('lib', 'seeds', 'club_awards.csv'))
 club_awards_csv = CSV.parse(club_awards_text, :headers => true, :encoding => 'ISO-8859-1')
 
+goves_text = File.read(Rails.root.join('lib', 'seeds', 'club_awards.csv'))
+goves_csv = CSV.parse(goves_text, :headers => true, :encoding => 'ISO-8859-1')
+
 
 group_csv.each do |row|
   t = Group.new
@@ -138,7 +141,7 @@ starlvl_csv.each do |row|
   t.level = row['lvl']
   t.save!
 end
-puts "StarLevel =  #{StarLevel.new}"
+puts "StarLevel =  #{StarLevel.count} rows"
 
 startest_csv.each do |row|
   t = StarTest.new
@@ -180,6 +183,20 @@ teams_csv.each do |row|
 end
 puts "Teams = #{Team.count} rows"
 
+goves_csv.each do |row|
+  t = Gofe.new
+  t.level_id = row['lvl_id']
+  t.event_id = row['evnt_id']
+  t.segment_id = row['seg']
+  t.competition_id = row['comp_id']
+  t.element = row['elm']
+  t.skater1 = row['s1']
+  t.skater2 = row['s2']
+  t.grade = row['gr']
+  t.achieved = row['ach']
+  t.save!
+end
+puts "GOEs = #{Gofe.count} rows"
 
 
 score_csv.each do |row|
@@ -195,7 +212,7 @@ score_csv.each do |row|
   t.skater3 = row['s3']
   t.skater4 = row['s4']
   t.team_name = row['tn']
-  t.achieved = row['yr']
+  t.achieved = row['ach']
   
   t.save!
 end
