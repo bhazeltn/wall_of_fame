@@ -1,5 +1,6 @@
 class Gofe < ApplicationRecord
   before_save :update_year
+  before_save :update_discipline
   belongs_to :level
   belongs_to :event
   belongs_to :segment
@@ -19,14 +20,6 @@ class Gofe < ApplicationRecord
   
   def group
     self.level.group
-  end
-  
-  def freeskate?
-    if couple? or adult? or interpretive? or team?
-      false
-    else
-      true
-    end
   end
   
   def interpretive?
@@ -49,11 +42,35 @@ class Gofe < ApplicationRecord
     self.group.name == "AdultSkate"
   end
   
+  def triathalon?
+    self.group.name == "Triathalon"
+  end
+  
   def team?
     self.group == "STAR Team"
   end
+  
   private
   def update_year
     self.year = achieved.strftime("%Y")
   end
+  
+  def update_discipline
+    if self.interpretive?
+      self.discipline = "Interpretive"
+    elsif self.dance?
+      self.discipline = "Dance"
+    elsif self.pairs?
+      self.discipline = "Pairs"
+    elsif self.triathalon?
+      self.discipline = "Triathalon"
+    elsif self.team?
+      self.discipline = "Team"
+    elsif self.adult?
+      self.discipline = "AdultSkate"
+    else
+      self.discipline = "Freeskate"
+    end
+  end
+
 end

@@ -11,20 +11,7 @@ class GovesController < ApplicationController
     @events = Event.all
     @groups = Group.all
     @years = Gofe.pluck(:year).map{|x| x}.uniq.sort
-    @freeskate = Array.new()
-    @dance = Array.new()
-    @pairs = Array.new()
-    @triathalon = Array.new()
-    @team = Array.new()
-    @interpretive = Array.new()
-    @gofes.each do |g|
-      @freeskate.push(g) if g.freeskate?
-      @dance.push(g) if g.dance?
-      @pairs.push(g) if g.pairs?
-      @triathalon.push(g) if g.triathalon?
-      @team.push(g) if g.team?
-      @interpretive.push(g) if g.interpretive?
-    end
+    @discipline = Gofe.pluck(:discipline).map{|x| x}.uniq.sort
   end
 
   # GET /goves/1

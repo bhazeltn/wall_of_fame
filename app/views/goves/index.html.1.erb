@@ -1,0 +1,44 @@
+<%= render '/layouts/partials/addrecord', addpath: new_gofe_path %>
+
+<ul class="nav nav-pills nav-fill">
+  <% @years.each_with_index do |y, i| %>
+    <li class="nav-item" >
+      <a href='#y<%= y %>'  aria-controls='y<%= y %>' role="tab" data-toggle="tab" <% if i == 0 %> class="active nav-link" <% else %> class="nav-link" <% end %>>
+        <h4><%= y %></h4>
+      </a>
+    </li>
+  <% end %>
+</ul>
+<div class="tab-content">
+  <% @years.each_with_index do |y, i| %>
+    <div role="tabpanel" id='y<%= y %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+      <ul class="nav nav-pills nav-fill">
+        <% idx = 0 %>
+        <% @competitions.each do |c| %>
+          <% if @gofes.where(year: y.to_s, competition_id: c.id).present? %>
+           <li class="nav-item">
+              <a href='#y<%= y %><%= c.name.gsub(/\s+/, "") %>'  aria-controls='y<%= y %><%= c.name.gsub(/\s+/, "") %>' role="tab" data-toggle="tab" <% if idx == 0 %> class="active nav-link" <% else %> class="nav-link" <% end %>>
+                <h5><%= c.name %></h5>
+              </a>
+            </li>
+            <% idx = idx + 1%>
+          <% end %>
+        <% end %>
+      </ul>
+      <div class="tab-content">
+        <% idx = 0 %>
+        <% @competitions.each do |c| %>
+          <% if @gofes.where(year: y.to_s, competition_id: c.id).present? %>
+            <div role="tabpanel" id='y<%= y %><%= c.name.gsub(/\s+/, "") %>' <% if idx == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+              <%= render 'goetable', y: y, c: c.id %>
+              <% idx = idx + 1 %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
