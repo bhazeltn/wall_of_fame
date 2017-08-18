@@ -1,13 +1,13 @@
-<%= form_for @gold_test, :html => {:class => "form-horizontal"} do |form| %>
-  <%= render :partial => '/layouts/partials/formerror', :locals => {model: @gold_test} %>
+<%= form_for @gold_test, :html => {:class => "form-horizontal" do |form| %>
+  <%= render '/layouts/partials/formerror', model: @gold_test %>
   
   <div class="form-group row">
-    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Skater", fld: :skater_id, fld2: :name, list: @skaters, newpath: new_skater_path, f: form} %>
+    <%= render '/layouts/partials/select', w: 3, lbl: "Skater", fld: :skater_id, fld2: :name, list: @skaters, newpath: new_skater_path, f: form %>
     <%= form.label "Test", class: 'col-form-label col-md-1' %>
     <div class="col-md-3">
-      <%= form.select(:testLevel, options_for_select([['Gold Freeskate'], ['Gold Skills'], ['Gold Intrepretive'], ['Gold Dance'], ['Diamond Dance']]), {}, {class: "form-control"}) %>
+      <%= form.select(:testLevel, options_for_select([['Gold Freeskate'], ['Gold Skills'], ['Gold Intrepretive'], ['Gold Dance'], ['Diamond Dance']]), {, {class: "form-control") %>
     </div>
-    <%= render :partial => '/layouts/partials/year', :locals => {f: form, yr: :year} %>
+    <%= render '/layouts/partials/year', f: form, yr: :year %>
   </div>
-  <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: gold_tests_path, f: form} %>
+  <%= render '/layouts/partials/formbtn', cxlpath: gold_tests_path, f: form %>
 <% end %>

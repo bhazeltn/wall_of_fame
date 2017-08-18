@@ -1,9 +1,9 @@
-<%= render :partial => '/layouts/partials/addrecord', :locals => {addpath: new_gold_test_path } %>
+<%= render '/layouts/partials/addrecord', addpath: new_gold_test_path %>
 
 
 <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
   <% @years.each_with_index do |y, i| %>
-    <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: y.to_s, i: i } %> 
+    <%= render '/layouts/partials/tab',  y: y.to_s, b: y.to_s, i: i %> 
   <% end %>
 </ul>
 <div class="tab-content">
@@ -13,7 +13,7 @@
         <% i = 0 %>
         <% @tests.each do |t| %>
           <% if @gold_tests.where(year: y, testLevel: t).present? %>
-            <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: t, i: i } %> 
+            <%= render '/layouts/partials/tab', y: y.to_s, b: t, i: i %> 
             <% i = i + 1 %>
           <% end %>
         <% end %>
