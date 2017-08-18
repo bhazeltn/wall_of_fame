@@ -12,6 +12,7 @@ class GovesController < ApplicationController
     @groups = Group.all
     @years = Gofe.pluck(:year).map{|x| x}.uniq.sort
     @discipline = Gofe.pluck(:discipline).map{|x| x}.uniq.sort
+    @level = Level.all
   end
 
   # GET /goves/1

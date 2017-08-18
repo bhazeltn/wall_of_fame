@@ -36,7 +36,7 @@
                 <% @discipline.each do |d| %>
                   <% if @gofes.where(year: y.to_s, competition_id: c.id, discipline: d).present? %>
                     <div role="tabpanel" id='y<%= y.to_s %><%= c.name.gsub(/\s+/, "") %><%= d %>' <% if idx2 == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
-                      <% Level.all.each do |l| %>
+                      <% @level.each do |l| %>
                         <%= render 'goetable', y: y, c: c.id, d: d, l: l if @gofes.where(year: y.to_s, competition_id: c.id, discipline: d,level_id: l.id).present? %>
                       <% end %>
                     </div>
