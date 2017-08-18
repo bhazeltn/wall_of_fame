@@ -1,13 +1,13 @@
 class ClubAwardsController < ApplicationController
   before_action :set_club_award, only: [:show, :edit, :update, :destroy]
   before_action :set_skaters
+  before_action :set_awards
 
   # GET /club_awards
   # GET /club_awards.json
   def index
     @club_awards = ClubAward.all
     @years = ClubAward.pluck(:year).map{|x| x}.uniq.sort
-    @awards = Award.all
     @award_types = AwardType.all
   end
 
@@ -70,6 +70,12 @@ class ClubAwardsController < ApplicationController
     def set_club_award
       @club_award = ClubAward.find(params[:id])
     end
+    
+    def set_awards
+      @awards = Award.all
+      @award_types = AwardType.all
+    end
+    
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def club_award_params
