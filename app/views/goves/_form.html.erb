@@ -1,4 +1,4 @@
-<%= form_for @gofe, :html => {:class => "form-horizontal" do |form| %>
+<%= form_with(model: @gofe, local: true) do |form| %>
   <%= render '/layouts/partials/formerror', model: @gofe %>
   
   <%= render 'les', level: :level_id, event: :event_id, segment: :segment_id, f: form %>

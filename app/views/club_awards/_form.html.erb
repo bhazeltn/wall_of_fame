@@ -1,4 +1,4 @@
-<%= form_for @club_award, :html => {:class => "form-horizontal"} do |form| %>
+<%= form_with(model: club_award, local: true) do |form| %>
   <%= render :partial => '/layouts/partials/formerror', :locals => {model: @club_award} %>
 
   <div class="form-group row">

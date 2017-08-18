@@ -8,7 +8,7 @@
   </h5>
 </div>
 
-<%= form_for @score, :html => {:class => "form-horizontal"} do |form| %>
+<%= form_with(model: @score, local: true) do |form| %>
   <%= render '/layouts/partials/formerror', model: @score %>
   <%= form.hidden_field :segment_id %>
   <%= form.hidden_field :event_id %>

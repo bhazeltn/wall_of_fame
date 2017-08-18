@@ -1,4 +1,4 @@
-<%= form_for @external_award, :html => {:class => "form-horizontal" do |form| %>
+<%= form_with(model: external_award, local: true) do |form| %>
   <%= render '/layouts/partials/formerror', model: @external_award %>
 
   <div class="form-group row">

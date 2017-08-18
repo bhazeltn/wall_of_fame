@@ -4,7 +4,7 @@
     - <%= @score.segment.name %>
   <% end %></h4>
 </div>
-<%= form_for @score, :html => {:class => "form-horizontal"} do |form| %>
+<%= form_with(model: @score, local: true) do |form| %>
   <%= render '/layouts/partials/formerror', model: @score %>
 
   <div class="form-group row">
