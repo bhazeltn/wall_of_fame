@@ -1,13 +1,14 @@
 class AbTeamsController < ApplicationController
   before_action :set_ab_team, only: [:show, :edit, :update, :destroy]
   before_action :set_skaters
+  before_action :set_teams
 
   # GET /ab_teams
   # GET /ab_teams.json
   def index
     @ab_teams = AbTeam.all
     @years = AbTeam.pluck(:year).map{|x| x}.uniq.sort
-    @teams = Team.order(name: :asc)
+   
   end
 
   # GET /ab_teams/1
@@ -67,6 +68,10 @@ class AbTeamsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_ab_team
       @ab_team = AbTeam.find(params[:id])
+    end
+    
+    def set_teams
+       @teams = Team.order(name: :asc)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

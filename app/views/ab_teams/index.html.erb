@@ -1,55 +1,53 @@
-<%= render :partial => '/layouts/partials/addrecord', :locals => {addpath: new_ab_team_path } %>
-<div class="container">
-  <ul class="nav nav-pills">
-    <% @years.each_with_index do |y, i| %>
-      <% y2 = y + 1 %>
-      <% display = y.to_s + "-" + y2.to_s %>
-      <%= render :partial => '/layouts/partials/tab', :locals => { y: "z" , b: display, i: i } %> 
-    <% end %>
-  </ul>
-  <div class="tab-content">
-    <% @years.each_with_index do |y, i| %>
-      <% y2 = y + 1.year %>
-      <% display = y.to_s + " " + y2.to_s %>
-      <div role="tabpanel" id='yz<%= display %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
-        <span>
-          <ul class="nav nav-pills">
-            <% i2 = 0 %>
-            <% @teams.each do |t| %>
-              <% if @ab_teams.where(team_id: t.id, year: y).present? %>
-                <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: t.name, i: i2 } %>
-                <% i2 = i2 + 1 %>
-              <% end %>
+<%= render '/layouts/partials/addrecord', addpath: new_ab_team_path  %>
+<ul class="nav nav-pills">
+  <% @years.each_with_index do |y, i| %>
+    <% y2 = y + 1 %>
+    <% display = y.to_s + "-" + y2.to_s %>
+    <%= render '/layouts/partials/tab', y: "z" , b: display, i: i  %> 
+  <% end %>
+</ul>
+<div class="tab-content">
+  <% @years.each_with_index do |y, i| %>
+    <% y2 = y + 1.year %>
+    <% display = y.to_s + " " + y2.to_s %>
+    <div role="tabpanel" id='yz<%= display %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+      <span>
+        <ul class="nav nav-pills">
+          <% i2 = 0 %>
+          <% @teams.each do |t| %>
+            <% if @ab_teams.where(team_id: t.id, year: y).present? %>
+              <%= render '/layouts/partials/tab', y: y.to_s, b: t.name, i: i2  %>
+              <% i2 = i2 + 1 %>
             <% end %>
-          </ul>
-          <div class="tab-content">
-            <% i2 = 0 %>
-            <% @teams.each do |t| %>
-              <% if @ab_teams.where(team_id: t.id, year: y).present? %>
-                <div role="tabpanel" id='y<%= y.to_s %><%= t.name.gsub(/\s+/, "") %>' <% if i2 == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
-                  <span>
-                    <table class="table">
-                      <tbody>
-                        <% @ab_teams.where(team_id: t.id, year: y).in_groups_of(4).each do |grp| %>
-                          <tr>
-                            <% grp.each do |abt| %>
-                              <% if abt.present? %>
-                                <td col style="width:25%"><%= abt.skater.name %></td>
-                              <% end %>
+          <% end %>
+        </ul>1
+        <div class="tab-content">
+          <% i2 = 0 %>
+          <% @teams.each do |t| %>
+            <% if @ab_teams.where(team_id: t.id, year: y).present? %>
+              <div role="tabpanel" id='y<%= y.to_s %><%= t.name.gsub(/\s+/, "") %>' <% if i2 == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
+                <span>
+                  <table class="table">
+                    <tbody>
+                      <% @ab_teams.where(team_id: t.id, year: y).in_groups_of(4).each do |grp| %>
+                        <tr>
+                          <% grp.each do |abt| %>
+                            <% if abt.present? %>
+                              <td col style="width:25%"><%= abt.skater.name %></td>
                             <% end %>
-                          </tr>
-                        <% end %>
-                      </tbody>
-                    </table>
-                  </span>
-                </div>
-                <% i2 = i2 + 1 %>
-              <% end %>
+                          <% end %>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </span>
+              </div>
+              <% i2 = i2 + 1 %>
             <% end %>
-          </div>
-        </span>
-      </div>
-    <% end %>
-  </ul>
-</div>
+          <% end %>
+        </div>
+      </span>
+    </div>
+  <% end %>
+</ul>
 
