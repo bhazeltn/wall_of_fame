@@ -1,12 +1,12 @@
-<%= form_for @external_award, :html => {:class => "form-horizontal"} do |form| %>
-  <%= render :partial => '/layouts/partials/formerror', :locals => {model: @external_award} %>
+<%= form_for @external_award, :html => {:class => "form-horizontal" do |form| %>
+  <%= render '/layouts/partials/formerror', model: @external_award %>
 
   <div class="form-group row">
-    <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Skater", fld: :skater_id, fld2: :name, list: @skaters, newpath: new_skater_path, f: form} %>
-    <%= render :partial => '/layouts/partials/textfield', :locals => {lbl: "Award", fld: :award, fld2: :external_award_award, f: form} %>
-    <%= render :partial => '/layouts/partials/year', :locals => {yr: :year, f: form } %>
+    <%= render '/layouts/partials/select', w: 4, lbl: "Skater", fld: :skater_id, fld2: :name, list: @skaters, newpath: new_skater_path, f: form %>
+    <%= render '/layouts/partials/textfield', lbl: "Award", fld: :award, fld2: :external_award_award, f: form %>
+    <%= render '/layouts/partials/year', yr: :year, f: form  %>
   </div>
 
-  <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: external_awards_path, f: form} %>
+  <%= render '/layouts/partials/formbtn', cxlpath: external_awards_path, f: form %>
   
 <% end %>
