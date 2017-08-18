@@ -1,19 +1,19 @@
 <div class="row card-group">
-  <%= render :partial => 'card', :locals => { title: "Top Scores", path: scores_path, description: "Top Scores at any sanctioned competition for STAR 5 to Senior including Adult, Intrepretive, and Team Events."} %>
-  <%= render :partial => 'card', :locals => { title: "+2 Grade of Execution", path: goves_path, description: "+2 Grade of Execution is a huge achievement. Any Calalta skater or team getting a +2 GOE will be reconized on this page"} %>
-  <%= render :partial => 'card', :locals => { title: "Provincial Team Members", path: ab_teams_path, description: "Calalta Members of the Jr Development, Select, Canada Games, and other Provincial teams"} %>
+  <%= render 'card', title: "Top Scores", path: scores_path, description: "Top Scores at any sanctioned competition for STAR 5 to Senior including Adult, Intrepretive, and Team Events." %>
+  <%= render 'card', title: "+2 Grade of Execution", path: goves_path, description: "+2 Grade of Execution is a huge achievement. Any Calalta skater or team getting a +2 GOE will be reconized on this page" %>
+  <%= render 'card', title: "Provincial Team Members", path: ab_teams_path, description: "Calalta Members of the Jr Development, Select, Canada Games, and other Provincial teams" %>
 </div>
 
 <div class="row card-group">
-  <%= render :partial => 'card', :locals => { title: "STAR 1-4 Gold Assessment", path: star_golds_path, description: "STAR 1-4 uses the STAR Judging System and each skater recieves an assessment of Merit, Bronze, Silver, or Gold for each element."} %>
-  <%= render :partial => 'card', :locals => { title: "STAR Pass With Honors", path: star_with_honors_path, description: "STAR 1-5 Assessmens can be a Retry, Pass, or Pass with Honors. These skaters have the distinction of achieving Pass with Honors"} %>
-  <%= render :partial => 'card', :locals => { title: "Gold and Diamond Tests", path: gold_tests_path, description: "Gold and Diamond Tests are the pinnacle of Skate Canada tests"} %>
+  <%= render 'card', title: "STAR 1-4 Gold Assessment", path: star_golds_path, description: "STAR 1-4 uses the STAR Judging System and each skater recieves an assessment of Merit, Bronze, Silver, or Gold for each element." %>
+  <%= render 'card', title: "STAR Pass With Honors", path: star_with_honors_path, description: "STAR 1-5 Assessmens can be a Retry, Pass, or Pass with Honors. These skaters have the distinction of achieving Pass with Honors" %>
+  <%= render 'card', title: "Gold and Diamond Tests", path: gold_tests_path, description: "Gold and Diamond Tests are the pinnacle of Skate Canada tests" %>
 </div>
 
 <div class="row card-group">
   <div class="col-2"></div>
-  <%= render :partial => 'card', :locals => { title: "Club Awards", path: club_awards_path, description: "Our annual award winners"} %>
-  <%= render :partial => 'card', :locals => { title: "Other Awards", path: gold_tests_path, description: "Members who have recieved awards outside of our club"} %>
+  <%= render 'card', title: "Club Awards", path: club_awards_path, description: "Our annual award winners" %>
+  <%= render 'card', title: "Other Awards", path: gold_tests_path, description: "Members who have recieved awards outside of our club" %>
   <div class="col-2"></div>
 </div>
 
