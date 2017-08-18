@@ -1,17 +1,17 @@
-<%= form_for @star_gold, :html => {:class => "form-horizontal"} do |form| %>
-  <%= render :partial => '/layouts/partials/formerror', :locals => {model: @star_gold} %>
+<%= form_with(model: star_gold, local: true) do |form| %>
+  <%= render '/layouts/partials/formerror', model: @star_gold %>
 
   <div class="form-group row">
-    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Level", fld: :star_level_id, fld2: :level, list: StarLevel.where.not(id: 5), newpath: new_skater_path, f: form} %>
-    <%= render :partial => '/layouts/partials/select', :locals => {w: 3, lbl: "Skater", fld: :skater_id, fld2: :name, list: @skaters, newpath: new_skater_path, f: form} %>
-    <%= render :partial => '/layouts/partials/date', :locals => {achieved: :achieved, f: form} %>
+    <%= render '/layouts/partials/select', w: 3, lbl: "Level", fld: :star_level_id, fld2: :level, list: StarLevel.where.not(id: 5), newpath: new_skater_path, f: form %>
+    <%= render '/layouts/partials/select', w: 3, lbl: "Skater", fld: :skater_id, fld2: :name, list: @skaters, newpath: new_skater_path, f: form %>
+    <%= render '/layouts/partials/date', achieved: :achieved, f: form %>
   </div>
   
   <div class="form-group row">
-     <%= render :partial => '/layouts/partials/select', :locals => {w: 4, lbl: "Competition", fld: :competition_id, fld2: :name, list: @competitions, newpath: new_competition_path, f: form} %>
-     <%= render :partial => '/layouts/partials/textfield', :locals => {lbl: "Element", fld: :element, fld2: :star_gold_element, f: form} %>
+     <%= render '/layouts/partials/select', w: 4, lbl: "Competition", fld: :competition_id, fld2: :name, list: @competitions, newpath: new_competition_path, f: form %>
+     <%= render '/layouts/partials/textfield', lbl: "Element", fld: :element, fld2: :star_gold_element, f: form %>
   </div>
 
-  <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: star_golds_path, f: form} %>
+  <%= render '/layouts/partials/formbtn', cxlpath: star_golds_path, f: form %>
 
 <% end %>

@@ -1,7 +1,7 @@
-<%= render :partial => '/layouts/partials/addrecord', :locals => {addpath: new_star_gold_path } %>
+<%= render '/layouts/partials/addrecord', addpath: new_star_gold_path %>
 <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
   <% @years.each_with_index do |y, i| %>
-    <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: y.to_s, i: i} %>
+    <%= render '/layouts/partials/tab',  y: y.to_s, b: y.to_s, i: i} %>
   <% end %>
 </ul>
 <div class="tab-content">
@@ -11,7 +11,7 @@
         <% i = 0 %>
         <% @comps.each do |c| %>
           <% if @star_golds.where(year: y.to_s, competition_id: c).present? %>
-            <%= render :partial => '/layouts/partials/tab', :locals => { y: y.to_s, b: Competition.find(c).name, i: i } %> 
+            <%= render '/layouts/partials/tab',  y: y.to_s, b: Competition.find(c).name, i: i %> 
             <% i = i + 1 %>
           <% end %>
         <% end %>
@@ -21,7 +21,7 @@
         <% @comps.each do |c| %>
           <% if @star_golds.where(year: y.to_s, competition_id: c).present? %>
             <div role="tabpanel" id='y<%= y.to_s %><%= Competition.find(c).name.gsub(/[!@%&" ]/,'') %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>   
-              <%= render :partial => 'table', :locals => { star_golds: @star_golds, y: y, c: c } %>
+              <%= render 'table',  star_golds: @star_golds, y: y, c: c %>
             </div>
             <% i = i + 1 %>
           <% end %>
