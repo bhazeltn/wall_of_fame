@@ -36,6 +36,14 @@
     </div>
   </div>
 </div>
-
-<%= link_to 'Edit', edit_score_path(@score) %> |
-<%= link_to 'Index', scores_path %>
+<div>
+  <%= link_to 'Edit', edit_score_path(@score) %> |
+  <%= link_to 'Index', scores_path %>
+</div>
+<div>
+  <%= @score.event.level.name %> <%= @score.event.name %><br />
+  <% @score.event.segment.each do |es| %>
+    <% lnk = "Add " + es.name + " Score" %>
+    <%= link_to lnk, new_score_path(:event_id => @score.event_id, :segment_id => es.id) %> |
+  <% end %>
+</div>
