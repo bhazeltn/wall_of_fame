@@ -5,9 +5,20 @@ class ExternalAwardsController < ApplicationController
   # GET /external_awards
   # GET /external_awards.json
   def index
-    @external_awards = ExternalAward.all
-    @odd_awards = ExternalAward.where("(id % 2) > 0").all
-    @even_awards = ExternalAward.where("(id % 2) = 0").all
+    @external_awards = ExternalAward.order(year: :asc)
+    @even_awards = Array.new()
+    @odd_awards = Array.new()
+    @external_awards.each_with_index do |ea, i|
+      if (i % 2) == 0 or ea.id == 0
+        @even_awards.push(ea)
+      else
+        @odd_awards.push(ea)
+      end
+    end
+    
+    
+    #@odd_awards = @external_awards.where("(id % 2) > 0")
+    #@even_awards = @external_awards.where("(id % 2) = 0")
   end
 
   # GET /external_awards/1
