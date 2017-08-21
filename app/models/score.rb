@@ -1,14 +1,13 @@
 class Score < ApplicationRecord
   include DateMethods
-  
+  include DisciplineMethods
+
   before_save :update_year
-  
   belongs_to :event
   belongs_to :segment
   belongs_to :score_type
   belongs_to :competition
-
-  
+ 
   def name
     if skater4 != nil
       skater = "#{Skater.find(skater1).name}/#{Skater.find(skater2).name}/#{Skater.find(skater3).name}/#{Skater.find(skater4).name}"
@@ -22,36 +21,6 @@ class Score < ApplicationRecord
       skater =""
     end
   skater.split('/')
-  end
-  
-  def team?
-    self.event.name == "Team"
-  end
-  
-  def pairs?
-    self.event.name == "Pairs"
-  end
-  
-  def dance?
-    self.event.name == "Dance"
-  end
-  
-  def couples?
-    self.event.name == "Couples"
-  end
-  
-  def two_skaters?
-    if self.pairs?
-      true
-    elsif self.dance?
-      true
-    elsif self.couples?
-      true
-    elsif self.team?
-      true
-    else
-      false
-    end
   end
 
   def bronze?

@@ -1,5 +1,7 @@
 class Gofe < ApplicationRecord
   include DateMethods
+  include DisciplineMethods
+
   before_save :update_year
   before_save :update_discipline
   belongs_to :level
@@ -7,52 +9,9 @@ class Gofe < ApplicationRecord
   belongs_to :segment
   belongs_to :competition
   
-  def couple?
-    if self.pairs?
-      true
-    elsif self.dance?
-      true
-    elsif self.couples?
-      true
-    else
-      false
-    end
-  end
-  
-  def group
-    self.level.group
-  end
-  
-  def interpretive?
-    self.group.name == "Interpretive"
-  end
-  
-  def dance?
-    self.event.name == "Dance"
-  end
-  
-  def pairs?
-    self.event.name == "Pairs"
-  end
-  
-  def couples?
-    self.event.name == "Couples"
-  end
-  
-  def adult?
-    self.group.name == "AdultSkate"
-  end
-  
-  def triathalon?
-    self.group.name == "Triathalon"
-  end
-  
-  def team?
-    self.group == "STAR Team"
-  end
+
   
   private
-
   def update_discipline
     if self.interpretive?
       self.discipline = "Interpretive"
