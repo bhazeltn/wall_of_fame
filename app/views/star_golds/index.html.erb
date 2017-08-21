@@ -1,7 +1,7 @@
 <%= render '/layouts/partials/addrecord', addpath: new_star_gold_path %>
 <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
   <% @years.each_with_index do |y, i| %>
-    <%= render '/layouts/partials/tab',  y: y.to_s, b: y.to_s, i: i} %>
+    <%= render '/layouts/partials/tab',  y: y.to_s, b: y.to_s, i: i %>
   <% end %>
 </ul>
 <div class="tab-content">
@@ -9,18 +9,18 @@
     <div role="tabpanel" id='y<%= y %><%= y %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
       <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
         <% i = 0 %>
-        <% @comps.each do |c| %>
+        <% @competitions.each do |c| %>
           <% if @star_golds.where(year: y.to_s, competition_id: c).present? %>
-            <%= render '/layouts/partials/tab',  y: y.to_s, b: Competition.find(c).name, i: i %> 
+            <%= render '/layouts/partials/tab',  y: y.to_s, b: c.name, i: i %> 
             <% i = i + 1 %>
           <% end %>
         <% end %>
       </ul>
       <% i = 0 %>
       <div class="tab-content">
-        <% @comps.each do |c| %>
+        <% @competitions.each do |c| %>
           <% if @star_golds.where(year: y.to_s, competition_id: c).present? %>
-            <div role="tabpanel" id='y<%= y.to_s %><%= Competition.find(c).name.gsub(/[!@%&" ]/,'') %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>   
+            <div role="tabpanel" id='y<%= y.to_s %><%= c.name.gsub(/[!@%&" ]/,'') %>' <% if i == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>   
               <%= render 'table',  star_golds: @star_golds, y: y, c: c %>
             </div>
             <% i = i + 1 %>
