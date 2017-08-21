@@ -71,7 +71,12 @@ class Score < ApplicationRecord
 
   private
   def update_year
-    self.year = achieved.strftime("%Y")
+    yr = self.achieved.year
+    if self.competition_id == 20 or self.competition_id == 19
+      self.year = yr + 1
+    else
+    self.year = achieved.yr
+    end
   end
 
 end
