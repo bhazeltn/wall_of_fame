@@ -1,4 +1,6 @@
 class Score < ApplicationRecord
+  include DateMethods
+  
   before_save :update_year
   
   belongs_to :event
@@ -70,13 +72,6 @@ class Score < ApplicationRecord
   
 
   private
-  def update_year
-    yr = self.achieved.year
-    if self.competition_id == 20 or self.competition_id == 19
-      self.year = yr + 1
-    else
-    self.year = yr
-    end
-  end
+
 
 end

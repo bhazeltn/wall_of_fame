@@ -1,4 +1,5 @@
 class Gofe < ApplicationRecord
+  include DateMethods
   before_save :update_year
   before_save :update_discipline
   belongs_to :level
@@ -51,15 +52,7 @@ class Gofe < ApplicationRecord
   end
   
   private
-  def update_year
-    yr = self.achieved.year
-    if self.competition_id == 20 or self.competition_id == 19
-      self.year = yr + 1
-    else
-    self.year = yr
-    end
-  end
-  
+
   def update_discipline
     if self.interpretive?
       self.discipline = "Interpretive"
