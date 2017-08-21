@@ -14,9 +14,9 @@
     <tbody>
       <tr <% if g.grade == 3 %> class="table-success" <% end %>>
         <th scope="row"><%= g.event.name + " " if d == "Freeskate" %><%= g.segment.name %></th>
-        <td><%= Skater.find(g.skater1).name %>
+        <td><%= @skaters.find(g.skater1).name %>
           <% if g.skater2 and g.skater2 != "" %>
-            <br /><%= Skater.find(g.skater2).name %>
+            <br /><%= @skaters.find(g.skater2).name %>
           <% end %>
         </td>
         <td><%= g.element %></td>

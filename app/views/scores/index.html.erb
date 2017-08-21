@@ -28,7 +28,7 @@
             <% idx1 = 0 %>
             <% @levels.where(group_id: g.id).each do |l| %>
               <% if l.score.count > 0 or admin_signed_in? %>
-                <%= render :partial => 'tab', :locals => { a: g, b: l, i: idx1 } %> 
+                <%= render 'tab', a: g, b: l, i: idx1 %> 
                 <% idx1 = idx1 + 1 %>
               <% end %>
             <% end %>
@@ -43,7 +43,7 @@
                       <% idx3 = 0 %>
                       <% @events.where(level_id: l.id).each do |e| %>
                         <% if e.score.count > 0 or admin_signed_in? %>
-                          <%= render :partial => 'tab', :locals => { a: l, b: e, i: idx3 } %> 
+                          <%= render 'tab', a: l, b: e, i: idx3 %> 
                           <% idx3 = idx3 + 1 %>
                         <% end %>
                       <% end %>
@@ -54,7 +54,7 @@
                         <% if e.score.count > 0 or admin_signed_in? %>
                           <div role="tabpanel" id='<%= l.html_name %><%= e.html_name %>' <% if idx4 == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
                             <span>
-                              <%= render :partial => 'scoretable2', :locals => {evnt: e, scores: @scores} %>
+                              <%= render 'scoretable2', evnt: e, scores: @scores %>
                             </span>
                           </div>
                           <% idx4 = idx4 + 1 %>
