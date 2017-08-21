@@ -52,7 +52,12 @@ class Gofe < ApplicationRecord
   
   private
   def update_year
-    self.year = achieved.strftime("%Y")
+    yr = self.achieved.year
+    if self.competition_id == 20 or self.competition_id == 19
+      self.year = yr + 1
+    else
+    self.year = yr
+    end
   end
   
   def update_discipline
