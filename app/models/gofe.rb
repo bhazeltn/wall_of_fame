@@ -9,8 +9,6 @@ class Gofe < ApplicationRecord
   belongs_to :segment
   belongs_to :competition
   
-
-  
   private
   def update_discipline
     if self.interpretive?
