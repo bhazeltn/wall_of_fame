@@ -34,7 +34,7 @@ class StarWithHonorsController < ApplicationController
 
     respond_to do |format|
       if @star_with_honor.save
-        format.html { redirect_to @star_with_honor, notice: 'Star with honor was successfully created.' }
+        format.html { redirect_to @star_with_honor, notice: 'Record was successfully created.' }
         format.json { render :show, status: :created, location: @star_with_honor }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class StarWithHonorsController < ApplicationController
   def update
     respond_to do |format|
       if @star_with_honor.update(star_with_honor_params)
-        format.html { redirect_to @star_with_honor, notice: 'Star with honor was successfully updated.' }
+        format.html { redirect_to @star_with_honor, notice: 'Record was successfully updated.' }
         format.json { render :show, status: :ok, location: @star_with_honor }
       else
         format.html { render :edit }

@@ -32,7 +32,7 @@ class ClubAwardsController < ApplicationController
 
     respond_to do |format|
       if @club_award.save
-        format.html { redirect_to @club_award, notice: 'Club award was successfully created.' }
+        format.html { redirect_to @club_award, notice: 'Record was successfully created.' }
         format.json { render :show, status: :created, location: @club_award }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class ClubAwardsController < ApplicationController
   def update
     respond_to do |format|
       if @club_award.update(club_award_params)
-        format.html { redirect_to @club_award, notice: 'Club award was successfully updated.' }
+        format.html { redirect_to @club_award, notice: 'Record was successfully updated.' }
         format.json { render :show, status: :ok, location: @club_award }
       else
         format.html { render :edit }

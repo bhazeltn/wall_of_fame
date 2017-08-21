@@ -35,7 +35,7 @@ class ExternalAwardsController < ApplicationController
 
     respond_to do |format|
       if @external_award.save
-        format.html { redirect_to @external_award, notice: 'External award was successfully created.' }
+        format.html { redirect_to @external_award, notice: 'Record was successfully created.' }
         format.json { render :show, status: :created, location: @external_award }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class ExternalAwardsController < ApplicationController
   def update
     respond_to do |format|
       if @external_award.update(external_award_params)
-        format.html { redirect_to @external_award, notice: 'External award was successfully updated.' }
+        format.html { redirect_to @external_award, notice: 'Record was successfully updated.' }
         format.json { render :show, status: :ok, location: @external_award }
       else
         format.html { render :edit }

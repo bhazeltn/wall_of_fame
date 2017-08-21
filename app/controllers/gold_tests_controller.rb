@@ -36,7 +36,7 @@ class GoldTestsController < ApplicationController
 
     respond_to do |format|
       if @gold_test.save
-        format.html { redirect_to @gold_test, notice: 'Gold test was successfully created.' }
+        format.html { redirect_to @gold_test, notice: 'Record successfully created.' }
         format.json { render :show, status: :created, location: @gold_test }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class GoldTestsController < ApplicationController
   def update
     respond_to do |format|
       if @gold_test.update(gold_test_params)
-        format.html { redirect_to @gold_test, notice: 'Gold test was successfully updated.' }
+        format.html { redirect_to @gold_test, notice: 'Record successfully updated.' }
         format.json { render :show, status: :ok, location: @gold_test }
       else
         format.html { render :edit }

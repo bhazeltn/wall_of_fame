@@ -36,7 +36,7 @@ class GovesController < ApplicationController
 
     respond_to do |format|
       if @gofe.save
-        format.html { redirect_to @gofe, notice: 'Gofe was successfully created.' }
+        format.html { redirect_to @gofe, notice: 'Record successfully created.' }
         format.json { render :show, status: :created, location: @gofe }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class GovesController < ApplicationController
   def update
     respond_to do |format|
       if @gofe.update(gofe_params)
-        format.html { redirect_to @gofe, notice: 'Gofe was successfully updated.' }
+        format.html { redirect_to @gofe, notice: 'Record successfully updated.' }
         format.json { render :show, status: :ok, location: @gofe }
       else
         format.html { render :edit }

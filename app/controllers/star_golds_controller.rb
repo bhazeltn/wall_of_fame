@@ -32,7 +32,7 @@ class StarGoldsController < ApplicationController
 
     respond_to do |format|
       if @star_gold.save
-        format.html { redirect_to @star_gold, notice: 'Star gold was successfully created.' }
+        format.html { redirect_to @star_gold, notice: 'Record successfully created.' }
         format.json { render :show, status: :created, location: @star_gold }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class StarGoldsController < ApplicationController
   def update
     respond_to do |format|
       if @star_gold.update(star_gold_params)
-        format.html { redirect_to @star_gold, notice: 'Star gold was successfully updated.' }
+        format.html { redirect_to @star_gold, notice: 'Record successfully updated.' }
         format.json { render :show, status: :ok, location: @star_gold }
       else
         format.html { render :edit }
