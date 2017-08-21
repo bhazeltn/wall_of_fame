@@ -9,16 +9,9 @@ class ExternalAwardsController < ApplicationController
     @even_awards = Array.new()
     @odd_awards = Array.new()
     @external_awards.each_with_index do |ea, i|
-      if (i % 2) == 0 or ea.id == 0
-        @even_awards.push(ea)
-      else
-        @odd_awards.push(ea)
-      end
+      @even_awards.push(ea) if (i % 2) == 0 or ea.id == 0
+      @odd_awards.push(ea) if (i % 2) > 0
     end
-    
-    
-    #@odd_awards = @external_awards.where("(id % 2) > 0")
-    #@even_awards = @external_awards.where("(id % 2) = 0")
   end
 
   # GET /external_awards/1
