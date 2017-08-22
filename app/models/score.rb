@@ -38,10 +38,5 @@ class Score < ApplicationRecord
   def score?
     self.score > 0
   end
-  
-
-    
-  private
-
 
 end
