@@ -52,11 +52,15 @@
                       <% if evnt.team? %>
                         <%= s.team_name %><br />
                       <% end %>
-                      <% s.name.each do |n| %>
-                        <%= n %><br />
+                      <% s.name.in_groups_of(2) do |gn| %>
+                        <% gn.each_with_index do |n, i| %>
+                          <% if n.present? %>
+                            <% if i == 1 %>/<% end %>
+                            <%= n %>
+                          <% end %>
+                        <% end %>
+                        <br />
                       <% end %>
-                    <% else %>
-                      <i>No Record</i>
                     <% end %>
                   </td>
                   <td><%= s.score if s.score? %></td>
@@ -72,7 +76,7 @@
                   </td>
               </tr>
             <% end %>
-          <% end %>  
+          <% end %>
         </tbody>
       </table>
       <% if admin_signed_in? %>
