@@ -8,6 +8,9 @@ class Score < ApplicationRecord
   belongs_to :score_type
   belongs_to :competition
 
+  def level
+    self.event.level
+  end
 
   def name
     if skater4 != nil
