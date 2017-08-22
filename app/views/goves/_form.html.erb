@@ -4,10 +4,8 @@
   <div class="form-group row">
     <%= render 'groupselect', id: :level_id, lbl: "Level", model: Group.all, fld: :level, f: form, blank: true, sort: :name %>
     <%= render 'groupselect', id: :event_id, lbl: "Event", model: Level.all, fld: :event, f: form, blank: true, sort: :name %>
-    <%= render 'groupselect', id: :event_id, lbl: "Segment", model: Event.all, fld: :segment, f: form, blank: true, sort: :id %>
+    <%= render 'groupselect', id: :segment_id, lbl: "Segment", model: Event.all, fld: :segment, f: form, blank: true, sort: :id %>
   </div>
-
-  <%#= render 'les', level: :level_id, event: :event_id, segment: :segment_id, f: form %>
 
   <div class="form-group row">
     <%= render '/layouts/partials/date', achieved: :achieved, f: form %>
@@ -15,8 +13,15 @@
   </div>
 
   <div class="form-group row">
-    <%= render '/layouts/partials/select', w: 3, lbl: "Skater", fld: :skater1, fld2: :name, list: @skaters, newpath: new_skater_path, f: form %>
-    <%= render '/layouts/partials/select', w: 3, lbl: "Skater", fld: :skater2, fld2: :name, list: @skaters, newpath: new_skater_path, f: form %>
+    <!-- new -->
+    <% 2.times do |i| %>
+      <% skater = "skater" + (i + 1).to_s %>
+      <%= render '/layouts/partials/skater', lbl: "Skater", fld: binding.local_variable_get("skater"), f: form %>
+    <% end %>
+
+    <!-- old -->
+    <%#= render '/layouts/partials/skater', lbl: "Skater", fld: :skater1, f: form %>
+    <%#= render '/layouts/partials/skater', lbl: "Skater", fld: :skater2, f: form %>
   </div>
 
   <div class="form-group row">

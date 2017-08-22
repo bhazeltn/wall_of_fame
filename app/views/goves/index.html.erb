@@ -12,12 +12,11 @@
         <% idx = 0 %>
         <% @competitions.each do |c| %>
           <% if @gofes.where(year: y.to_s, competition_id: c.id).present? %>
-           <%= render '/layouts/partials/tab', y: y.to_s , b: c.name, i: idx %> 
+           <%= render '/layouts/partials/tab', y: y.to_s , b: c.name, i: idx %>
            <% idx = idx + 1%>
           <% end %>
         <% end %>
       </ul>
-      <div class="tab-content">
         <% idx1 = 0 %>
         <% @competitions.each do |c| %>
           <% if @gofes.where(year: y.to_s, competition_id: c.id).present? %>
@@ -36,11 +35,11 @@
                 <% @discipline.each do |d| %>
                   <% if @gofes.where(year: y.to_s, competition_id: c.id, discipline: d).present? %>
                     <div role="tabpanel" id='y<%= y.to_s %><%= c.name.gsub(/\s+/, "") %><%= d %>' <% if idx2 == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
-                      <% @level.each do |l| %>
+                      <% @levels.each do |l| %>
                         <%= render 'goetable', y: y, c: c.id, d: d, l: l if @gofes.where(year: y.to_s, competition_id: c.id, discipline: d,level_id: l.id).present? %>
                       <% end %>
                     </div>
-                    <% idx2 = idx2 + 1 %> 
+                    <% idx2 = idx2 + 1 %>
                   <% end %>
                 <% end %>
               </div>
