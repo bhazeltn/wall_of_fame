@@ -26,7 +26,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'sqlite3'
-  gem 'puma', '~> 3.7'  
+  gem 'puma', '~> 3.7'
 end
 
 group :production do

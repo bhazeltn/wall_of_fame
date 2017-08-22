@@ -10,11 +10,11 @@
     <div class="card-text">
       <table class="table table-sm table-hover">
         <thead>
-          <% if evnt.score_type.count > 1 %>
+          <% if evnt.multiple_scores? %>
             <th col style="width:10%"></th>
           <% end %>
           <th col style="width:30%">
-            <% if evnt.couples? or evnt.dance? or evnt.pairs? %>
+            <% if evnt.two_skaters? %>
               Skaters
             <% elsif evnt.team? %>
               Team Name<br/ >Skaters
@@ -32,7 +32,7 @@
           <% last = "" %>
           <% scores.where(event_id: evnt.id, segment_id: s.id).each do |s| %>
               <tr>
-                <% if evnt.score_type.count > 1 %>
+                <% if evnt.multiple_scores? %>
                   <th scope="row">
                     <%= s.score_type.score_type if s.score_type.score_type != last %>
                   </th>

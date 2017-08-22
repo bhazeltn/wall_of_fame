@@ -4,23 +4,31 @@ class Event < ApplicationRecord
   has_many :segment, through: :SegmentEvent
   has_many :score_type, through: :segment
   has_many :score
-  
+
+  def multiple_scores?
+    if self.score_type.count > 1
+      true
+    else
+      false
+    end
+  end
+
   def team?
     self.name == "Team"
   end
-  
+
   def pairs?
     self.name == "Pairs"
   end
-  
+
   def dance?
     self.name == "Dance"
   end
-  
+
   def couples?
     self.name == "Couples"
   end
-  
+
   def two_skaters?
     if self.pairs?
       true

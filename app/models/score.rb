@@ -7,7 +7,7 @@ class Score < ApplicationRecord
   belongs_to :segment
   belongs_to :score_type
   belongs_to :competition
- 
+
   def name
     if skater4 != nil
       skater = "#{Skater.find(skater1).name}/#{Skater.find(skater2).name}/#{Skater.find(skater3).name}/#{Skater.find(skater4).name}"
@@ -40,6 +40,7 @@ class Score < ApplicationRecord
   end
   
 
+    
   private
 
 

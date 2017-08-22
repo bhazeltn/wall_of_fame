@@ -214,7 +214,6 @@ score_csv.each do |row|
   t.skater4 = row['s4']
   t.team_name = row['tn']
   t.achieved = row['ach']
-  
   t.save!
 end
 puts "Scores = #{Score.count} rows"

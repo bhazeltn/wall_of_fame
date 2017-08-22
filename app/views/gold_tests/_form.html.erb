@@ -5,7 +5,7 @@
     <%= render '/layouts/partials/select', w: 3, lbl: "Skater", fld: :skater_id, fld2: :name, list: @skaters, newpath: new_skater_path, f: form %>
     <%= form.label "Test", class: 'col-form-label col-md-1' %>
     <div class="col-md-3">
-      <%= form.select(:testLevel, options_for_select([['Gold Freeskate'], ['Gold Skills'], ['Gold Intrepretive'], ['Gold Dance'], ['Diamond Dance']]), {}, {class: "form-control"}) %>
+      <%= form.select(:testLevel, @tests.map { |value| [ value, value ] }, {include_blank: true}, {class: "form-control"}) %>
     </div>
     <%= render '/layouts/partials/year', f: form, yr: :year %>
   </div>
