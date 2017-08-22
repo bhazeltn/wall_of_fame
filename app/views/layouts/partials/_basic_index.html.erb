@@ -1,0 +1,21 @@
+<p id="notice"><%= n %></p>
+<%= link_to "New #{model.name}", new_polymorphic_path(model.name.downcase) %>
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% model.each do |m| %>
+      <tr>
+        <td><%= m.name %></td>
+        <td><%= link_to 'Show', polymorphic_path(m) %></td>
+        <td><%= link_to 'Edit', edit_polymorphic_path(m) %></td>
+        <td><%= link_to 'Destroy', m, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
