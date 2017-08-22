@@ -1,5 +1,5 @@
 <%= form_with(model: ab_team, local: true) do |form| %>
-  <%= render '/layouts/partials/formerror', model: @ab_team %>
+  <%= render '/layouts/partials/formerror', model: ab_team %>
 
   <div class="form-group row">
     <%= render '/layouts/partials/select', lbl: "Skater", fld: :skater_id, fld2: :name, list: @skaters, newpath: new_skater_path, f: form, w: 3 %>

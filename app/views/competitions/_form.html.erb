@@ -1,9 +1,9 @@
-<%= form_for @competition, :html => {:class => "form-horizontal"} do |form| %>
-  <%= render :partial => '/layouts/partials/formerror', :locals => {model: @competition} %>
+<%= form_with(model: competition, local: true) do |form| %>
+  <%= render '/layouts/partials/formerror', model: competition %>
 
   <div class="form-group row">
-    <%= render :partial => '/layouts/partials/textfield', :locals => {lbl: "Name", fld: :name, fld2: :competition_name, f: form } %>
+    <%= render '/layouts/partials/textfield', lbl: "Name", fld: :name, fld2: :competition_name, f: form %>
   </div>
 
-  <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: competitions_path, f: form} %>
+  <%= render '/layouts/partials/formbtn', cxlpath: competitions_path, f: form %>
 <% end %>
