@@ -1,0 +1,4 @@
+<%= f.label id, lbl, class:"col-form-label col-md-1" %>
+<div class="col-md-3">
+  <%= f.grouped_collection_select id, model, fld, sort, :id, :name, {:include_blank => blank}, {class: "custom-select"} %>
+</div>
