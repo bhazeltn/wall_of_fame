@@ -5,5 +5,4 @@ class StarTest < ApplicationRecord
   def add_star_to_level
     self.name_with_level = self.star_level.level + " " + self.name
   end
-  
 end
