@@ -1,7 +1,6 @@
 class Score < ApplicationRecord
   include DateMethods
   include DisciplineMethods
-
   before_save :update_year
   belongs_to :event
   belongs_to :segment
