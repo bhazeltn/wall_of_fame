@@ -1,49 +1,22 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Level:</strong>
-  <%= @gofe.level.name %>
-</p>
-
-<p>
-  <strong>Event:</strong>
-  <%= @gofe.event.name %>
-</p>
-
-<p>
-  <strong>Segment:</strong>
-  <%= @gofe.segment.name %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @gofe.year %>
-</p>
-
-<p>
-  <strong>Competition:</strong>
-  <%= @gofe.competition.name %>
-</p>
-
-<p>
-  <strong>Skater1:</strong>
-  <%= @gofe.skater1 %>
-</p>
-
-<p>
-  <strong>Skater2:</strong>
-  <%= @gofe.skater2 %>
-</p>
-
-<p>
-  <strong>Element:</strong>
-  <%= @gofe.element %>
-</p>
-
-<p>
-  <strong>Grade:</strong>
-  <%= @gofe.grade %>
-</p>
+<div class="card col-md-6" style = "margin-right: auto; margin-left: auto;">
+  <div class="card-header" style="text-align: center">
+    <h4>Grade of Execution Record for<br />
+      <%= @skaters.find(@gofe.skater1).name %>
+      <% if @gofe.skater2 %>
+        /<%= @skaters.find(@gofe.skater2).name %>
+      <% end %>
+      </h4>
+  </div>
+  <div class="card-block">
+    <div class = "card-text">
+      <h5><%= @gofe.level.name %> <%= @gofe.event.name %> <%= @gofe.segment.name %></h5>
+      <h5><%= @gofe.year %> <%= @gofe.competition.name %></h5>
+      <h5><%= @gofe.element %> +<%= @gofe.grade %></h5>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_gofe_path(@gofe) %> |
-<%= link_to 'Back', goves_path %>
+<%= link_to 'Back', goves_path %> |
+<%= link_to 'New', new_gofe_path %>
