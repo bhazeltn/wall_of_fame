@@ -1,5 +1,3 @@
-<%= render '/layouts/partials/addrecord', addpath: new_gofe_path %>
-
 <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
   <% @years.each_with_index do |y, i| %>
     <%= render '/layouts/partials/tab', y: "x" , b: y.to_s, i: i%>
@@ -17,6 +15,7 @@
           <% end %>
         <% end %>
       </ul>
+      <div class="tab-content">
         <% idx1 = 0 %>
         <% @competitions.each do |c| %>
           <% if @gofes.where(year: y.to_s, competition_id: c.id).present? %>
@@ -50,6 +49,3 @@
     </div>
   <% end %>
 </div>
-
-
-
