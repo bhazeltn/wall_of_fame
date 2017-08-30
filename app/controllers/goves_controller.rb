@@ -23,6 +23,7 @@ class GovesController < ApplicationController
   # GET /goves/new
   def new
     @gofe = Gofe.new
+    set_new
   end
 
   # GET /goves/1/edit
@@ -73,6 +74,16 @@ class GovesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_gofe
       @gofe = Gofe.find(params[:id])
+    end
+
+    def set_new
+      @gofe.skater1 = params[:s1] if params.has_key?(:s1)
+      @gofe.skater2 = params[:s2] if params.has_key?(:s2)
+      @gofe.level_id = params[:l] if params.has_key?(:l)
+      @gofe.event_id = params[:e] if params.has_key?(:e)
+      @gofe.competition_id = params[:c] if params.has_key?(:c)
+      @gofe.achieved = params[:a] if params.has_key?(:a)
+      @gofe.segment_id = params[:s] if params.has_key?(:s)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
