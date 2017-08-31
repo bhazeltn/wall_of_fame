@@ -51,4 +51,3 @@ module DisciplineMethods
     self.group == "STAR Team"
   end
 end
-

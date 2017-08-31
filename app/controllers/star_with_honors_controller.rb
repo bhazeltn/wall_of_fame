@@ -6,8 +6,8 @@ class StarWithHonorsController < ApplicationController
   # GET /star_with_honors.json
   def index
     @star_with_honors = StarWithHonor.all
-    @years = StarWithHonor.pluck(:year).map{|x| x}.uniq.sort
- 
+    @years = StarWithHonor.pluck(:year).map{ |x| x }.uniq.sort
+
   end
 
   # GET /star_with_honors/1
@@ -19,12 +19,12 @@ class StarWithHonorsController < ApplicationController
   def new
     @star_with_honor = StarWithHonor.new
 
-      
+
   end
 
   # GET /star_with_honors/1/edit
   def edit
- 
+
   end
 
   # POST /star_with_honors
