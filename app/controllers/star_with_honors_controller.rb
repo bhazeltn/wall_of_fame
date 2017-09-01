@@ -18,13 +18,10 @@ class StarWithHonorsController < ApplicationController
   # GET /star_with_honors/new
   def new
     @star_with_honor = StarWithHonor.new
-
-
   end
 
   # GET /star_with_honors/1/edit
   def edit
-
   end
 
   # POST /star_with_honors

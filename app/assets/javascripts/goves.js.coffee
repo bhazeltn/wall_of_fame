@@ -4,19 +4,15 @@
 
 jQuery ->
   $('#gofe_event_id').hide()
-
-
   events = $('#gofe_event_id').html()
   $('#gofe_level_id').change ->
     level = $('#gofe_level_id :selected').text()
     lvl_options = $(events).filter("optgroup[label='#{level}']").html()
-    
     if lvl_options
       $('#gofe_event_id').html(lvl_options)
       $('#gofe_event_id').html(lvl_options).prepend("<option value=''></option>")
       $('#gofe_event_id option:first').attr("selected", "selected")
       $('#gofe_event_id').show()
-     
     else
       $('#gofe_event_id').empty
       $('#gofe_event_id').hide()

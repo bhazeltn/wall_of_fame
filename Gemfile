@@ -9,7 +9,7 @@ gem 'rails', '~> 5.1.1'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
-gem 'jbuilder'
+#gem 'jbuilder'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -32,7 +32,7 @@ end
 group :production do
   gem 'mysql2'
   gem 'passenger'
-  gem 'therubyracer', platforms: :ruby
+  gem 'therubyracer', platforms: :ruby  
 end
 
 group :development do

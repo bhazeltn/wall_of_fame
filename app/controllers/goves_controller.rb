@@ -2,15 +2,13 @@ class GovesController < ApplicationController
   before_action :set_gofe, only: [:show, :edit, :update, :destroy]
   before_action :set_skaters
   before_action :set_competitions
+  before_action :set_grouplevelevents
 
   # GET /goves
   # GET /goves.json
   def index
     @gofes = Gofe.all
     @segments = Segment.all
-    @levels = Level.all
-    @events = Event.all
-    @groups = Group.all
     @years = Gofe.pluck(:year).map{|x| x}.uniq.sort
     @discipline = Gofe.pluck(:discipline).map{|x| x}.uniq.sort
   end

@@ -1,6 +1,7 @@
 class Gofe < ApplicationRecord
   include DateMethods
   include DisciplineMethods
+  include TextMethods
 
   before_save :update_year
   before_save :update_discipline

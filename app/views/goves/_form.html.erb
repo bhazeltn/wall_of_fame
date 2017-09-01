@@ -1,10 +1,10 @@
-<%= form_with(model: gofe, local: true) do |form| %>
+<%= form_for @gofe do |form| %>
   <%= render '/layouts/partials/formerror', model: gofe %>
 
   <div class="form-group row">
-    <%= render 'groupselect', id: :level_id, lbl: "Level", model: Group.all, fld: :level, f: form, blank: true, sort: :name %>
-    <%= render 'groupselect', id: :event_id, lbl: "Event", model: Level.all, fld: :event, f: form, blank: true, sort: :name %>
-    <%= render 'groupselect', id: :segment_id, lbl: "Segment", model: Event.all, fld: :segment, f: form, blank: true, sort: :id %>
+    <%= render 'groupselect', id: :level_id, lbl: "Level", model: groups, fld: :level, f: form, blank: true, sort: :name %>
+    <%= render 'groupselect', id: :event_id, lbl: "Event", model: levels, fld: :event, f: form, blank: true, sort: :name %>
+    <%= render 'groupselect', id: :segment_id, lbl: "Segment", model: events, fld: :segment, f: form, blank: true, sort: :id %>
   </div>
 
   <div class="form-group row">

@@ -9,4 +9,11 @@ class ApplicationController < ActionController::Base
     @competitions = Competition.order(:name)
   end
 
+  def set_grouplevelevents
+    @levels = Level.all
+    @events = Event.all
+    @groups = Group.all
+  end
 end
+ 
+   
