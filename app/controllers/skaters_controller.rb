@@ -20,6 +20,9 @@ class SkatersController < ApplicationController
     @external_awards = ExternalAward.all
     @star_golds = StarGold.all
     @star_with_honors = StarWithHonor.all
+    @gold_tests = GoldTest.all
+    @goe_years = @gofes.pluck(:year).map{|x| x}.uniq.sort
+    @star_gold_years = @star_golds.pluck(:year).map{|x| x}.uniq.sort
   end
 
   # GET /skaters/new
