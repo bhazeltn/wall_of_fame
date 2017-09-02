@@ -1,8 +1,9 @@
-<p id="notice"><%= notice %></p>
 <div style="text-align: center;">
   <h3>
     <%= @skater.first_name %> <%= @skater.last_name %>
   </h3>
+  <h4><%= @skater.level.name %> <%= @skater.event.name %></h4>
+  <hr />
   <h4>Achievements</h4>
 </div>
 <div class="row">

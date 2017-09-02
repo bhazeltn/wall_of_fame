@@ -82,6 +82,6 @@ class SkatersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def skater_params
-      params.require(:skater).permit(:first_name, :last_name)
+      params.require(:skater).permit(:first_name, :last_name, :level_id, :event_id)
     end
 end
