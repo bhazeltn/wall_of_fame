@@ -1,6 +1,8 @@
 class SkatersController < ApplicationController
   before_action :set_skater, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin!
+  before_action :set_competitions
+  before_action :set_grouplevelevents
 
   # GET /skaters
   # GET /skaters.json
@@ -11,6 +13,13 @@ class SkatersController < ApplicationController
   # GET /skaters/1
   # GET /skaters/1.json
   def show
+    @gofes = Gofe.all
+    @scores = Score.all
+    @club_awards = ClubAward.all
+    @ab_teams = AbTeam.all
+    @external_awards = ExternalAward.all
+    @star_golds = StarGold.all
+    @star_with_honors = StarWithHonor.all
   end
 
   # GET /skaters/new
