@@ -1,3 +1,6 @@
+<%= render '/layouts/partials/need_help' %>
+<%= render '/layouts/partials/how_to_update' %>
+
 <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
   <li class="nav-item">
     <a href='#intro' aria-controls="intro" role="tab" data-toggle="tab" class="nav-link active flex-sm-fill text-sm-center">
@@ -28,7 +31,7 @@
             <% idx1 = 0 %>
             <% @levels.where(group_id: g.id).each do |l| %>
               <% if l.score.count > 0 or admin_signed_in? %>
-                <%= render 'tab', a: g, b: l, i: idx1 %> 
+                <%= render 'tab', a: g, b: l, i: idx1 %>
                 <% idx1 = idx1 + 1 %>
               <% end %>
             <% end %>
@@ -43,7 +46,7 @@
                       <% idx3 = 0 %>
                       <% @events.where(level_id: l.id).each do |e| %>
                         <% if e.score.count > 0 or admin_signed_in? %>
-                          <%= render 'tab', a: l, b: e, i: idx3 %> 
+                          <%= render 'tab', a: l, b: e, i: idx3 %>
                           <% idx3 = idx3 + 1 %>
                         <% end %>
                       <% end %>
