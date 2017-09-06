@@ -1,5 +1,7 @@
-<%= render '/layouts/partials/need_help' %>
-<%= render '/layouts/partials/how_to_update' %>
+<% unless admin_signed_in? %>
+  <%= render '/layouts/partials/need_help' %>
+  <%= render '/layouts/partials/how_to_update' %>
+<% end %>
 
 <ul class="nav nav-pills flex-column flex-sm-row nav-fill">
   <li class="nav-item">
