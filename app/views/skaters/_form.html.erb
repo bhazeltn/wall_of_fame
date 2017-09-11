@@ -6,13 +6,11 @@
     <%= render '/layouts/partials/textfield', lbl: "Last", fld: :last_name, fld2: :skater_last_name, f: form %>
   </div>
 
-  <!--
   <p>Current Competitive Level</p>
   <div class="form-group row">
-    <%#= render '/goves/groupselect', lbl: "Level", id: :level_id, model: Group.all, fld: :level, f: form, blank: true, sort: :name %>
-    <%#= render '/goves/groupselect', lbl: "Event", id: :event_id, model: Level.all, fld: :event, f: form, blank: true, sort: :name %>
+    <%= render '/goves/groupselect', lbl: "Level", id: :level_id, model: Group.all, fld: :level, f: form, blank: true, sort: :name %>
+    <%= render '/goves/groupselect', lbl: "Event", id: :event_id, model: Level.all, fld: :event, f: form, blank: true, sort: :name %>
   </div>
-  -->
   <%= render :partial => '/layouts/partials/formbtn', :locals => {cxlpath: skaters_path, f: form} %>
 
 <% end %>
