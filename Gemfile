@@ -5,12 +5,13 @@ git_source(:github) do |repo_name|
   'https://github.com/#{repo_name}.git"'
 end
 
-gem 'rails', '~> 5.1.2'
+gem 'rails', ' ~> 5.1.1'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 #gem 'jbuilder'
-gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'bootstrap', '= 4.0.0.alpha6'
+
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 source 'https://rails-assets.org' do
@@ -20,6 +21,7 @@ gem "font-awesome-rails"
 gem "bootstrap-datepicker-rails"
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'therubyracer', platforms: :ruby
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -32,7 +34,6 @@ end
 group :production do
   gem 'mysql2'
   gem 'passenger'
-  gem 'therubyracer', platforms: :ruby
 end
 
 group :development do
@@ -40,7 +41,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem "rails_best_practices"
+  #gem "rails_best_practices"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

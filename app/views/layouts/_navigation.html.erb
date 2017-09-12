@@ -3,8 +3,8 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <%= link_to "Wall Of Fame", root_path, class: "navbar-brand" %>
-  
-  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       <li class="<%= 'active' if current_page?(scores_path) %>"><%= link_to "Top Scores", scores_path, class: "nav-link" %></li>
       <li class="<%= 'active' if current_page?(goves_path) %>"><%= link_to "+2 GOE", goves_path, class: "nav-link" %></li>
@@ -14,7 +14,7 @@
       <li class="<%= 'active' if current_page?(gold_tests_path) %>"><%= link_to "Gold and Diamond Tests", gold_tests_path, class: "nav-link" %></li>
       <li class="<%= 'active' if current_page?(club_awards_path) %>"><%= link_to "Club Awards", club_awards_path, class: "nav-link" %></li>
       <li class="<%= 'active' if current_page?(external_awards_path) %>"><%= link_to "Other Awards", external_awards_path, class: "nav-link" %></li>
-    </ul>  
+    </ul>
     <ul class="navbar-nav my-2 mt-lg-0">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,7 +30,7 @@
             <%= link_to('Login', new_admin_session_path, class: "dropdown-item") %>
           <% end %>
         </div>
-      </li> 
+      </li>
     </ul>
 
   </div>
