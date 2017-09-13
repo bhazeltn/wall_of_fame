@@ -1,6 +1,7 @@
 class SkatersController < ApplicationController
   before_action :set_skater, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin!
+  skip_before_action :authenticate_admin!, only:[:show]
   before_action :set_competitions
   before_action :set_grouplevelevents
 
