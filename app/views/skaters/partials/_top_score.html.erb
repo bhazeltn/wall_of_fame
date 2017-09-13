@@ -5,7 +5,7 @@
       <p class="card-text">
         <table class="table table-sm">
           <tbody>
-            <% score.where(skater1: skater.id).or(score.where(skater2: skater.id)).or(score.where(skater3: skater.id)).or(score.where(skater4: skater.id)).each do |s| %>
+            <% scores.where(skater1: skater.id).or(scores.where(skater2: skater.id)).or(scores.where(skater3: skater.id)).or(scores.where(skater4: skater.id)).each do |s| %>
               <tr>
                 <td>
                   <%= s.event.level.name %> <%=s.event.name%><br />

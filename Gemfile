@@ -34,6 +34,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'sqlite3'
   gem 'puma', '~> 3.7'
+  gem 'mysql2'
 end
 
 group :production do

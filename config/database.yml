@@ -10,8 +10,13 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  database: calaltawalloffame
+  pool: 5
+  username: wof
+  password: wof
+  host: 127.0.0.1
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -23,8 +28,8 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: 
+  database:
   pool: 5
-  username: 
-  password: 
-  host: 
+  username:
+  password:
+  host:
