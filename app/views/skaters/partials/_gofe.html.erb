@@ -4,7 +4,7 @@
       <h5 class="card-header card-danger text-centre">+2 Grade Of Execution</h5>
       <div class="card-text">
         <% years.each do |y| %>
-          <% if gofes.where(skater1: skater.id, year: y).or(gofes.where(skater1: skater.id, year: y)).present? %>
+          <% if gofes.where(skater1: skater.id, year: y).or(gofes.where(skater2: skater.id, year: y)).present? %>
             <% competitions.each do |c| %>
               <% if gofes.where(skater1: skater.id, competition_id: c.id, year: y).or(gofes.where(skater2: skater.id, competition_id: c.id, year: y)).present? %>
                 <h6><%= y %> <%= c.name %></h6>
