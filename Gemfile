@@ -23,6 +23,11 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'therubyracer', platforms: :ruby
 
+gem 'capistrano', '~> 3.7', '>= 3.7.1'
+gem 'capistrano-rails', '~> 1.2'
+gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-rvm'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
