@@ -1,20 +1,18 @@
-<div class="col-md-6">
-  <div class="card">
-    <div class="card-block">
-      <h5 class="card-header card-danger text-centre">Other Awards</h5>
-      <div class="card-text">
-        <table class="table table-sm">
-          <% external_awards.where(skater_id: skater.id).in_groups_of(2) do |eag| %>
-            <tr>
-              <% eag.each do |ea| %>
-                <% if ea.present? %>
-                  <td><%= ea.year %> <%= ea.award %></td>
-                <% end %>
+<div class="card">
+  <div class="card-block">
+    <h5 class="card-header card-danger text-centre">Other Awards</h5>
+    <div class="card-text">
+      <table class="table table-sm">
+        <% external_awards.where(skater_id: skater.id).in_groups_of(3) do |eag| %>
+          <tr>
+            <% eag.each do |ea| %>
+              <% if ea.present? %>
+                <td><%= ea.year %> <%= ea.award %></td>
               <% end %>
-            </tr>
-          <% end %>
-        </table>
-      </div>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>

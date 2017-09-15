@@ -1,0 +1,9 @@
+<% if score.bronze? %>
+  <i class="fa fa-trophy fa-lg" style="color: #8C7853;"></i>
+<% elsif score.silver? %>
+  <i class="fa fa-trophy fa-lg" style="color: silver;"></i>
+<% elsif score.gold? %>
+  <i class="fa fa-trophy fa-lg" style="color: gold;"></i>
+<% else %>
+  <i class="fa fa-diamond fa-lg" style="color: #b9f2ff;"></i>
+<% end %>

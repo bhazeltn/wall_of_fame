@@ -3,37 +3,37 @@
     <%= @skater.first_name %> <%= @skater.last_name %>
   </h3>
   <% if @skater.level.present? %>
-    <h4><%= @skater.level.name %> <%= @skater.event.name %></h4>
+    <% unless @skater.event.id == 94 %>
+      <h4><%= @skater.level.name %> <%= @skater.event.name %></h4>
+    <% end %>
   <% end %>
   <hr />
   <h4>Achievements</h4>
 </div>
-<div class="row">
-  <% if @scores.where(skater1: @skater.id).or(@scores.where(skater2: @skater.id)).or(@scores.where(skater3: @skater.id)).or(@scores.where(skater4: @skater.id)).present? %>
-    <%= render '/skaters/partials/top_score', skater: @skater, scores: @scores %>
-  <% end %>
-  <% if @gofes.where(skater1: @skater).or(@gofes.where(skater2: @skater)).present? %>
-    <%= render '/skaters/partials/gofe', skater: @skater, competitions: @competitions, gofes: @gofes, years: @goe_years %>
-  <% end %>
-  <% if @club_awards.where(skater_id: @skater.id).present? %>
-    <%= render '/skaters/partials/club_awards', skater: @skater, club_awards: @club_awards %>
-  <% end %>
-  <% if @ab_teams.where(skater_id: @skater.id).present? %>
-    <%= render '/skaters/partials/ab_teams', skater: @skater, ab_teams: @ab_teams %>
-  <% end %>
- <% if @external_awards.where(skater_id: @skater.id).present? %>
-    <%= render '/skaters/partials/external_awards', skater: @skater, external_awards: @external_awards %>
-  <% end %>
-  <% if @star_golds.where(skater_id: @skater.id).present? %>
-    <%= render '/skaters/partials/star_golds', skater: @skater, star_golds: @star_golds, competitions: @competitions, years: @star_gold_years %>
-  <% end %>
-  <% if @star_with_honors.where(skater_id: @skater.id).present? %>
-    <%= render '/skaters/partials/star_with_honors', skater: @skater, star_with_honors: @star_with_honors %>
-  <% end %>
-  <% if @gold_tests.where(skater_id: @skater.id).present? %>
-    <%= render '/skaters/partials/gold_tests', skater: @skater, gold_tests: @gold_tests %>
-  <% end %>
-</div>
+<% if @scores.where(skater1: @skater.id).or(@scores.where(skater2: @skater.id)).or(@scores.where(skater3: @skater.id)).or(@scores.where(skater4: @skater.id)).present? %>
+  <%= render '/skaters/partials/top_score', skater: @skater, scores: @scores %>
+<% end %>
+<% if @gofes.where(skater1: @skater).or(@gofes.where(skater2: @skater)).present? %>
+  <%= render '/skaters/partials/gofe', skater: @skater, competitions: @competitions, gofes: @gofes, years: @goe_years %>
+<% end %>
+<% if @club_awards.where(skater_id: @skater.id).present? %>
+  <%= render '/skaters/partials/club_awards', skater: @skater, club_awards: @club_awards %>
+<% end %>
+<% if @ab_teams.where(skater_id: @skater.id).present? %>
+  <%= render '/skaters/partials/ab_teams', skater: @skater, ab_teams: @ab_teams %>
+<% end %>
+<% if @external_awards.where(skater_id: @skater.id).present? %>
+  <%= render '/skaters/partials/external_awards', skater: @skater, external_awards: @external_awards %>
+<% end %>
+<% if @star_golds.where(skater_id: @skater.id).present? %>
+  <%= render '/skaters/partials/star_golds', skater: @skater, star_golds: @star_golds, competitions: @competitions, years: @star_gold_years %>
+<% end %>
+<% if @star_with_honors.where(skater_id: @skater.id).present? %>
+  <%= render '/skaters/partials/star_with_honors', skater: @skater, star_with_honors: @star_with_honors %>
+<% end %>
+<% if @gold_tests.where(skater_id: @skater.id).present? %>
+  <%= render '/skaters/partials/gold_tests', skater: @skater, gold_tests: @gold_tests %>
+<% end %>
 
 <%= link_to 'Edit', edit_skater_path(@skater) %> |
 <%= link_to 'Back', skaters_path %>

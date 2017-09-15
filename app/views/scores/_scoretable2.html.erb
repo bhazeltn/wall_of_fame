@@ -40,15 +40,7 @@
                 <% end %>
                   <td>
                     <% if s.score? %>
-                      <% if s.bronze? %>
-                        <i class="fa fa-trophy fa-lg" style="color: #8C7853;"></i>
-                      <% elsif s.silver? %>
-                        <i class="fa fa-trophy fa-lg" style="color: silver;"></i>
-                      <% elsif s.gold? %>
-                        <i class="fa fa-trophy fa-lg" style="color: gold;"></i>
-                      <% else %>
-                        <i class="fa fa-diamond fa-lg" style="color: #b9f2ff;"></i>
-                      <% end %>
+                      <%= render '/layouts/partials/score_age', score: s %>
                       <% if evnt.team? %>
                         <%= s.team_name %><br />
                       <% end %>
@@ -56,7 +48,7 @@
                         <% gn.each_with_index do |n, i| %>
                           <% if n.present? %>
                             <% if i == 1 %>/<% end %>
-                            <%= n %>
+                            <%= render '/layouts/partials/skater_link', n: n %>
                           <% end %>
                         <% end %>
                         <br />

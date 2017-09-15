@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170902024413) do
+ActiveRecord::Schema.define(version: 20170914170025) do
 
-  create_table "ab_teams", force: :cascade do |t|
+  create_table "ab_teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "skater_id"
     t.integer "team_id"
     t.integer "year"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20170902024413) do
     t.index ["team_id"], name: "index_ab_teams_on_team_id"
   end
 
-  create_table "admins", force: :cascade do |t|
+  create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -39,13 +39,13 @@ ActiveRecord::Schema.define(version: 20170902024413) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "award_types", force: :cascade do |t|
+  create_table "award_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "awards", force: :cascade do |t|
+  create_table "awards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "award_type_id"
     t.string "name"
     t.datetime "created_at", null: false
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20170902024413) do
     t.index ["award_type_id"], name: "index_awards_on_award_type_id"
   end
 
-  create_table "club_awards", force: :cascade do |t|
+  create_table "club_awards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "skater_id"
     t.integer "award_id"
     t.integer "year"
@@ -63,13 +63,13 @@ ActiveRecord::Schema.define(version: 20170902024413) do
     t.index ["skater_id"], name: "index_club_awards_on_skater_id"
   end
 
-  create_table "competitions", force: :cascade do |t|
+  create_table "competitions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "events", force: :cascade do |t|
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "html_name"
     t.integer "level_id"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20170902024413) do
     t.index ["level_id"], name: "index_events_on_level_id"
   end
 
-  create_table "external_awards", force: :cascade do |t|
+  create_table "external_awards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "skater_id"
     t.string "award"
     t.string "web_site"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20170902024413) do
     t.index ["skater_id"], name: "index_external_awards_on_skater_id"
   end
 
-  create_table "gold_tests", force: :cascade do |t|
+  create_table "gold_tests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "skater_id"
     t.string "testLevel"
     t.integer "year"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20170902024413) do
     t.index ["skater_id"], name: "index_gold_tests_on_skater_id"
   end
 
-  create_table "goves", force: :cascade do |t|
+  create_table "goves", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "level_id"
     t.integer "event_id"
     t.integer "segment_id"
@@ -117,14 +117,14 @@ ActiveRecord::Schema.define(version: 20170902024413) do
     t.index ["segment_id"], name: "index_goves_on_segment_id"
   end
 
-  create_table "groups", force: :cascade do |t|
+  create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "html_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "levels", force: :cascade do |t|
+  create_table "levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "html_name"
     t.integer "group_id"
@@ -133,18 +133,18 @@ ActiveRecord::Schema.define(version: 20170902024413) do
     t.index ["group_id"], name: "index_levels_on_group_id"
   end
 
-  create_table "score_types", force: :cascade do |t|
+  create_table "score_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "score_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "scores", force: :cascade do |t|
+  create_table "scores", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "event_id"
     t.integer "segment_id"
     t.integer "score_type_id"
     t.integer "competition_id"
-    t.float "score"
+    t.float "score", limit: 24
     t.integer "skater1"
     t.integer "skater2"
     t.integer "skater3"
@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(version: 20170902024413) do
     t.index ["segment_id"], name: "index_scores_on_segment_id"
   end
 
-  create_table "segment_events", force: :cascade do |t|
+  create_table "segment_events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "segment_id"
     t.integer "event_id"
     t.datetime "created_at", null: false
@@ -169,7 +169,7 @@ ActiveRecord::Schema.define(version: 20170902024413) do
     t.index ["segment_id"], name: "index_segment_events_on_segment_id"
   end
 
-  create_table "segment_score_types", force: :cascade do |t|
+  create_table "segment_score_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "segment_id"
     t.integer "score_type_id"
     t.datetime "created_at", null: false
@@ -178,24 +178,25 @@ ActiveRecord::Schema.define(version: 20170902024413) do
     t.index ["segment_id"], name: "index_segment_score_types_on_segment_id"
   end
 
-  create_table "segments", force: :cascade do |t|
+  create_table "segments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "skaters", force: :cascade do |t|
+  create_table "skaters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
     t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "level_id"
-    t.integer "event_id"
+    t.bigint "level_id"
+    t.bigint "event_id"
+    t.string "name"
     t.index ["event_id"], name: "index_skaters_on_event_id"
     t.index ["level_id"], name: "index_skaters_on_level_id"
   end
 
-  create_table "star_golds", force: :cascade do |t|
+  create_table "star_golds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "star_level_id"
     t.integer "skater_id"
     t.integer "competition_id"
@@ -209,13 +210,13 @@ ActiveRecord::Schema.define(version: 20170902024413) do
     t.index ["star_level_id"], name: "index_star_golds_on_star_level_id"
   end
 
-  create_table "star_levels", force: :cascade do |t|
+  create_table "star_levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "star_tests", force: :cascade do |t|
+  create_table "star_tests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "star_level_id"
     t.string "name"
     t.string "name_with_level"
@@ -224,7 +225,7 @@ ActiveRecord::Schema.define(version: 20170902024413) do
     t.index ["star_level_id"], name: "index_star_tests_on_star_level_id"
   end
 
-  create_table "star_with_honors", force: :cascade do |t|
+  create_table "star_with_honors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "star_test_id"
     t.integer "skater_id"
     t.date "achieved"
@@ -235,10 +236,12 @@ ActiveRecord::Schema.define(version: 20170902024413) do
     t.index ["star_test_id"], name: "index_star_with_honors_on_star_test_id"
   end
 
-  create_table "teams", force: :cascade do |t|
+  create_table "teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "skaters", "events"
+  add_foreign_key "skaters", "levels"
 end

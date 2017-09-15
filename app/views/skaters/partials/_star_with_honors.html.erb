@@ -1,24 +1,22 @@
-<div class="col-md-6">
-  <div class="card">
-    <div class="card-block">
-      <h5 class="card-header card-danger text-centre">STAR Assessment Pass With Honors</h5>
-      <div class="card-text">
-        <table class="table table-sm">
-          <tbody>
-            <% star_with_honors.where(skater_id: skater.id).in_groups_of(2) do |shg|  %>
-              <tr>
-                <% shg.each do |sh| %>
-                  <% if sh.present? %>
-                    <td>
-                      <%= sh.achieved.strftime("%b %d, %Y") %> - <%= sh.star_test.name_with_level %>
-                    </td>
-                  <% end %>
+<div class="card">
+  <div class="card-block">
+    <h5 class="card-header card-danger text-centre">STAR Assessment Pass With Honors</h5>
+    <div class="card-text">
+      <table class="table table-sm">
+        <tbody>
+          <% star_with_honors.where(skater_id: skater.id).in_groups_of(4) do |shg|  %>
+            <tr>
+              <% shg.each do |sh| %>
+                <% if sh.present? %>
+                  <td>
+                    <%= sh.achieved.strftime("%b %d, %Y") %> - <%= sh.star_test.name_with_level %>
+                  </td>
                 <% end %>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

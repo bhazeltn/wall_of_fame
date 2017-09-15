@@ -1,5 +1,4 @@
 <% unless admin_signed_in? %>
-  <%= render '/layouts/partials/need_help' %>
   <%= render '/layouts/partials/how_to_update' %>
 <% end %>
 
@@ -59,7 +58,7 @@
                         <% if e.score.count > 0 or admin_signed_in? %>
                           <div role="tabpanel" id='<%= l.html_name %><%= e.html_name %>' <% if idx4 == 0 %> class="tab-pane active" <% else %> class="tab-pane" <% end %>>
                             <span>
-                              <%= render 'scoretable2', evnt: e, scores: @scores %>
+                              <%= render 'scoretable2', evnt: e, scores: @scores, skaters: @skaters %>
                             </span>
                           </div>
                           <% idx4 = idx4 + 1 %>
