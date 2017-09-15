@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170914170025) do
+ActiveRecord::Schema.define(version: 20170915212404) do
 
   create_table "ab_teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "skater_id"
@@ -67,6 +67,21 @@ ActiveRecord::Schema.define(version: 20170914170025) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "element_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "elements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "element_type_id"
+    t.string "abbrev"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["element_type_id"], name: "index_elements_on_element_type_id"
   end
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -242,6 +257,7 @@ ActiveRecord::Schema.define(version: 20170914170025) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "elements", "element_types"
   add_foreign_key "skaters", "events"
   add_foreign_key "skaters", "levels"
 end

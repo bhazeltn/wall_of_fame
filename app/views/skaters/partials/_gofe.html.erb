@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-block">
-    <h5 class="card-header card-danger text-centre">+2 Grade Of Execution</h5>
+    <h5 class="card-header card-danger text-centre">+2 Grade Of Execution <i style="font-weight: 150"> Since July 1, 2017</i></h5>
     <div class="card-text">
       <% years.each do |y| %>
         <% if gofes.where(skater1: skater.id, year: y).or(gofes.where(skater2: skater.id, year: y)).present? %>
