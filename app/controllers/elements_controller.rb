@@ -3,6 +3,7 @@ class ElementsController < ApplicationController
 
   # GET /elements
   def index
+    @element_types = ElementType.all
     @elements = Element.all
   end
 
@@ -21,6 +22,7 @@ class ElementsController < ApplicationController
 
   # POST /elements
   def create
+    @element_types = ElementType.all
     @element = Element.new(element_params)
 
     if @element.save
@@ -32,6 +34,7 @@ class ElementsController < ApplicationController
 
   # PATCH/PUT /elements/1
   def update
+    @element_types = ElementType.all
     if @element.update(element_params)
       redirect_to @element, notice: 'Element was successfully updated.'
     else
