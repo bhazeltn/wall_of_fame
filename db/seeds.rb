@@ -1,4 +1,12 @@
-
+AwardType.create!([
+  {name: "Chuck Norris Team Spirit Awards"},
+  {name: "Volunteer Awards"},
+  {name: "Group Program Most Improved"},
+  {name: "STARSkate Most Improved"},
+  {name: "Competitive Most Improved"},
+  {name: "Skater Of the Year"},
+  {name: "Excellence Awards"}
+])
 Award.create!([
   {award_type_id: 1, name: "Jimmy Condon Arena"},
   {award_type_id: 1, name: "Canada Olympic Park"},
@@ -27,15 +35,6 @@ Award.create!([
   {award_type_id: 7, name: "Sharon LaRiviere Award"},
   {award_type_id: 7, name: "Marissa Staddon Award"},
   {award_type_id: 7, name: "Pat Fischer Award"}
-])
-AwardType.create!([
-  {name: "Chuck Norris Team Spirit Awards"},
-  {name: "Volunteer Awards"},
-  {name: "Group Program Most Improved"},
-  {name: "STARSkate Most Improved"},
-  {name: "Competitive Most Improved"},
-  {name: "Skater Of the Year"},
-  {name: "Excellence Awards"}
 ])
 ClubAward.create!([
   {skater_id: 145, award_id: 1, year: 2017},
