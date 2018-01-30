@@ -135,7 +135,7 @@ GEM
     passenger (5.1.8)
       rack
       rake (>= 0.8.1)
-    pg (1.0.0)
+    pg (0.21.0)
     public_suffix (3.0.0)
     puma (3.10.0)
     rack (2.0.3)
@@ -256,7 +256,7 @@ DEPENDENCIES
   jquery-ui-rails
   listen (>= 3.0.5, < 3.2)
   passenger
-  pg
+  pg (~> 0.20)
   puma (~> 3.7)
   rails (~> 5.1.1)
   rails-assets-tether (>= 1.1.0)!
