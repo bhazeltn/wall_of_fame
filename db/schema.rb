@@ -174,8 +174,8 @@ ActiveRecord::Schema.define(version: 20170914170025) do
     t.integer "score_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["score_type_id"], name: "idx_segment_score_types_index_segment_score_types_on_score_type_id"
-    t.index ["segment_id"], name: "idx_segment_score_types_index_segment_score_types_on_segment_id"
+    t.index ["score_type_id"], name: "idx_seg_score_types_index_seg_score_types_on_score_type_id"
+    t.index ["segment_id"], name: "idx_seg_score_types_index_seg_score_types_on_segment_id"
   end
 
   create_table "segments", force: :cascade do |t|
