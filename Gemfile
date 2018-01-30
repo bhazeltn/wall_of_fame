@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.3.0'
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   'https://github.com/#{repo_name}.git"'
@@ -23,11 +23,11 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'therubyracer', platforms: :ruby
 
-gem 'capistrano', '~> 3.7', '>= 3.7.1'
-gem 'capistrano-rails', '~> 1.2'
-gem 'capistrano-passenger', '~> 0.2.0'
-gem 'capistrano-rvm'
-gem 'seed_dump'
+#gem 'capistrano', '~> 3.7', '>= 3.7.1'
+#gem 'capistrano-rails', '~> 1.2'
+#gem 'capistrano-passenger', '~> 0.2.0'
+#gem 'capistrano-rvm'
+#gem 'seed_dump'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
