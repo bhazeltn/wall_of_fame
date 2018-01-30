@@ -1,4 +1,4 @@
 class ScoreType < ApplicationRecord
-  has_many :SegmentScoreType
-  has_many :segments, through: :SegmentScoreType
+  has_many :SegScoreType
+  has_many :segments, through: :SegScoreType
 end
