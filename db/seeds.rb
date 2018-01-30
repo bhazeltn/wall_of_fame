@@ -37,7 +37,8 @@ Competition.create!([
   {name: "Canadian Figure Skating Championships "},
   {name: "Skate Canada Western and Eastern Challenge"},
   {name: "Central Region Open"},
-  {name: "Ondrej Nepela Trophy"}
+  {name: "Ondrej Nepela Trophy"},
+   {name: "N/A"}
 ])
 Group.create!([
   {name: "Competitive", html_name: "Competitive"},
