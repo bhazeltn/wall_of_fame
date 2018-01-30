@@ -27,6 +27,7 @@ gem 'capistrano', '~> 3.7', '>= 3.7.1'
 gem 'capistrano-rails', '~> 1.2'
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'capistrano-rvm'
+gem 'seed_dump'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -34,11 +35,10 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'sqlite3'
   gem 'puma', '~> 3.7'
-  gem 'mysql2'
 end
 
 group :production do
-  gem 'mysql2'
+  gem 'pg'
   gem 'passenger'
 end
 
