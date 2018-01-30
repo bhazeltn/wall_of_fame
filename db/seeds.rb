@@ -1,6 +1,4 @@
-Admin.create!([
-  {email: "admin@walloffame.ca", encrypted_password: "$2a$11$BNygCt9tPhXdCk0PWLmC4.wRCRt.Noc70qvixdl6xCq1lXdMNZ1Iy", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 25, current_sign_in_at: "2017-12-29 19:24:37", last_sign_in_at: "2017-11-03 03:09:24", current_sign_in_ip: "74.200.28.250", last_sign_in_ip: "24.64.109.238"}
-])
+
 Award.create!([
   {award_type_id: 1, name: "Jimmy Condon Arena"},
   {award_type_id: 1, name: "Canada Olympic Park"},
