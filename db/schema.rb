@@ -169,7 +169,7 @@ ActiveRecord::Schema.define(version: 20170914170025) do
     t.index ["segment_id"], name: "idx_segment_events_index_segment_events_on_segment_id"
   end
 
-  create_table "segment_score_types", force: :cascade do |t|
+  create_table "seg_score_types", force: :cascade do |t|
     t.integer "segment_id"
     t.integer "score_type_id"
     t.datetime "created_at", null: false
